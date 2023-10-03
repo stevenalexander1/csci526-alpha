@@ -7,18 +7,35 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    private static GameManager instance;
+    public static GameManager Instance { get { return instance; } }
+    [SerializeField] private FirstPersonController fpsController;
+        
+    [Header("Game State")]
     public GameObject gameOverCanvas;
-    //private bool isGameOver = false;
     public Text gameOverText;
-    [SerializeField]
-    private FirstPersonController fpsController;
+   
+    
+    [Header("Score")]
+    private int _score = 0;
+    [SerializeField] private Text scoreText;
+    
 
     // Start is called before the first frame update
     void Start()
     {
+        // Make sure there is only one instance of this object
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
         gameOverText.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
-        Debug.Log("Game Started!");
+        scoreText.text = "Items: " + ScoreManager.score+"/4";
     }
 
     // Update is called once per frame
@@ -70,10 +87,12 @@ public class GameManager : MonoBehaviour
           gameOverCanvas.SetActive(false);
           ScoreManager.score = 0;
           Cursor.lockState = CursorLockMode.Locked;
+    }
     
-
-
-
+    public void UpdateScore(int points)
+    {
+        _score += points;
+        scoreText.text = "Items: " + _score+"/4";
     }
 
 

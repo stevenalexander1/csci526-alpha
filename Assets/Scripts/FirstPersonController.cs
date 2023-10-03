@@ -61,7 +61,7 @@ namespace StarterAssets
 		private float _rotationVelocity;
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
-
+		private PlayerCharacter _playerCharacter;
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
@@ -96,6 +96,7 @@ namespace StarterAssets
 			{
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
+			_playerCharacter = GetComponent<PlayerCharacter>();
 		}
 
 		private void Start()
@@ -274,7 +275,11 @@ namespace StarterAssets
 
 		private void OnInteract()
 		{
-			
+			if (_input.interact)
+			{
+				_playerCharacter.GrabObject();
+				_input.interact = false;
+			}
 		}
 		
 		private void ChangePerspective()
