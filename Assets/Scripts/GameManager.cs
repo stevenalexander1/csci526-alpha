@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
         }
         gameOverText.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
-        scoreText.text = "Items: " + ScoreManager.score+"/4";
+        scoreText.text = "Items: " + _score+"/4";
     }
 
     // Update is called once per frame
@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
         if (other.CompareTag("FinishLine")) {
             // isGameOver = true;
             //Time.timeScale = 0;
-            if (ScoreManager.score == 4)
+            if (_score == 4)
             {
                 gameOverText.text ="Mission Passed";
             }
@@ -85,7 +85,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
           Time.timeScale = 1;
           gameOverCanvas.SetActive(false);
-          ScoreManager.score = 0;
+          _score = 0;
           Cursor.lockState = CursorLockMode.Locked;
     }
     

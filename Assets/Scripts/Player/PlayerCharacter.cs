@@ -40,10 +40,7 @@ public class PlayerCharacter : MonoBehaviour
 
     public void GrabObject()
     {
-        if (!_canGrabObject) return;
-        Rigidbody grabbedObjectRigidbody = _grabbableObject.GetComponent<Rigidbody>();
-        // Disable the object's physics so that it doesn't fall or react to forces.
-        grabbedObjectRigidbody.isKinematic = true;
+        if (!_canGrabObject || !_grabbableObject) return;
         _grabbableObject.SetActive(false);
         GameManager.Instance.UpdateScore(1);
     }
