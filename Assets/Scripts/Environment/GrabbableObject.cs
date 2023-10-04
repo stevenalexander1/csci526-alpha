@@ -4,12 +4,18 @@ using UnityEngine;
 
 public class GrabbableObject : MonoBehaviour
 {
-    [SerializeField] private float itemValue = 0;
-    
-    public float ItemValue
+    [SerializeField] private int itemValue = 0;
+    private bool _isGrabbed = false;
+    public int ItemValue
     {
         get => itemValue;
         set => itemValue = value;
+    }
+    
+    public bool IsGrabbed
+    {
+        get => _isGrabbed;
+        set => _isGrabbed = value;
     }
     
     // Start is called before the first frame update

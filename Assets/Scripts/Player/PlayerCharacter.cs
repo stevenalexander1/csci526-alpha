@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    private GameObject _grabbableObject;
+    private GameObject _grabbableGameObject;
     private bool _canGrabObject = false;
     public void Start()
     {
@@ -25,7 +25,7 @@ public class PlayerCharacter : MonoBehaviour
         if (other.CompareTag("Grabbable"))
         {
             _canGrabObject = true;
-            _grabbableObject = other.gameObject;
+            _grabbableGameObject = other.gameObject;
         }
     }
 
@@ -34,14 +34,20 @@ public class PlayerCharacter : MonoBehaviour
         if (other.CompareTag("Grabbable"))
         {
             _canGrabObject = false;
-            _grabbableObject = null;
+            _grabbableGameObject = null;
         }    
     }
 
     public void GrabObject()
     {
-        if (!_canGrabObject || !_grabbableObject) return;
-        _grabbableObject.SetActive(false);
+        Debug.Log("Grabbing object");
+        if (!_canGrabObject 
+            || !_grabbableGameObject 
+            || _grabbableGameObject.GetComponent<GrabbableObject>().IsGrabbed) return;
+        GrabbableObject grabbableObject = _grabbableGameObject.GetComponent<GrabbableObject>();
+        grabbableObject.IsGrabbed = true;
+        _grabbableGameObject.SetActive(false);
         GameManager.Instance.UpdateScore(1);
+        GameManager.Instance.UpdateCash(grabbableObject.ItemValue);
     }
 }

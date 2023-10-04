@@ -18,9 +18,15 @@ public class GameManager : MonoBehaviour
     
     [Header("Score")]
     private int _score = 0;
+    private int _cash = 0;
     [SerializeField] private Text scoreText;
-    
+    [SerializeField] private Text cashText;
 
+    [Header("Level")] 
+    [SerializeField] private List<Level> levels;
+    private Level currentLevel;
+    private int currentLevelIndex = 0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -95,5 +101,10 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Items: " + _score+"/4";
     }
 
+    public void UpdateCash(int cash)
+    {
+        _cash += cash;
+        cashText.text = "Cash: $" + _cash;
+    }
 
 }
