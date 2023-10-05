@@ -9,13 +9,18 @@ public class Patrol : MonoBehaviour
     [SerializeField]
     private float startWaitTime;
     private float waitTime;
-
-    public Transform[] moveSpots;
+    public Transform locations;
+    
+    private List<Transform> moveSpots = new List<Transform>();
     private int index = 1;
     private int increment = 1;
     // Start is called before the first frame update
     void Start()
     {
+        foreach(Transform child in locations)
+        {
+            moveSpots.Add(child);
+        }
         waitTime = startWaitTime;
         transform.LookAt(moveSpots[index]);
     }
@@ -29,7 +34,7 @@ public class Patrol : MonoBehaviour
         {
             if (waitTime <= 0)
             {
-                if (index == 0 || index == moveSpots.Length - 1)
+                if (index == 0 || index == moveSpots.Count - 1)
                     increment *= -1;
                 index += increment;
                 transform.LookAt(moveSpots[index]);

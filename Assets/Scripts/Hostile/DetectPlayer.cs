@@ -44,11 +44,11 @@ public class DetectPlayer : MonoBehaviour
     {
         if (IsWithinSights(player.transform))
         {
-            Debug.Log("Seen");
+            //Debug.Log("Seen");
         }
         else
         {
-            Debug.Log("Unseen");
+            //Debug.Log("Unseen");
         }
     }
 }
