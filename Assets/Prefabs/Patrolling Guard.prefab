@@ -125,7 +125,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7205643305772174581}
   m_Layer: 0
-  m_Name: Patrol System
+  m_Name: Patrolling Guard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -157,8 +157,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3900992572896096582}
-  - component: {fileID: 3721856766873944190}
   - component: {fileID: 3461742153838850531}
+  - component: {fileID: 2653431110547946506}
   m_Layer: 0
   m_Name: Guard
   m_TagString: Untagged
@@ -183,22 +183,6 @@ Transform:
   m_Father: {fileID: 7205643305772174581}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 92.245, z: 0}
---- !u!114 &3721856766873944190
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4577305744368505731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 000943a474912764e8b2958251ebd381, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  fieldOfViewAngle: 60
-  player: {fileID: 0}
-  viewDistance: 6
-  layerMask: 10
 --- !u!114 &3461742153838850531
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,6 +198,27 @@ MonoBehaviour:
   speed: 5
   startWaitTime: 2
   locations: {fileID: 7652322639085618488}
+--- !u!114 &2653431110547946506
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4577305744368505731}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cff3b36f4f59b154ea80445e085ffe4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 6
+  angle: 60
+  player: {fileID: 0}
+  targetMask:
+    serializedVersion: 2
+    m_Bits: 256
+  obstructionMask:
+    serializedVersion: 2
+    m_Bits: 1024
 --- !u!1 &5596053112086277229
 GameObject:
   m_ObjectHideFlags: 0

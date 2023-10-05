@@ -3488,8 +3488,13 @@ PrefabInstance:
     - target: {fileID: 2340100688627057677, guid: 0ddd1b9ea63fdd1448f0dfa608388583,
         type: 3}
       propertyPath: m_Name
-      value: Patrol System (1)
+      value: Patrolling Guard
       objectReference: {fileID: 0}
+    - target: {fileID: 2653431110547946506, guid: 0ddd1b9ea63fdd1448f0dfa608388583,
+        type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 2109684789}
     - target: {fileID: 3721856766873944190, guid: 0ddd1b9ea63fdd1448f0dfa608388583,
         type: 3}
       propertyPath: player
@@ -3550,7 +3555,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 3721856766873944190, guid: 0ddd1b9ea63fdd1448f0dfa608388583, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 0ddd1b9ea63fdd1448f0dfa608388583, type: 3}
 --- !u!4 &8418726437188596535 stripped
 Transform:

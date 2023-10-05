@@ -14,20 +14,24 @@ public class Patrol : MonoBehaviour
     private List<Transform> moveSpots = new List<Transform>();
     private int index = 1;
     private int increment = 1;
-    // Start is called before the first frame update
+
     void Start()
     {
         foreach(Transform child in locations)
         {
-            moveSpots.Add(child);
+            moveSpots.Add(child); // Adding patrol locations to list
         }
         waitTime = startWaitTime;
+        if (moveSpots.Count == 0)
+            return;
         transform.LookAt(moveSpots[index]);
     }
 
-    // Update is called once per frame
+
     void Update()
     {
+        if (moveSpots.Count == 0)
+            return;
         transform.position = Vector3.MoveTowards(transform.position, moveSpots[index].position, speed * Time.deltaTime);
 
         if(Vector2.Distance(transform.position, moveSpots[index].position)<0.2f)
