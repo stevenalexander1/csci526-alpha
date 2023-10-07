@@ -218,7 +218,8 @@ MonoBehaviour:
     m_Bits: 256
   obstructionMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 9216
+  gameManager: {fileID: 0}
 --- !u!1 &5596053112086277229
 GameObject:
   m_ObjectHideFlags: 0

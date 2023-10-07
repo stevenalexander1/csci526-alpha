@@ -14,7 +14,11 @@ public class DetectPlayerFOV : MonoBehaviour
     public LayerMask targetMask; // Contains the player's layer
     public LayerMask obstructionMask; // Contains any obstruction layer
 
+    [SerializeField]
+    private GameManager gameManager;
     private bool canSeePlayer;
+
+    private bool isGameOver = false; // Track game over state
 
     void Start()
     {
@@ -35,6 +39,11 @@ public class DetectPlayerFOV : MonoBehaviour
 
     private void FOVCheck()
     {
+        if(isGameOver)
+        {
+            return;
+        }
+
         Collider[] rangeCheck = new Collider[1];
         if (Physics.OverlapSphereNonAlloc(transform.position, range, rangeCheck, targetMask) == 1) // Checks if there is an object with targetMask in given radius
         {
@@ -46,7 +55,10 @@ public class DetectPlayerFOV : MonoBehaviour
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) // Check if a raycast is not hitting an obstruction
+                {
                     canSeePlayer = true;
+                    gameManager.GameOver();
+                }
                 else
                     canSeePlayer = false;
             }
