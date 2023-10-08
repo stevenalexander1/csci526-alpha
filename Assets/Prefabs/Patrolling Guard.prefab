@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6484436605653086336}
   - component: {fileID: 1089003736851985256}
   m_Layer: 0
-  m_Name: Spot Light
+  m_Name: FOV Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45,7 +45,7 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 0, b: 0, a: 1}
-  m_Intensity: 10000
+  m_Intensity: 100000000
   m_Range: 6
   m_SpotAngle: 60
   m_InnerSpotAngle: 0
@@ -158,7 +158,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3900992572896096582}
   - component: {fileID: 3461742153838850531}
-  - component: {fileID: 2653431110547946506}
+  - component: {fileID: 4441332392689192039}
   m_Layer: 0
   m_Name: Guard
   m_TagString: Untagged
@@ -198,7 +198,7 @@ MonoBehaviour:
   speed: 5
   startWaitTime: 2
   locations: {fileID: 7652322639085618488}
---- !u!114 &2653431110547946506
+--- !u!114 &4441332392689192039
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -210,9 +210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cff3b36f4f59b154ea80445e085ffe4e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 6
-  angle: 60
-  player: {fileID: 0}
+  _player: {fileID: 0}
   targetMask:
     serializedVersion: 2
     m_Bits: 256

@@ -407,13 +407,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patrolling Guard (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 2653431110547946506, guid: 0ddd1b9ea63fdd1448f0dfa608388583,
+    - target: {fileID: 4441332392689192039, guid: 0ddd1b9ea63fdd1448f0dfa608388583,
         type: 3}
-      propertyPath: player
+      propertyPath: _player
       value: 
       objectReference: {fileID: 2109684789}
-    - target: {fileID: 2653431110547946506, guid: 0ddd1b9ea63fdd1448f0dfa608388583,
+    - target: {fileID: 4441332392689192039, guid: 0ddd1b9ea63fdd1448f0dfa608388583,
         type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 2109684790}
+    - target: {fileID: 0}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 2109684789}
+    - target: {fileID: 0}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 2109684790}
@@ -472,7 +480,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 0}
   m_SourcePrefab: {fileID: 100100000, guid: 0ddd1b9ea63fdd1448f0dfa608388583, type: 3}
 --- !u!1 &284713425
 GameObject:
@@ -2638,7 +2647,7 @@ GameObject:
   - component: {fileID: 1672787371}
   - component: {fileID: 1672787370}
   m_Layer: 0
-  m_Name: Text (TMP)
+  m_Name: InstructionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10890,16 +10899,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Patrolling Guard
       objectReference: {fileID: 0}
-    - target: {fileID: 2653431110547946506, guid: 0ddd1b9ea63fdd1448f0dfa608388583,
-        type: 3}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 2109684789}
     - target: {fileID: 3721856766873944190, guid: 0ddd1b9ea63fdd1448f0dfa608388583,
         type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 2109684789}
+    - target: {fileID: 4441332392689192039, guid: 0ddd1b9ea63fdd1448f0dfa608388583,
+        type: 3}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 2109684789}
+    - target: {fileID: 4441332392689192039, guid: 0ddd1b9ea63fdd1448f0dfa608388583,
+        type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 2109684790}
     - target: {fileID: 7205643305772174581, guid: 0ddd1b9ea63fdd1448f0dfa608388583,
         type: 3}
       propertyPath: m_RootOrder
@@ -10955,8 +10969,15 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 3721856766873944190, guid: 0ddd1b9ea63fdd1448f0dfa608388583, type: 3}
+    - target: {fileID: 0}
+      propertyPath: _player
+      value: 
+      objectReference: {fileID: 2109684789}
+    - target: {fileID: 0}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 2109684790}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0ddd1b9ea63fdd1448f0dfa608388583, type: 3}
 --- !u!4 &8418726437188596535 stripped
 Transform:

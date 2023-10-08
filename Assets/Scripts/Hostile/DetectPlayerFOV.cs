@@ -5,24 +5,36 @@ using UnityEngine;
 
 public class DetectPlayerFOV : MonoBehaviour
 {
-    [SerializeField]
-    private float range;
-    [SerializeField] [Range(0,360)]
-    private float angle;
-
-    public GameObject player;
+    private float _range;
+    private float _angle;
+    
+    public GameObject _player;
     public LayerMask targetMask; // Contains the player's layer
     public LayerMask obstructionMask; // Contains any obstruction layer
 
     [SerializeField]
     private GameManager gameManager;
-    private bool canSeePlayer;
+    private GameObject _mainCamera;
+    private bool _canSeePlayer;
+    private GameObject _light;
 
-    private bool isGameOver = false; // Track game over state
+    private bool _isGameOver = false; // Track game over state
+
+    private void Awake()
+    {
+        // get a reference to our main camera
+        if (_mainCamera == null)
+        {
+            _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+        }
+        _player = GameObject.FindGameObjectWithTag("Player");
+        _range = gameObject.GetComponentInChildren<Light>().range;
+        _angle = gameObject.GetComponentInChildren<Light>().spotAngle;
+        _light = gameObject.transform.GetChild(1).gameObject;
+    }
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
         StartCoroutine(DetectFOV());
     }
 
@@ -39,39 +51,43 @@ public class DetectPlayerFOV : MonoBehaviour
 
     private void FOVCheck()
     {
-        if(isGameOver)
+        if(_isGameOver)
         {
             return;
         }
 
         Collider[] rangeCheck = new Collider[1];
-        if (Physics.OverlapSphereNonAlloc(transform.position, range, rangeCheck, targetMask) == 1) // Checks if there is an object with targetMask in given radius
+        if (Physics.OverlapSphereNonAlloc(transform.position, _range, rangeCheck, targetMask) == 1) // Checks if there is an object with targetMask in given radius
         {
             Transform target = rangeCheck[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
 
-            if (Vector3.Angle(transform.forward, directionToTarget) < angle / 2) // Must be within the given angle
+            if (Vector3.Angle(transform.forward, directionToTarget) < _angle / 2)
             {
                 float distanceToTarget = Vector3.Distance(transform.position, target.position);
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) // Check if a raycast is not hitting an obstruction
                 {
-                    canSeePlayer = true;
+                    _canSeePlayer = true;
                     gameManager.GameOver();
                 }
                 else
-                    canSeePlayer = false;
+                    _canSeePlayer = false;
             }
             else
-                canSeePlayer = false;
+                _canSeePlayer = false;
         }
-        else if(canSeePlayer)
-            canSeePlayer = false;
+        else if(_canSeePlayer)
+            _canSeePlayer = false;
 
-        //if (canSeePlayer)
-        //    Debug.Log("Seen");
-        //else
-        //    Debug.Log("Unseen");
+    }
 
+    private void LateUpdate()
+    {
+        CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>(); 
+        if (!cameraManager.PlayerCameraActive) // Makes light visible if using a camera
+            _light.SetActive(true);
+        else
+            _light.SetActive(false);
     }
 }
