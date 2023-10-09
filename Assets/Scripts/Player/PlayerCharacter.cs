@@ -16,7 +16,7 @@ public class PlayerCharacter : MonoBehaviour
 
     private void Update()
     {
-        
+
     }
 
     private void OnTriggerStay(Collider other)
