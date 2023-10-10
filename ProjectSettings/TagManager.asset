@@ -7,7 +7,6 @@ TagManager:
   - CinemachineTarget
   - Grabbable
   - FinishLine
-  - Platform
   layers:
   - Default
   - TransparentFX
