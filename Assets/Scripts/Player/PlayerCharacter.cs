@@ -18,7 +18,14 @@ public class PlayerCharacter : MonoBehaviour
     {
         
     }
-
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.CompareTag("Laser"))
+        {
+            GameManager gm = GetComponent<GameManager>();
+            gm.GameOver();
+        }
+    }
     private void OnTriggerStay(Collider other)
     {
         // Check if the grabber collided with an object that can be grabbed.

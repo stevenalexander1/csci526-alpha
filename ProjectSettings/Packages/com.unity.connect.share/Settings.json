@@ -21,7 +21,7 @@
             {
                 "type": "System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089",
                 "key": "buildOutputDirList",
-                "value": "{\"m_Value\":\"C:/Users/stebo/OneDrive/Documents/CSCI 526/tbl-csci526-pairprototype-final;C:/Users/stebo/OneDrive/Documents/CSCI 526/csci526-teambackleft-prototype/Team Back Left/WebGL Builds/TemplateData;;;;;;;;\"}"
+                "value": "{\"m_Value\":\"C:/Users/stebo/OneDrive/Documents/CSCI 526/tbl-csci526-pairprototype-final/TemplateData;C:/Users/stebo/OneDrive/Documents/CSCI 526/tbl-csci526-pairprototype-final;C:/Users/stebo/OneDrive/Documents/CSCI 526/csci526-teambackleft-prototype/Team Back Left/WebGL Builds/TemplateData;;;;;;;\"}"
             }
         ]
     }
