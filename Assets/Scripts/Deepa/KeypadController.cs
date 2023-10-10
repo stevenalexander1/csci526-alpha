@@ -28,7 +28,6 @@ public class KeypadController : MonoBehaviour
     {
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
-       // Debug.Log("Distance to Player" + distanceToPlayer);
         if (distanceToPlayer <= interactionDistance)
         {
             playerNearKeypad = true;
@@ -106,7 +105,6 @@ public class KeypadController : MonoBehaviour
 
                 if (keyboard.enterKey.wasPressedThisFrame)
                 {
-                    //Debug.Log("Length is" + textMeshProText.text.Length);
                     if (textMeshProText.text.Length == maxCharacterLimit && validateCode())
                     {
                         isDoorOpen = true;
