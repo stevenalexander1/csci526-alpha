@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   securityCamera: {fileID: 0}
+  doesPan: 0
+  rotationSpeed: 20
 --- !u!65 &7662711654822803165
 BoxCollider:
   m_ObjectHideFlags: 0
