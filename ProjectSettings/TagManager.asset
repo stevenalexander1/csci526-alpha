@@ -8,6 +8,7 @@ TagManager:
   - Grabbable
   - FinishLine
   - Platform
+  - Laser
   layers:
   - Default
   - TransparentFX
@@ -23,6 +24,7 @@ TagManager:
   - Camera
   - Laser
   - MiniMap
+  - Walls
   - 
   - 
   - 
