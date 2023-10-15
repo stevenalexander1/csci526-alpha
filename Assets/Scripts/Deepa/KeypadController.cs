@@ -16,6 +16,8 @@ public class KeypadController : MonoBehaviour
     public float interactionDistance = 5f; 
     private bool playerNearKeypad = false;
     private bool isDoorOpen = false;
+    [SerializeField]
+    private string validCode = "12345";
 
     private void Start()
     {
@@ -131,7 +133,7 @@ public class KeypadController : MonoBehaviour
 
     public bool validateCode()
     {
-        if (currentInput == "12345")
+        if (currentInput == validCode)
         {
             return true;
         }
