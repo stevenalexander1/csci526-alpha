@@ -285,7 +285,11 @@ namespace StarterAssets
 		private void ChangePerspective()
 		{
 			if (_input.changePerspective)
-			{
+			{  
+				//Analytics for R count 
+				SendToGoogle.setrCount(1);
+				Debug.Log("R Count : " + SendToGoogle.getrCount());
+
 				int laserLayer = LayerMask.NameToLayer("Laser");
 				var mainCameraComponent = _mainCamera.GetComponent<Camera>();
 				CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
@@ -305,6 +309,10 @@ namespace StarterAssets
 							cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
 							 
 							 mainCameraComponent.cullingMask |= 1 << laserLayer;
+
+							//Analytics for Camera count
+							SendToGoogle.setCameraCount(1);
+							Debug.Log("Camera Count : " + SendToGoogle.getCameraCount());
 						}
 					}
 				}
