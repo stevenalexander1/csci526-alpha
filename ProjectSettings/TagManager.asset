@@ -23,10 +23,9 @@ TagManager:
   - GreyBox
   - Camera
   - Laser
-  - MiniMap
-  - Walls
-  - 
-  - 
+  - Wall
+  - Roof
+  - Minimap
   - 
   - 
   - 

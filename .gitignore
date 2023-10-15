@@ -73,3 +73,6 @@ crashlytics-build.properties
 
 # Probuilder settings
 /ProjectSettings/Packages/com.unity.probuilder/Settings.json
+
+# Connect share settings
+ProjectSettings/Packages/com.unity.connect.share/Settings.json
