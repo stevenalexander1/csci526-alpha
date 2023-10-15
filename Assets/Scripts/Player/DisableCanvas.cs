@@ -1,19 +1,20 @@
 using UnityEngine;
+using UnityEngine.UI;  // Import the UI namespace
 using Cinemachine;
 using System.Collections.Generic;
 
 public class DisableCanvas : MonoBehaviour
 {
-    [SerializeField] private Canvas canvas;
+    [SerializeField] private Image image;  // Change to UI Image
     [SerializeField] private CinemachineVirtualCamera playerFollowCamera;
 
     private List<CinemachineVirtualCamera> virtualCameras = new List<CinemachineVirtualCamera>();
 
     void Start()
     {
-        if (canvas == null)
+        if (image == null)
         {
-            Debug.LogError("Canvas reference is not set. Attach a Canvas component to the script.");
+            Debug.LogError("Image reference is not set. Attach an Image component to the script.");
             return;
         }
 
@@ -36,7 +37,7 @@ public class DisableCanvas : MonoBehaviour
             }
         }
 
-        // Disable the Canvas if any camera (except PlayerFollowCamera) is active, otherwise enable it
-        canvas.enabled = !anyCameraActive;
+        // Disable the Image component if any camera (except PlayerFollowCamera) is active, otherwise enable it
+        image.enabled = !anyCameraActive;
     }
 }
