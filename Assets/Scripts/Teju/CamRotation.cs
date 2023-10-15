@@ -30,7 +30,7 @@ public class CamRotation : MonoBehaviour
         float timer = 0f;
         while(timer < duration){
             timer += Time.deltaTime;
-            transform.rotation =  initialRotation * Quaternion.AngleAxis(timer / duration * yaw, Vector3.right );
+            transform.rotation =  initialRotation * Quaternion.AngleAxis(timer / duration * yaw, Vector3.down );
             yield return null;
         }
         startNextRotation = true; 
