@@ -1,11 +1,14 @@
-using System.Collections;
+    using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
+    using TMPro;
+    using UnityEngine;
 
 public class GrabbableObject : MonoBehaviour
 {
     [SerializeField] private int itemValue = 0;
+    [SerializeField] private GameObject itemValueText;
     private bool _isGrabbed = false;
+
     public int ItemValue
     {
         get => itemValue;
@@ -27,6 +30,13 @@ public class GrabbableObject : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        FaceCamera();
+    }
+    
+    private void FaceCamera()
+    {
+        // Have the item value text face the opposite direction of the camera
+        itemValueText.transform.LookAt(Camera.main.transform);
+        itemValueText.transform.Rotate(0, 180, 0);
     }
 }

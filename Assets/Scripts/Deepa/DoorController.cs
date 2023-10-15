@@ -24,7 +24,7 @@ public class DoorController : MonoBehaviour
     private IEnumerator ScaleDoor()
     {
         float elapsedTime = 0f;
-        Vector3 targetScale = new Vector3(initialScale.x, initialScale.y, 0f);
+        Vector3 targetScale = new Vector3(initialScale.x, 0, initialScale.z);
 
         while (elapsedTime < openDuration)
         {
@@ -40,7 +40,7 @@ public class DoorController : MonoBehaviour
 
             yield return null;
         }
-        transform.localScale = targetScale;
+        transform.localScale = Vector3.zero;
         isOpening = false;
     }
 }
