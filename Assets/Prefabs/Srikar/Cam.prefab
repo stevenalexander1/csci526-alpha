@@ -41,14 +41,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7959201152282057399}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a054d178f87c413aa56b17d3390d3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   rotRight: 0
   yaw: 40
-  secondsToRot: 5
+  secondsToRot: 4
 --- !u!1001 &7959201152029799442
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66,6 +66,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 11
       objectReference: {fileID: 0}
+    - target: {fileID: 3908327567682345502, guid: 9d23ea7daa8644ec89ecea47b24661ea,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7afa37a812c6d42c1ab3cad3e606d97a, type: 2}
     - target: {fileID: 3908327567769266386, guid: 9d23ea7daa8644ec89ecea47b24661ea,
         type: 3}
       propertyPath: m_Layer
@@ -159,32 +164,32 @@ PrefabInstance:
     - target: {fileID: 3908327568185831783, guid: 9d23ea7daa8644ec89ecea47b24661ea,
         type: 3}
       propertyPath: m_Size.x
-      value: 7.7702312
+      value: 6.651091
       objectReference: {fileID: 0}
     - target: {fileID: 3908327568185831783, guid: 9d23ea7daa8644ec89ecea47b24661ea,
         type: 3}
       propertyPath: m_Size.y
-      value: 5.393071
+      value: 4.066129
       objectReference: {fileID: 0}
     - target: {fileID: 3908327568185831783, guid: 9d23ea7daa8644ec89ecea47b24661ea,
         type: 3}
       propertyPath: m_Size.z
-      value: 1.585385
+      value: 1.5853853
       objectReference: {fileID: 0}
     - target: {fileID: 3908327568185831783, guid: 9d23ea7daa8644ec89ecea47b24661ea,
         type: 3}
       propertyPath: m_Center.x
-      value: -0.086509585
+      value: -0.11677867
       objectReference: {fileID: 0}
     - target: {fileID: 3908327568185831783, guid: 9d23ea7daa8644ec89ecea47b24661ea,
         type: 3}
       propertyPath: m_Center.y
-      value: 0.9205555
+      value: 1.045642
       objectReference: {fileID: 0}
     - target: {fileID: 3908327568185831783, guid: 9d23ea7daa8644ec89ecea47b24661ea,
         type: 3}
       propertyPath: m_Center.z
-      value: 2.8044705
+      value: 2.8044999
       objectReference: {fileID: 0}
     - target: {fileID: 3908327568861643981, guid: 9d23ea7daa8644ec89ecea47b24661ea,
         type: 3}
@@ -220,21 +225,6 @@ MonoBehaviour:
   securityCamera: {fileID: 1960482624944073231}
   doesPan: 0
   rotationSpeed: 20
---- !u!114 &7959201152029799465
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6361871518469227895}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a054d178f87c413aa56b17d3390d3ab, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rotRight: 0
-  yaw: 30
-  secondsToRot: 4
 --- !u!1001 &7959201152527447113
 PrefabInstance:
   m_ObjectHideFlags: 0

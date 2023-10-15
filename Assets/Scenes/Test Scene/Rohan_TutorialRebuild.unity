@@ -20935,6 +20935,51 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 593068913}
     m_Modifications:
+    - target: {fileID: 3538504341053312539, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.159
+      objectReference: {fileID: 0}
+    - target: {fileID: 3538504341053312539, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.023
+      objectReference: {fileID: 0}
+    - target: {fileID: 3538504341053312539, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.265
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227893, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_Size.x
+      value: 7.3507133
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227893, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5.9225993
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227893, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 1.9703826
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227893, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0.33299387
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227893, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 0.41314083
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227893, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 2.9970577
+      objectReference: {fileID: 0}
     - target: {fileID: 7959201152282057398, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
         type: 3}
       propertyPath: m_RootOrder
@@ -29908,9 +29953,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a054d178f87c413aa56b17d3390d3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotRight: 1
-  yaw: 50
-  secondsToRot: 2
+  rotRight: 0
+  yaw: 0
+  secondsToRot: 0
 --- !u!43 &643997128
 Mesh:
   m_ObjectHideFlags: 0
@@ -43912,9 +43957,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a054d178f87c413aa56b17d3390d3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rotRight: 1
-  yaw: 60
-  secondsToRot: 2
+  rotRight: 0
+  yaw: 0
+  secondsToRot: 0
 --- !u!1 &1289829125
 GameObject:
   m_ObjectHideFlags: 0
