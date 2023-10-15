@@ -1,5 +1,4 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 using UnityEngine.InputSystem;
 #endif
@@ -92,7 +91,6 @@ namespace StarterAssets
 
 		private void Awake()
 		{
-			
 			// get a reference to our main camera
 			if (_mainCamera == null)
 			{
@@ -288,10 +286,6 @@ namespace StarterAssets
 		{
 			if (_input.changePerspective)
 			{
-				//Analytics for R count 
-				SendToGoogle.setrCount(1);
-				Debug.Log("R Count : " + SendToGoogle.getrCount());
-
 				int laserLayer = LayerMask.NameToLayer("Laser");
 				var mainCameraComponent = _mainCamera.GetComponent<Camera>();
 				CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
@@ -311,10 +305,6 @@ namespace StarterAssets
 							cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
 							 
 							 mainCameraComponent.cullingMask |= 1 << laserLayer;
-
-							//Analytics for Camera count
-							SendToGoogle.setCameraCount(1);
-							Debug.Log("Camera Count : " + SendToGoogle.getCameraCount());
 						}
 					}
 				}

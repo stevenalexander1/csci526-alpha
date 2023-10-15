@@ -14,10 +14,8 @@ public class GameManager : MonoBehaviour
     [Header("Game State")]
     public GameObject gameOverCanvas;
     public Text gameOverText;
-    public GameObject panel;
-
-
-
+   
+    
     [Header("Score")]
     private int _score = 0;
     private int _cash = 0;
@@ -41,8 +39,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-       // gameOverText.gameObject.SetActive(false);
-        panel.SetActive(false);
+        gameOverText.gameObject.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
         scoreText.text = "Items: " + _score+"/4";
     }
@@ -79,8 +76,7 @@ public class GameManager : MonoBehaviour
         fpsController.gameOver = true;
         Debug.Log("Game Over!");
         // Display the "GAME OVER" text
-       // gameOverText.gameObject.SetActive(true);
-        panel.SetActive(true);
+        gameOverText.gameObject.SetActive(true);
         //Time.timeScale = 0;
         // Enable mouse
         Cursor.lockState = CursorLockMode.Confined;
@@ -95,7 +91,7 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
           Time.timeScale = 1;
           gameOverCanvas.SetActive(false);
-        _score = 0;
+          _score = 0;
           Cursor.lockState = CursorLockMode.Locked;
     }
     
