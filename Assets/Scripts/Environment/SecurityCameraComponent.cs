@@ -1,53 +1,42 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SecurityCameraComponent : MonoBehaviour
 {
     [SerializeField] private GameObject securityCamera;
-    [SerializeField] private bool doesPan = false;
     public GameObject SecurityCamera => securityCamera;
-    public float rotationSpeed = 20.0f; // Adjust this to control the rotation speed
-    private float rotationDuration = 5.0f; // Time to rotate left and right in seconds
 
-    private float rotationTimer = 0.0f;
-    private bool rotateRight = true; // Start by rotating right
+    [Header("Camera Pan")]
+    [SerializeField] private bool rotateCamera = true; // Add this line to control camera rotation
 
-    private void Update()
+    private bool startNextRotation = true;
+    bool rotRight = false;
+    [SerializeField] private float yaw = 40;
+    [SerializeField] private float secondsToRot = 4;
+
+    void Update()
     {
-        if (doesPan)
+        if (startNextRotation && rotateCamera)
         {
-            PanCamera();
+            if (rotRight)
+                StartCoroutine(Rotate(yaw, secondsToRot));
+            else
+                StartCoroutine(Rotate(-yaw, secondsToRot));
         }
-        
     }
 
-    private void PanCamera()
+    IEnumerator Rotate(float yaw, float duration)
     {
-        // Rotate left or right based on the current direction
-        if (rotateRight)
+        startNextRotation = false;
+        Quaternion initialRotation = transform.rotation;
+        float timer = 0f;
+        while (timer < duration)
         {
-            securityCamera.transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+            timer += Time.deltaTime;
+            transform.rotation = initialRotation * Quaternion.AngleAxis(timer / duration * yaw, Vector3.down);
+            yield return null;
         }
-        else
-        {
-            securityCamera.transform.Rotate(Vector3.up, -rotationSpeed * Time.deltaTime);
-        }
-
-        // Update the rotation timer
-        rotationTimer += Time.deltaTime;
-
-        // Check if it's time to change rotation direction
-        if (rotationTimer >= rotationDuration)
-        {
-            // Toggle the rotation direction
-            rotateRight = !rotateRight;
-
-            // Reset the rotation timer
-            rotationTimer = 0.0f;
-        }
+        startNextRotation = true;
+        rotRight = !rotRight;
     }
-    
 }
-  
-
