@@ -18,7 +18,8 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField]
     private float maxStealthMeter = 0.25f;
     private float currentStealthMeter;
-    
+    [SerializeField]
+    private StealthBar stealthBar;
     public float CurrentStealthMeter
     {
         get => currentStealthMeter;
@@ -27,12 +28,13 @@ public class PlayerCharacter : MonoBehaviour
 
     private void Awake()
     {
-        gameManager = GameManager.Instance;
     }
 
     public void Start()
     {
         currentStealthMeter = maxStealthMeter;
+        gameManager = GetComponent<GameManager>();
+        stealthBar.SetMaxStealth(maxStealthMeter);
 
     }
 
@@ -45,6 +47,7 @@ public class PlayerCharacter : MonoBehaviour
         if (other.CompareTag("Laser"))
         {
             currentStealthMeter -= Time.deltaTime;
+            stealthBar.SetStealth(currentStealthMeter);
             Debug.Log("Stealth meter: " + currentStealthMeter);
             if (currentStealthMeter <= 0)
             {
@@ -91,7 +94,6 @@ public class PlayerCharacter : MonoBehaviour
         GrabbableObject grabbableObject = _grabbableGameObject.GetComponent<GrabbableObject>();
         grabbableObject.IsGrabbed = true;
         _grabbableGameObject.SetActive(false);
-        GameManager.Instance.UpdateScore(1);
         GameManager.Instance.UpdateCash(grabbableObject.ItemValue);
     }
 }

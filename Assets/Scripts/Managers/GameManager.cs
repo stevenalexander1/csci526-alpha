@@ -20,7 +20,6 @@ public class GameManager : MonoBehaviour
     [Header("Score")]
     private int _score = 0;
     private int _cash = 0;
-    [SerializeField] private Text scoreText;
     [SerializeField] private Text cashText;
 
     [Header("Level")] 
@@ -43,7 +42,6 @@ public class GameManager : MonoBehaviour
        // gameOverText.gameObject.SetActive(false);
         panel.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
-        scoreText.text = "Items: " + _score+"/4";
     }
 
     // Update is called once per frame
@@ -98,11 +96,6 @@ public class GameManager : MonoBehaviour
           Cursor.lockState = CursorLockMode.Locked;
     }
     
-    public void UpdateScore(int points)
-    {
-        _score += points;
-        scoreText.text = "Items: " + _score+"/4";
-    }
 
     public void UpdateCash(int cash)
     {
