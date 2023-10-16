@@ -243,7 +243,6 @@ GameObject:
   - component: {fileID: 4650972021024038300}
   - component: {fileID: 1338708593}
   - component: {fileID: 1338708597}
-  - component: {fileID: 6139209358326010912}
   m_Layer: 8
   m_Name: PlayerCapsule
   m_TagString: Player
@@ -436,7 +435,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0648d3ea5fddc0408612d958ea6869e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  fpsController: {fileID: 6139209358326010912}
+  fpsController: {fileID: 0}
   gameOverCanvas: {fileID: 0}
   gameOverText: {fileID: 0}
   panel: {fileID: 0}
@@ -502,36 +501,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   checkpoint: {fileID: 0}
---- !u!114 &6139209358326010912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8616685848737228372}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55919ac34a26952479f3fc91f777b2fa, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 4
-  SprintSpeed: 6
-  RotationSpeed: 1
-  SpeedChangeRate: 10
-  JumpHeight: 1.2
-  Gravity: -15
-  JumpTimeout: 0.1
-  FallTimeout: 0.15
-  Grounded: 1
-  GroundedOffset: -0.14
-  GroundedRadius: 0.5
-  GroundLayers:
-    serializedVersion: 2
-    m_Bits: 8705
-  CinemachineCameraTarget: {fileID: 4135013735270702863}
-  TopClamp: 90
-  BottomClamp: -90
-  ignoreLayer:
-    serializedVersion: 2
-    m_Bits: 2048
-  gameOver: 0

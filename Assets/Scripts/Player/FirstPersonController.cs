@@ -66,7 +66,7 @@ namespace StarterAssets
 		private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
-		public bool gameOver = false;
+		private GameManager _gameManager;
 	
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		private PlayerInput _playerInput;
@@ -97,6 +97,8 @@ namespace StarterAssets
 				_mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
 			}
 			_playerCharacter = GetComponent<PlayerCharacter>();
+			_gameManager = GetComponent<GameManager>();
+			
 		}
 
 		private void Start()
@@ -116,7 +118,7 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			if (!gameOver)
+			if (!_gameManager.IsGameOver)
 			{
 				JumpAndGravity();
 				GroundedCheck();

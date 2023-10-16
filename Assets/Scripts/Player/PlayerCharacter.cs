@@ -20,6 +20,8 @@ public class PlayerCharacter : MonoBehaviour
     private float currentStealthMeter;
     [SerializeField]
     private StealthBar stealthBar;
+    private int _cash = 0;
+
     public float CurrentStealthMeter
     {
         get => currentStealthMeter;
@@ -53,6 +55,18 @@ public class PlayerCharacter : MonoBehaviour
             {
                 gameManager.GameOver();
             }
+        }
+        if (other.CompareTag("FinishLine")) {
+            if (_cash >= 100)
+            {
+                gameManager.gameOverText.text ="Mission Passed";
+            }
+            else
+            {
+                gameManager.gameOverText.text = "Mission Failed";
+            }
+            gameManager.gameOverCanvas.SetActive(true);
+            gameManager.GameOver();
         }
     }
     
@@ -94,6 +108,12 @@ public class PlayerCharacter : MonoBehaviour
         GrabbableObject grabbableObject = _grabbableGameObject.GetComponent<GrabbableObject>();
         grabbableObject.IsGrabbed = true;
         _grabbableGameObject.SetActive(false);
-        GameManager.Instance.UpdateCash(grabbableObject.ItemValue);
+        UpdateCash(grabbableObject.ItemValue);
+    }
+    
+    private void UpdateCash(int cash)
+    {
+        _cash += cash;
+        gameManager.cashText.text = "Cash: $" + _cash;
     }
 }
