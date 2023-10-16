@@ -24925,6 +24925,12 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1134787509 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6772042464265180347, guid: 3f23ae543b21f704dad50967cdc8985b,
+    type: 3}
+  m_PrefabInstance: {fileID: 212557775}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1142559750
 GameObject:
   m_ObjectHideFlags: 0
@@ -25644,6 +25650,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1338708597, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: checkpoint
+      value: 
+      objectReference: {fileID: 1134787509}
+    - target: {fileID: 2109684790, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: panel
+      value: 
+      objectReference: {fileID: 1366882177}
     - target: {fileID: 2109684790, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: cashText
       value: 
@@ -26042,6 +26056,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1366882177 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4599793773000290475, guid: c59e663febeb98f46ba47c930aa3ff23,
+    type: 3}
+  m_PrefabInstance: {fileID: 1366882174}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1386763626
 GameObject:
   m_ObjectHideFlags: 0
