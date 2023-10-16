@@ -27,8 +27,8 @@ TagManager:
   - Roof
   - Minimap
   - Crosshair
-  - 
-  - 
+  - BaseMiniMap
+  - ObjectHideLayer
   - 
   - 
   - 
