@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.ProBuilder;
 using UnityEngine.UI;
 
 public class StealthBar : MonoBehaviour
@@ -10,7 +11,6 @@ public class StealthBar : MonoBehaviour
     [SerializeField] private PlayerCharacter playerCharacter;
 
     [SerializeField] private Slider _stealthSlider;
-    // Start is called before the first frame update
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +25,8 @@ public class StealthBar : MonoBehaviour
     
     public void SetStealth(float stealth)
     {
-        _stealthSlider.value = stealth;
+        _stealthSlider.value = Mathf.Clamp(stealth, 0, _stealthSlider.maxValue);
+
     }
 
     

@@ -12,6 +12,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private FirstPersonController fpsController;
         
     [Header("Canvas References")]
+    [SerializeField] private UIManager uiManager;
     public GameObject gameOverCanvas;
     public Text gameOverText;
     public GameObject panel;
@@ -29,6 +30,7 @@ public class GameManager : MonoBehaviour
     private bool isGameOver = false; // Track game over state
     
     public bool IsGameOver => isGameOver;
+    public UIManager UIManager => uiManager;
     
     // Start is called before the first frame update
     void Start()

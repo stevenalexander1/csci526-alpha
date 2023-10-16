@@ -124,6 +124,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &2244566 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1260319310, guid: c59e663febeb98f46ba47c930aa3ff23,
+    type: 3}
+  m_PrefabInstance: {fileID: 1366882174}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &14760398
 Mesh:
   m_ObjectHideFlags: 0
@@ -19356,6 +19368,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a054d178f87c413aa56b17d3390d3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startNextRotation: 1
   rotRight: 1
   yaw: 50
   secondsToRot: 2
@@ -21945,27 +21958,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c80dfc3769a9b48f1b65bbc5421f4cda, type: 3}
---- !u!1 &937349085 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3447826217267938159, guid: c80dfc3769a9b48f1b65bbc5421f4cda,
-    type: 3}
-  m_PrefabInstance: {fileID: 937349084}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &937349086
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 937349085}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53dba3fd129294196837040a3dc13e66, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
-  minXPosition: -3
-  maxXPosition: 2
 --- !u!4 &937349087 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3447826217267938147, guid: c80dfc3769a9b48f1b65bbc5421f4cda,
@@ -25138,6 +25130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a054d178f87c413aa56b17d3390d3ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startNextRotation: 1
   rotRight: 1
   yaw: 60
   secondsToRot: 2
@@ -25341,6 +25334,10 @@ PrefabInstance:
       propertyPath: cashText
       value: 
       objectReference: {fileID: 1366882176}
+    - target: {fileID: 2109684790, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: uiManager
+      value: 
+      objectReference: {fileID: 1473374043}
     - target: {fileID: 2109684790, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: gameOverText
       value: 
@@ -25557,15 +25554,21 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 584870180, guid: c59e663febeb98f46ba47c930aa3ff23, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 861271967, guid: c59e663febeb98f46ba47c930aa3ff23, type: 3}
       propertyPath: playerCharacter
       value: 
       objectReference: {fileID: 1338708597}
-    - target: {fileID: 1627103194, guid: c59e663febeb98f46ba47c930aa3ff23, type: 3}
+    - target: {fileID: 1473374043, guid: c59e663febeb98f46ba47c930aa3ff23, type: 3}
+      propertyPath: crosshair
+      value: 
+      objectReference: {fileID: 2244566}
+    - target: {fileID: 4309738244652288469, guid: c59e663febeb98f46ba47c930aa3ff23,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4309738244652288469, guid: c59e663febeb98f46ba47c930aa3ff23,
+        type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
@@ -31747,6 +31750,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1366882174}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1473374043 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1473374043, guid: c59e663febeb98f46ba47c930aa3ff23,
+    type: 3}
+  m_PrefabInstance: {fileID: 1366882174}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1473374038}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8811f8d912ed0403da0e9e7b29331272, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1478284457
 Mesh:
   m_ObjectHideFlags: 0
@@ -32110,6 +32125,7 @@ MonoBehaviour:
   moveSpeed: 2
   minXPosition: -3
   maxXPosition: 3
+  initialX: 0
 --- !u!4 &1513353392 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3447826217267938147, guid: c80dfc3769a9b48f1b65bbc5421f4cda,
@@ -36165,6 +36181,7 @@ MonoBehaviour:
   moveSpeed: 2
   minXPosition: -2
   maxXPosition: 2
+  initialX: 0
 --- !u!4 &1888063800 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3447826217267938147, guid: c80dfc3769a9b48f1b65bbc5421f4cda,

@@ -46,16 +46,17 @@ public class PlayerCharacter : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Laser"))
-        {
-            currentStealthMeter -= Time.deltaTime;
-            stealthBar.SetStealth(currentStealthMeter);
-            Debug.Log("Stealth meter: " + currentStealthMeter);
-            if (currentStealthMeter <= 0)
-            {
-                gameManager.GameOver();
-            }
-        }
+        // if (other.CompareTag("Laser"))
+        // {
+        //     currentStealthMeter -= Time.deltaTime;
+        //     stealthBar.SetStealth(currentStealthMeter);
+        //     Debug.Log("Stealth meter: " + currentStealthMeter);
+        //     if (currentStealthMeter <= 0)
+        //     {
+        //         stealthBar.SetStealth(0);
+        //         gameManager.GameOver();
+        //     }
+        // }
         if (other.CompareTag("FinishLine")) {
             if (_cash >= 100)
             {
@@ -81,9 +82,11 @@ public class PlayerCharacter : MonoBehaviour
         if (other.CompareTag("Laser"))
         {
             currentStealthMeter -= Time.deltaTime;
+            stealthBar.SetStealth(currentStealthMeter);
             Debug.Log("Stealth meter: " + currentStealthMeter);
             if (currentStealthMeter <= 0)
             {
+                stealthBar.SetStealth(0);
                 gameManager.GameOver();
                 currentStealthMeter = maxStealthMeter;
             }

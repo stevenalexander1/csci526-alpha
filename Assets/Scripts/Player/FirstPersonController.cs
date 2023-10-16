@@ -297,6 +297,7 @@ namespace StarterAssets
 				CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
 				if (!cameraManager.PlayerCameraActive)
 				{
+					_gameManager.UIManager.ToggleCrosshairVisibility();
 					cameraManager.ActivateCameraByName("PlayerFollowCamera");
 					mainCameraComponent.cullingMask &= ~(1 << laserLayer);
 				}
@@ -308,6 +309,8 @@ namespace StarterAssets
 						SecurityCameraComponent securityCameraComponent = cameraPlayerLookingAt.GetComponent<SecurityCameraComponent>();
 						if (securityCameraComponent != null)
 						{
+							_gameManager.UIManager.ToggleCrosshairVisibility();
+
 							cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
 							 
 							 mainCameraComponent.cullingMask |= 1 << laserLayer;
