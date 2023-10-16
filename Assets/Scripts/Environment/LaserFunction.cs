@@ -1,5 +1,5 @@
 using UnityEngine;
-
+using System.Collections;
 public class LaserFunction : MonoBehaviour
 {
     public enum MovementType
@@ -7,6 +7,9 @@ public class LaserFunction : MonoBehaviour
         LeftRight,
         UpDown
     }
+
+    [SerializeField] private GameObject lasersGameObject;  // Serialized field to hold the all lasers GameObject
+    private int originalLayer;
 
     public MovementType movementType;
     public float moveSpeed = 2.0f;
@@ -22,6 +25,7 @@ public class LaserFunction : MonoBehaviour
     void Start()
     {
         isGameOver = false;
+        originalLayer = lasersGameObject.layer;
         if (movementType == MovementType.LeftRight)
             initialPosition = transform.position.x;
         else if (movementType == MovementType.UpDown)
@@ -54,6 +58,21 @@ public class LaserFunction : MonoBehaviour
             Debug.Log("Laser Collide with Player!");
             gameManager.GameOver();
             isGameOver = true;
+            StartCoroutine(ChangeLayerCoroutine());
         }
     }
+
+    private IEnumerator ChangeLayerCoroutine()
+    {
+        // Change the layer to Default (layer 0)
+        lasersGameObject.layer = 0;
+
+        // Wait for a moment (e.g., 2 seconds)
+        yield return new WaitForSeconds(2f);
+
+        // Change the layer back to the original layer
+        lasersGameObject.layer = originalLayer;
+    }
+
+
 }
