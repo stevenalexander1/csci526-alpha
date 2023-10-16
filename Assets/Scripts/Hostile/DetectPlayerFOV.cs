@@ -38,6 +38,14 @@ public class DetectPlayerFOV : MonoBehaviour
         StartCoroutine(DetectFOV());
     }
 
+    private IEnumerator MakeLightVisible()
+    {
+        WaitForSeconds wait = new WaitForSeconds(3f);
+        _light.SetActive(true);
+        yield return wait;
+        _light.SetActive(false);
+    }
+
     private IEnumerator DetectFOV()
     {
         WaitForSeconds wait = new WaitForSeconds(0.2f);
@@ -70,6 +78,8 @@ public class DetectPlayerFOV : MonoBehaviour
                 {
                     _canSeePlayer = true;
                     gameManager.GameOver();
+                    _isGameOver = true;
+                    StartCoroutine(MakeLightVisible());
                 }
                 else
                     _canSeePlayer = false;
@@ -82,12 +92,15 @@ public class DetectPlayerFOV : MonoBehaviour
 
     }
 
-    private void LateUpdate()
+    private void Update()
     {
         CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>(); 
-        if (!cameraManager.PlayerCameraActive) // Makes light visible if using a camera
-            _light.SetActive(true);
-        else
-            _light.SetActive(false);
+        if(!_isGameOver)
+        {
+            if (!cameraManager.PlayerCameraActive) // Makes light visible if using a camera
+                _light.SetActive(true);
+            else
+                _light.SetActive(false);
+        }
     }
 }

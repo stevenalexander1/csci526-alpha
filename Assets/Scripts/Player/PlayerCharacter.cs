@@ -7,11 +7,33 @@ using UnityEngine.UI;
 
 public class PlayerCharacter : MonoBehaviour
 {
+    [Header("References")]
+    GameManager gameManager;
+    
+    [Header("Grabbables")]
     private GameObject _grabbableGameObject;
     private bool _canGrabObject = false;
+
+    [Header("Player State")] 
+    [SerializeField]
+    private float maxStealthMeter = 0.25f;
+    private float currentStealthMeter;
+    
+    public float CurrentStealthMeter
+    {
+        get => currentStealthMeter;
+        set => currentStealthMeter = value;
+    }
+
+    private void Awake()
+    {
+        gameManager = GameManager.Instance;
+    }
+
     public void Start()
     {
-       
+        currentStealthMeter = maxStealthMeter;
+
     }
 
     private void Update()
@@ -22,10 +44,15 @@ public class PlayerCharacter : MonoBehaviour
     {
         if (other.CompareTag("Laser"))
         {
-            GameManager gm = GetComponent<GameManager>();
-            gm.GameOver();
+            currentStealthMeter -= Time.deltaTime;
+            Debug.Log("Stealth meter: " + currentStealthMeter);
+            if (currentStealthMeter <= 0)
+            {
+                gameManager.GameOver();
+            }
         }
     }
+    
     private void OnTriggerStay(Collider other)
     {
         // Check if the grabber collided with an object that can be grabbed.
@@ -33,6 +60,16 @@ public class PlayerCharacter : MonoBehaviour
         {
             _canGrabObject = true;
             _grabbableGameObject = other.gameObject;
+        }
+        if (other.CompareTag("Laser"))
+        {
+            currentStealthMeter -= Time.deltaTime;
+            Debug.Log("Stealth meter: " + currentStealthMeter);
+            if (currentStealthMeter <= 0)
+            {
+                gameManager.GameOver();
+                currentStealthMeter = maxStealthMeter;
+            }
         }
     }
 
