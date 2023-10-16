@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3447826217267938146}
   - component: {fileID: 3447826217267938157}
   - component: {fileID: 3447826217267938156}
-  - component: {fileID: 3447826217267938144}
   - component: {fileID: 3447826217267938145}
+  - component: {fileID: 5979268403574869108}
   m_Layer: 12
   m_Name: Lasercylinder
   m_TagString: Untagged
@@ -100,21 +100,6 @@ CapsuleCollider:
   m_Height: 2
   m_Direction: 1
   m_Center: {x: 0.000000059604645, y: 0, z: -0.00000008940697}
---- !u!114 &3447826217267938144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3447826217267938159}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9bb2d755366e488ea868df4177336db3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 2
-  minHeight: 1
-  maxHeight: 4
 --- !u!54 &3447826217267938145
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -131,3 +116,21 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &5979268403574869108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3447826217267938159}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b5e82e468d924e35b613d29265eb5bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lasersGameObject: {fileID: 0}
+  movementType: 1
+  moveSpeed: 2
+  minPosition: 3
+  maxPosition: 6
+  gameManager: {fileID: 0}
