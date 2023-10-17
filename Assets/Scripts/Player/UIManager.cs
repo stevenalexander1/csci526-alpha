@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private StealthBar stealthBar;
 
     [SerializeField] private TextMeshProUGUI GameMessageText;
+    [SerializeField] private GameObject moveInstructions;
     // Properties
     public Image Crosshair => crosshair;
     public Text GameOverText => gameOverText;
@@ -42,5 +43,10 @@ public class UIManager : MonoBehaviour
     public void ToggleGameMessageText()
     {
         GameMessageText.enabled = !GameMessageText.enabled;
+    }
+
+    public void DisableInstructionText()
+    {
+        moveInstructions.SetActive(false);
     }
 }

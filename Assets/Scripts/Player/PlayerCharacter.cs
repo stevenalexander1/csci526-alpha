@@ -55,6 +55,7 @@ public class PlayerCharacter : MonoBehaviour
                 gameManager.UIManager.ToggleGameMessageText();
             }
         }
+        if (other.CompareTag("Message")) gameManager.UIManager.DisableInstructionText();
     }
     
     private void OnTriggerStay(Collider other)
@@ -102,7 +103,7 @@ public class PlayerCharacter : MonoBehaviour
     private void UpdateCash(int cash)
     {
         _cash += cash;
-        gameManager.UIManager.CashText.text = "Cash: $" + _cash + "/$1000";
+        gameManager.UIManager.CashText.text = "Cash: $" + _cash + "/1000";
     }
     
     public void ChangeCurrentStealthValue(float value)

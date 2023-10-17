@@ -9,6 +9,7 @@ TagManager:
   - FinishLine
   - Platform
   - Laser
+  - Message
   layers:
   - Default
   - TransparentFX
