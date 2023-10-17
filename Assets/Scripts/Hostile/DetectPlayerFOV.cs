@@ -69,7 +69,7 @@ public class DetectPlayerFOV : MonoBehaviour
         //{
         //    Transform target = rangeCheck[0].transform;
 
-        List<Collider> rangeCheck = new();
+        List<Collider> rangeCheck = new List<Collider>();
         rangeCheck.AddRange(Physics.OverlapSphere(transform.position, _range, targetMask));
         if (rangeCheck.Count > 0) // Checks if there is an object with targetMask in given radius
         {
@@ -83,9 +83,7 @@ public class DetectPlayerFOV : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) // Check if a raycast is not hitting an obstruction
                 {
                     _canSeePlayer = true;
-                    _player.GetComponent<PlayerCharacter>().ChangeCurrentStealthValue(-1000);
-                    gameManager.GameOver();
-                    _isGameOver = true;
+                    _player.GetComponent<PlayerCharacter>().ChangeCurrentStealthValue(-10);
                     StartCoroutine(MakeLightVisible());
                 }
                 else
