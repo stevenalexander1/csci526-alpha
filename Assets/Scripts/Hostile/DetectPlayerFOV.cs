@@ -12,7 +12,6 @@ public class DetectPlayerFOV : MonoBehaviour
     public LayerMask targetMask; // Contains the player's layer
     public LayerMask obstructionMask; // Contains any obstruction layer
 
-    [SerializeField]
     private GameManager gameManager;
     private GameObject _mainCamera;
     private bool _canSeePlayer;
@@ -36,6 +35,7 @@ public class DetectPlayerFOV : MonoBehaviour
     void Start()
     {
         StartCoroutine(DetectFOV());
+        gameManager = _player.GetComponent<GameManager>();
     }
 
     private IEnumerator MakeLightVisible()
@@ -77,6 +77,7 @@ public class DetectPlayerFOV : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) // Check if a raycast is not hitting an obstruction
                 {
                     _canSeePlayer = true;
+                    _player.GetComponent<PlayerCharacter>().ChangeCurrentStealthValue(-1000);
                     gameManager.GameOver();
                     _isGameOver = true;
                     StartCoroutine(MakeLightVisible());

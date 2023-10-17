@@ -9,7 +9,7 @@ public class PlayerCharacter : MonoBehaviour
 {
     [Header("References")]
     GameManager gameManager;
-    
+    UIManager uiManager;
     [Header("Grabbables")]
     private GameObject _grabbableGameObject;
     private bool _canGrabObject = false;
@@ -18,8 +18,6 @@ public class PlayerCharacter : MonoBehaviour
     [SerializeField]
     private float maxStealthMeter = 0.25f;
     private float currentStealthMeter;
-    [SerializeField]
-    private StealthBar stealthBar;
     private int _cash = 0;
 
     public float CurrentStealthMeter
@@ -36,8 +34,8 @@ public class PlayerCharacter : MonoBehaviour
     {
         currentStealthMeter = maxStealthMeter;
         gameManager = GetComponent<GameManager>();
-        stealthBar.SetMaxStealth(maxStealthMeter);
-
+        uiManager = gameManager.UIManager;
+        uiManager.StealthBar.SetMaxStealth(maxStealthMeter);
     }
 
     private void Update()
@@ -46,28 +44,16 @@ public class PlayerCharacter : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        // if (other.CompareTag("Laser"))
-        // {
-        //     currentStealthMeter -= Time.deltaTime;
-        //     stealthBar.SetStealth(currentStealthMeter);
-        //     Debug.Log("Stealth meter: " + currentStealthMeter);
-        //     if (currentStealthMeter <= 0)
-        //     {
-        //         stealthBar.SetStealth(0);
-        //         gameManager.GameOver();
-        //     }
-        // }
         if (other.CompareTag("FinishLine")) {
-            if (_cash >= 100)
+            if (_cash >= 1000)
             {
-                gameManager.gameOverText.text ="Mission Passed";
+                gameManager.UIManager.GameOverText.text = "Mission Passed";
+                gameManager.GameOver();
             }
-            else
+            else 
             {
-                gameManager.gameOverText.text = "Mission Failed";
+                gameManager.UIManager.ToggleGameMessageText();
             }
-            gameManager.gameOverCanvas.SetActive(true);
-            gameManager.GameOver();
         }
     }
     
@@ -81,15 +67,8 @@ public class PlayerCharacter : MonoBehaviour
         }
         if (other.CompareTag("Laser"))
         {
-            currentStealthMeter -= Time.deltaTime;
-            stealthBar.SetStealth(currentStealthMeter);
-            Debug.Log("Stealth meter: " + currentStealthMeter);
-            if (currentStealthMeter <= 0)
-            {
-                stealthBar.SetStealth(0);
-                gameManager.GameOver();
-                currentStealthMeter = maxStealthMeter;
-            }
+            if (gameManager.IsGameOver) return;
+            ChangeCurrentStealthValue(-Time.deltaTime);
         }
     }
 
@@ -99,7 +78,13 @@ public class PlayerCharacter : MonoBehaviour
         {
             _canGrabObject = false;
             _grabbableGameObject = null;
-        }    
+        }  
+        if (other.CompareTag("FinishLine")) {
+            if (_cash < 1000)
+            {
+                gameManager.UIManager.ToggleGameMessageText();
+            }
+        }
     }
 
     public void GrabObject()
@@ -117,6 +102,18 @@ public class PlayerCharacter : MonoBehaviour
     private void UpdateCash(int cash)
     {
         _cash += cash;
-        gameManager.cashText.text = "Cash: $" + _cash;
+        gameManager.UIManager.CashText.text = "Cash: $" + _cash + "/$1000";
+    }
+    
+    public void ChangeCurrentStealthValue(float value)
+    {
+        currentStealthMeter += value;
+        uiManager.StealthBar.SetStealth(currentStealthMeter);
+        Debug.Log("Stealth meter: " + currentStealthMeter);
+        if (currentStealthMeter <= 0)
+        {
+            uiManager.StealthBar.SetStealth(0);
+            gameManager.GameOver();
+        }
     }
 }

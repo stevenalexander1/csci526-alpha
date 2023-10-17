@@ -4,15 +4,17 @@ using UnityEngine;
 public class SecurityCameraComponent : MonoBehaviour
 {
     [SerializeField] private GameObject securityCamera;
-    public GameObject SecurityCamera => securityCamera;
 
     [Header("Camera Pan")]
     [SerializeField] private bool rotateCamera = true; // Add this line to control camera rotation
-
     private bool startNextRotation = true;
     bool rotRight = false;
     [SerializeField] private float yaw = 40;
     [SerializeField] private float secondsToRot = 4;
+
+    [Header("Camera UI")] [SerializeField] private GameObject cameraUIButton;
+    
+    public GameObject SecurityCamera => securityCamera;
 
     void Update()
     {
@@ -23,6 +25,8 @@ public class SecurityCameraComponent : MonoBehaviour
             else
                 StartCoroutine(Rotate(-yaw, secondsToRot));
         }
+        FaceCamera();
+
     }
 
     IEnumerator Rotate(float yaw, float duration)
@@ -38,5 +42,12 @@ public class SecurityCameraComponent : MonoBehaviour
         }
         startNextRotation = true;
         rotRight = !rotRight;
+    }
+    
+    private void FaceCamera()
+    {
+        // Have the item value text face the opposite direction of the camera
+        cameraUIButton.transform.LookAt(Camera.main.transform);
+        cameraUIButton.transform.Rotate(0, 180, 0);
     }
 }

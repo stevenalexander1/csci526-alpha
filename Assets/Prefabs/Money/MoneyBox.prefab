@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6772042463930835499}
   - component: {fileID: 6772042463930835501}
   - component: {fileID: 6772042463930835498}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -186,7 +186,7 @@ GameObject:
   - component: {fileID: 6772042464265180346}
   - component: {fileID: 6772042464265180350}
   - component: {fileID: 7561726156281164215}
-  m_Layer: 0
+  m_Layer: 18
   m_Name: MoneyBox
   m_TagString: Grabbable
   m_Icon: {fileID: 0}

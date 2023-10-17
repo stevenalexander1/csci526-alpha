@@ -9,17 +9,10 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
+    [Header("References")]
     [SerializeField] private FirstPersonController fpsController;
-        
-    [Header("Canvas References")]
     [SerializeField] private UIManager uiManager;
-    public GameObject gameOverCanvas;
-    public Text gameOverText;
-    public GameObject panel;
-
-
-    [Header("Score")]
-    public Text cashText;
+   
 
     [Header("Level")] 
     [SerializeField] private List<Level> levels;
@@ -44,29 +37,29 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        // gameOverText.gameObject.SetActive(false);
-        panel.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
     }
     
 
     public void GameOver()
     {
+        if (isGameOver) return;
+        isGameOver = true;
         Debug.Log("Game Over!");
-        panel.SetActive(true);
+        uiManager.GameOverPanel.SetActive(true);
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
-        isGameOver = true;
     }
     
  
     
     public void RestartGame()
     {
+        if (!isGameOver) return;
         isGameOver = false;
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name); 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+        uiManager.GameOverPanel.SetActive(false);
         Time.timeScale = 1;
-        gameOverCanvas.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
     }
     

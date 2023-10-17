@@ -19,10 +19,7 @@ public class LaserFunction : MonoBehaviour
 
     private float initialPosition;
     private bool isGameOver = false;
-
-    [SerializeField]
-    private GameManager gameManager;
-
+    
     void Start()
     {
         isGameOver = false;

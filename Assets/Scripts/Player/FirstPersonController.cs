@@ -129,7 +129,10 @@ namespace StarterAssets
 
 		private void LateUpdate()
 		{
-			CameraRotation();
+			if (!_gameManager.IsGameOver)
+			{
+				CameraRotation();
+			}
 		}
 
 		private void GroundedCheck()
@@ -268,8 +271,7 @@ namespace StarterAssets
 			Color transparentGreen = new Color(0.0f, 1.0f, 0.0f, 0.35f);
 			Color transparentRed = new Color(1.0f, 0.0f, 0.0f, 0.35f);
 
-			if (Grounded) Gizmos.color = transparentGreen;
-			else Gizmos.color = transparentRed;
+			Gizmos.color = Grounded ? transparentGreen : transparentRed;
 
 			// when selected, draw a gizmo in the position of, and matching radius of, the grounded collider
 			Gizmos.DrawSphere(new Vector3(transform.position.x, transform.position.y - GroundedOffset, transform.position.z), GroundedRadius);
@@ -277,63 +279,56 @@ namespace StarterAssets
 
 		private void OnInteract()
 		{
-			if (_input.interact)
-			{
-				_playerCharacter.GrabObject();
-				_input.interact = false;
-			}
+			if (!_input.interact) return;
+			_playerCharacter.GrabObject();
+			_input.interact = false;
 		}
 		
 		private void ChangePerspective()
 		{
-			if (_input.changePerspective)
-			{  
-				//Analytics for R count 
-				SendToGoogle.setrCount(1);
-				Debug.Log("R Count : " + SendToGoogle.getrCount());
+			if (!_input.changePerspective) return;
+			//Analytics for R count 
+			SendToGoogle.setrCount(1);
+			Debug.Log("R Count : " + SendToGoogle.getrCount());
 
-				int laserLayer = LayerMask.NameToLayer("Laser");
-				var mainCameraComponent = _mainCamera.GetComponent<Camera>();
-				CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
-				if (!cameraManager.PlayerCameraActive)
+			int laserLayer = LayerMask.NameToLayer("Laser");
+			var mainCameraComponent = _mainCamera.GetComponent<Camera>();
+			CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
+			if (!cameraManager.PlayerCameraActive)
+			{
+				_gameManager.UIManager.ToggleCrosshairVisibility();
+				cameraManager.ActivateCameraByName("PlayerFollowCamera");
+				mainCameraComponent.cullingMask &= ~(1 << laserLayer);
+			}
+			else
+			{
+				GameObject cameraPlayerLookingAt = GetCameraPlayerLookingAt();
+				if (cameraPlayerLookingAt != null)
 				{
-					_gameManager.UIManager.ToggleCrosshairVisibility();
-					cameraManager.ActivateCameraByName("PlayerFollowCamera");
-					mainCameraComponent.cullingMask &= ~(1 << laserLayer);
-				}
-				else
-				{
-					GameObject cameraPlayerLookingAt = GetCameraPlayerLookingAt();
-					if (cameraPlayerLookingAt != null)
+					SecurityCameraComponent securityCameraComponent = cameraPlayerLookingAt.GetComponent<SecurityCameraComponent>();
+					if (securityCameraComponent != null)
 					{
-						SecurityCameraComponent securityCameraComponent = cameraPlayerLookingAt.GetComponent<SecurityCameraComponent>();
-						if (securityCameraComponent != null)
-						{
-							_gameManager.UIManager.ToggleCrosshairVisibility();
+						_gameManager.UIManager.ToggleCrosshairVisibility();
 
-							cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
+						cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
 							 
-							 mainCameraComponent.cullingMask |= 1 << laserLayer;
+						mainCameraComponent.cullingMask |= 1 << laserLayer;
 
-							//Analytics for Camera count
-							SendToGoogle.setCameraCount(1);
-							Debug.Log("Camera Count : " + SendToGoogle.getCameraCount());
-						}
+						//Analytics for Camera count
+						SendToGoogle.setCameraCount(1);
+						Debug.Log("Camera Count : " + SendToGoogle.getCameraCount());
 					}
 				}
-				_input.changePerspective = false;
 			}
+			_input.changePerspective = false;
 		}
 
 		private GameObject GetCameraPlayerLookingAt()
 		{
-			RaycastHit hit;
-			if (Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out hit, 100, ignoreLayer))
-			{
-				GameObject lookedAtObject = hit.collider.gameObject;
-				return lookedAtObject;
-			}
-			return null;
+			if (!Physics.Raycast(_mainCamera.transform.position, _mainCamera.transform.forward, out var hit, 100,
+				    ignoreLayer)) return null;
+			GameObject lookedAtObject = hit.collider.gameObject;
+			return lookedAtObject;
 		}
 	}
 }
