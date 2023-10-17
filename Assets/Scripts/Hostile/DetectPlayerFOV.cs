@@ -40,7 +40,7 @@ public class DetectPlayerFOV : MonoBehaviour
 
     private IEnumerator MakeLightVisible()
     {
-        WaitForSeconds wait = new WaitForSeconds(3f);
+        WaitForSeconds wait = new WaitForSeconds(2f);
         _light.SetActive(true);
         yield return wait;
         _light.SetActive(false);
@@ -64,8 +64,14 @@ public class DetectPlayerFOV : MonoBehaviour
             return;
         }
 
-        Collider[] rangeCheck = new Collider[1];
-        if (Physics.OverlapSphereNonAlloc(transform.position, _range, rangeCheck, targetMask) == 1) // Checks if there is an object with targetMask in given radius
+        //Collider[] rangeCheck = new Collider[1];
+        //if (Physics.OverlapSphereNonAlloc(transform.position, _range, rangeCheck, targetMask) == 1) // Checks if there is an object with targetMask in given radius
+        //{
+        //    Transform target = rangeCheck[0].transform;
+
+        List<Collider> rangeCheck = new();
+        rangeCheck.AddRange(Physics.OverlapSphere(transform.position, _range, targetMask));
+        if (rangeCheck.Count > 0) // Checks if there is an object with targetMask in given radius
         {
             Transform target = rangeCheck[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
