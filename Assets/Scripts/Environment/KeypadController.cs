@@ -18,6 +18,7 @@ public class KeypadController : MonoBehaviour
     private bool isDoorOpen = false;
     [SerializeField]
     private string validCode = "12345";
+    private bool _displayMessage = false;
 
     private void Start()
     {
@@ -26,9 +27,19 @@ public class KeypadController : MonoBehaviour
         
     }
 
+    private IEnumerator ValidationMessage(string msg)
+    {
+        WaitForSeconds wait = new WaitForSeconds(2);
+        _displayMessage = true;
+        currentInput = msg;
+        yield return wait;
+        currentInput = "";
+        _displayMessage = false;
+    }
+
     private void Update()
     {
-
+        if (_displayMessage) return;
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
         if (distanceToPlayer <= interactionDistance)
         {
@@ -110,13 +121,13 @@ public class KeypadController : MonoBehaviour
                     if (textMeshProText.text.Length == maxCharacterLimit && validateCode())
                     {
                         isDoorOpen = true;
-                        currentInput = "OPEN";
+                        StartCoroutine(ValidationMessage("OPEN"));
                         doorController.OpenDoor();
                         
                     }
                     else
                     {
-                        currentInput = "WRONG";
+                        StartCoroutine(ValidationMessage("WRONG"));
                     }
 
                 }
