@@ -1,53 +1,53 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class SecurityCameraComponent : MonoBehaviour
 {
     [SerializeField] private GameObject securityCamera;
-    [SerializeField] private bool doesPan = false;
+
+    [Header("Camera Pan")]
+    [SerializeField] private bool rotateCamera = true; // Add this line to control camera rotation
+    private bool startNextRotation = true;
+    bool rotRight = false;
+    [SerializeField] private float yaw = 40;
+    [SerializeField] private float secondsToRot = 4;
+
+    [Header("Camera UI")] [SerializeField] private GameObject cameraUIButton;
+    
     public GameObject SecurityCamera => securityCamera;
-    public float rotationSpeed = 20.0f; // Adjust this to control the rotation speed
-    private float rotationDuration = 5.0f; // Time to rotate left and right in seconds
 
-    private float rotationTimer = 0.0f;
-    private bool rotateRight = true; // Start by rotating right
-
-    private void Update()
+    void Update()
     {
-        if (doesPan)
+        if (startNextRotation && rotateCamera)
         {
-            PanCamera();
+            if (rotRight)
+                StartCoroutine(Rotate(yaw, secondsToRot));
+            else
+                StartCoroutine(Rotate(-yaw, secondsToRot));
         }
-        
+        FaceCamera();
+
     }
 
-    private void PanCamera()
+    IEnumerator Rotate(float yaw, float duration)
     {
-        // Rotate left or right based on the current direction
-        if (rotateRight)
+        startNextRotation = false;
+        Quaternion initialRotation = transform.rotation;
+        float timer = 0f;
+        while (timer < duration)
         {
-            securityCamera.transform.Rotate(Vector3.up, rotationSpeed * Time.deltaTime);
+            timer += Time.deltaTime;
+            transform.rotation = initialRotation * Quaternion.AngleAxis(timer / duration * yaw, Vector3.down);
+            yield return null;
         }
-        else
-        {
-            securityCamera.transform.Rotate(Vector3.up, -rotationSpeed * Time.deltaTime);
-        }
-
-        // Update the rotation timer
-        rotationTimer += Time.deltaTime;
-
-        // Check if it's time to change rotation direction
-        if (rotationTimer >= rotationDuration)
-        {
-            // Toggle the rotation direction
-            rotateRight = !rotateRight;
-
-            // Reset the rotation timer
-            rotationTimer = 0.0f;
-        }
+        startNextRotation = true;
+        rotRight = !rotRight;
     }
     
+    private void FaceCamera()
+    {
+        // Have the item value text face the opposite direction of the camera
+        cameraUIButton.transform.LookAt(Camera.main.transform);
+        cameraUIButton.transform.Rotate(0, 180, 0);
+    }
 }
-  
-

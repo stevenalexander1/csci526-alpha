@@ -9,24 +9,21 @@ public class GameManager : MonoBehaviour
 {
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
+    [Header("References")]
     [SerializeField] private FirstPersonController fpsController;
-        
-    [Header("Game State")]
-    public GameObject gameOverCanvas;
-    public Text gameOverText;
-    public GameObject panel;
-
-
-    [Header("Score")]
-    private int _score = 0;
-    private int _cash = 0;
-    [SerializeField] private Text scoreText;
-    [SerializeField] private Text cashText;
+    [SerializeField] private UIManager uiManager;
+   
 
     [Header("Level")] 
     [SerializeField] private List<Level> levels;
     private Level currentLevel;
     private int currentLevelIndex = 0;
+    
+    [Header("Game State")]
+    private bool isGameOver = false; // Track game over state
+    
+    public bool IsGameOver => isGameOver;
+    public UIManager UIManager => uiManager;
     
     // Start is called before the first frame update
     void Start()
@@ -40,74 +37,33 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-       // gameOverText.gameObject.SetActive(false);
-        panel.SetActive(false);
         Cursor.lockState = CursorLockMode.Locked;
-        scoreText.text = "Items: " + _score+"/4";
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("FinishLine")) {
-            // isGameOver = true;
-            //Time.timeScale = 0;
-            if (_score == 4)
-            {
-                gameOverText.text ="Mission Passed";
-            }
-            else
-            {
-                gameOverText.text ="Mission Failed";
-            }
-            gameOverCanvas.SetActive(true);
-            GameOver();
-            
     
-        }
-    }
-
 
     public void GameOver()
     {
-        fpsController.gameOver = true;
+        if (isGameOver) return;
+        isGameOver = true;
         Debug.Log("Game Over!");
-        // Display the "GAME OVER" text
-        // gameOverText.gameObject.SetActive(true);
-        panel.SetActive(true);
-        //Time.timeScale = 0;
-        // Enable mouse
+        uiManager.GameOverPanel.SetActive(true);
+        Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
-        // You can also add other game over logic here, like pausing the game or showing a restart button.
     }
     
  
     
     public void RestartGame()
     {
-        fpsController.gameOver = false;
-        SceneManager.LoadSceneAsync(SceneManager.GetActiveScene().name);
-          Time.timeScale = 1;
-          gameOverCanvas.SetActive(false);
-          _score = 0;
-          Cursor.lockState = CursorLockMode.Locked;
+        if (!isGameOver) return;
+        isGameOver = false;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
+        uiManager.GameOverPanel.SetActive(false);
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
     }
     
-    public void UpdateScore(int points)
-    {
-        _score += points;
-        scoreText.text = "Items: " + _score+"/4";
-    }
 
-    public void UpdateCash(int cash)
-    {
-        _cash += cash;
-        cashText.text = "Cash: $" + _cash;
-    }
+    
 
 }

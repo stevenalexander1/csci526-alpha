@@ -11,9 +11,12 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Test Scene/Steven_TestScene.unity
     guid: e30c3351f6ee1144caff57962c915ffb
-  - enabled: 1
-    path: Assets/Scenes/Teju_Tutorial.unity
+  - enabled: 0
+    path: Assets/Scenes/TutorialBaseScene.unity
     guid: 86c02c75c05add944a48205f1e7fcc87
+  - enabled: 1
+    path: Assets/Scenes/Test Scene/Rohan_TutorialRebuild.unity
+    guid: 813917d31afba3c4ab521f27639fb7db
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
       type: 2}

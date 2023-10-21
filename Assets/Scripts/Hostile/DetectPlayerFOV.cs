@@ -12,7 +12,6 @@ public class DetectPlayerFOV : MonoBehaviour
     public LayerMask targetMask; // Contains the player's layer
     public LayerMask obstructionMask; // Contains any obstruction layer
 
-    [SerializeField]
     private GameManager gameManager;
     private GameObject _mainCamera;
     private bool _canSeePlayer;
@@ -36,11 +35,12 @@ public class DetectPlayerFOV : MonoBehaviour
     void Start()
     {
         StartCoroutine(DetectFOV());
+        gameManager = _player.GetComponent<GameManager>();
     }
 
     private IEnumerator MakeLightVisible()
     {
-        WaitForSeconds wait = new WaitForSeconds(3f);
+        WaitForSeconds wait = new WaitForSeconds(2f);
         _light.SetActive(true);
         yield return wait;
         _light.SetActive(false);
@@ -64,8 +64,14 @@ public class DetectPlayerFOV : MonoBehaviour
             return;
         }
 
-        Collider[] rangeCheck = new Collider[1];
-        if (Physics.OverlapSphereNonAlloc(transform.position, _range, rangeCheck, targetMask) == 1) // Checks if there is an object with targetMask in given radius
+        //Collider[] rangeCheck = new Collider[1];
+        //if (Physics.OverlapSphereNonAlloc(transform.position, _range, rangeCheck, targetMask) == 1) // Checks if there is an object with targetMask in given radius
+        //{
+        //    Transform target = rangeCheck[0].transform;
+
+        List<Collider> rangeCheck = new List<Collider>();
+        rangeCheck.AddRange(Physics.OverlapSphere(transform.position, _range, targetMask));
+        if (rangeCheck.Count > 0) // Checks if there is an object with targetMask in given radius
         {
             Transform target = rangeCheck[0].transform;
             Vector3 directionToTarget = (target.position - transform.position).normalized;
@@ -77,8 +83,7 @@ public class DetectPlayerFOV : MonoBehaviour
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) // Check if a raycast is not hitting an obstruction
                 {
                     _canSeePlayer = true;
-                    gameManager.GameOver();
-                    _isGameOver = true;
+                    _player.GetComponent<PlayerCharacter>().ChangeCurrentStealthValue(-10);
                     StartCoroutine(MakeLightVisible());
                 }
                 else
