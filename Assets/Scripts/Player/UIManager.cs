@@ -29,8 +29,6 @@ public class UIManager : MonoBehaviour
     {
         gameOverPanel.SetActive(false);
         _gameManager = GameManager.Instance;
-        Debug.Log(_gameManager);
-
     }
 
     private void OnEnable()

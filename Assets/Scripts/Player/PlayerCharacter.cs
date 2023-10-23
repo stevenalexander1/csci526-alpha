@@ -143,8 +143,6 @@ public class PlayerCharacter : MonoBehaviour
     private void HandleCashChanged(int prev, int next)
     {
         _cash = next;
-        Debug.Log("Cash: " + _cash);
-        
     }
 
 }
