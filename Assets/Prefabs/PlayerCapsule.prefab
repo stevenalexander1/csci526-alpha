@@ -439,6 +439,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fpsController: {fileID: 1338708593}
   uiManager: {fileID: 0}
+  playerCharacter: {fileID: 4650972021024038300}
   levels: []
 --- !u!114 &4650972021024038300
 MonoBehaviour:

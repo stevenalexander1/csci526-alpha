@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using StarterAssets;
@@ -7,12 +8,19 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
+
+    // Delegates
+    public delegate void GameOverEventDelegate();
+
+    public GameOverEventDelegate GameOverEvent;
+    
     [Header("References")]
     [SerializeField] private FirstPersonController fpsController;
     [SerializeField] private UIManager uiManager;
-   
+    [SerializeField] private PlayerCharacter playerCharacter;
 
     [Header("Level")] 
     [SerializeField] private List<Level> levels;
@@ -25,10 +33,11 @@ public class GameManager : MonoBehaviour
     public bool IsGameOver => isGameOver;
     public UIManager UIManager => uiManager;
     
-    // Start is called before the first frame update
-    void Start()
+    public PlayerCharacter PlayerCharacter => playerCharacter;
+
+    private void Awake()
     {
-        // Make sure there is only one instance of this object
+    // Make sure there is only one instance of this object
         if (instance == null)
         {
             instance = this;
@@ -37,20 +46,30 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    private void OnEnable()
+    {
+        GameOverEvent += HandleGameOver;
+    }
+    
+    private void OnDisable()
+    {
+        GameOverEvent -= HandleGameOver;
     }
     
 
     public void GameOver()
     {
         if (isGameOver) return;
-        isGameOver = true;
-        Debug.Log("Game Over!");
-        uiManager.GameOverPanel.SetActive(true);
-        Time.timeScale = 0;
-        Cursor.lockState = CursorLockMode.Confined;
+        GameOverEvent?.Invoke();
     }
-    
  
     
     public void RestartGame()
@@ -61,6 +80,14 @@ public class GameManager : MonoBehaviour
         uiManager.GameOverPanel.SetActive(false);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    private void HandleGameOver()
+    {
+        isGameOver = true;
+        Debug.Log("Game Over!");
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.Confined;
     }
     
 
