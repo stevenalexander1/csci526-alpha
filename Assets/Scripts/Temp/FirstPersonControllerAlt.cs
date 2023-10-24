@@ -67,6 +67,7 @@ namespace StarterAssets
 		private float _fallTimeoutDelta;
 
 		private GameManager _gameManager;
+		private GravityManager _gravityManager;
 	
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 		private PlayerInput _playerInput;
@@ -74,9 +75,7 @@ namespace StarterAssets
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
-
-		public invert inverter;
-
+		
 		private const float _threshold = 0.01f;
 
 		private bool IsCurrentDeviceMouse
@@ -107,6 +106,7 @@ namespace StarterAssets
 		{
 			_controller = GetComponent<CharacterController>();
 			_input = GetComponent<StarterAssetsInputs>();
+			_gravityManager = _gameManager.GravityManager;
 #if ENABLE_INPUT_SYSTEM && STARTER_ASSETS_PACKAGES_CHECKED
 			_playerInput = GetComponent<PlayerInput>();
 #else
@@ -216,12 +216,12 @@ namespace StarterAssets
 
 		private void JumpAndGravity()
 		{
-			if(inverter.inverter)
+			if(_gravityManager.IsGravityInverted)
             {
 				Debug.Log("up");
 				Gravity = 15f;
 				JumpHeight = -1.2f;
-				GroundedOffset = -0.86f;
+				GroundedOffset = -0.5f;
 				if (Grounded)
 				{
 					// reset the fall timeout timer
@@ -273,7 +273,7 @@ namespace StarterAssets
 				Debug.Log("down");
 				Gravity = -15f;
 				JumpHeight = 1.2f;
-				GroundedOffset = 0.86f;
+				GroundedOffset = 0.5f;
 				if (Grounded)
 				{
 					// reset the fall timeout timer
@@ -360,6 +360,7 @@ namespace StarterAssets
 			if (!cameraManager.PlayerCameraActive)
 			{
 				_gameManager.UIManager.ToggleCrosshairVisibility();
+				if (_gravityManager.IsGravityInverted) _gravityManager.InvertGravity();
 				cameraManager.ActivateCameraByName("PlayerFollowCamera");
 				mainCameraComponent.cullingMask &= ~(1 << laserLayer);
 			}
@@ -374,7 +375,9 @@ namespace StarterAssets
 						_gameManager.UIManager.ToggleCrosshairVisibility();
 
 						cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
-							 
+						
+						if (securityCameraComponent.DoesInvertGravity) _gravityManager.InvertGravity();
+						
 						mainCameraComponent.cullingMask |= 1 << laserLayer;
 
 						//Analytics for Camera count

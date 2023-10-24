@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private FirstPersonController fpsController;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private PlayerCharacter playerCharacter;
+    [SerializeField] private GravityManager gravityManager;
 
     [Header("Level")] 
     [SerializeField] private List<Level> levels;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
     public UIManager UIManager => uiManager;
     
     public PlayerCharacter PlayerCharacter => playerCharacter;
+    public GravityManager GravityManager => gravityManager;
 
     private void Awake()
     {
