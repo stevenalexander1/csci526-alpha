@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
     public GameOverEventDelegate GameOverEvent;
     
     [Header("References")]
-    [SerializeField] private FirstPersonController fpsController;
     [SerializeField] private UIManager uiManager;
     [SerializeField] private PlayerCharacter playerCharacter;
     [SerializeField] private GravityManager gravityManager;

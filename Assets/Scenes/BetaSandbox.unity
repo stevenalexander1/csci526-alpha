@@ -30390,14 +30390,6 @@ PrefabInstance:
       propertyPath: playerCharacter
       value: 
       objectReference: {fileID: 1338708599}
-    - target: {fileID: 1304257223, guid: c59e663febeb98f46ba47c930aa3ff23, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1843070448, guid: c59e663febeb98f46ba47c930aa3ff23, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 15.799988
-      objectReference: {fileID: 0}
     - target: {fileID: 4309738244652288469, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}
       propertyPath: m_AnchorMax.x
@@ -44483,7 +44475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ced83ff12449e404a9457823807f9964, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _player: {fileID: 0}
+  _player: {fileID: 1338708592}
 --- !u!1 &1776306632
 GameObject:
   m_ObjectHideFlags: 0

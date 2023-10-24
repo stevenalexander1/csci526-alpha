@@ -9,7 +9,6 @@ public class Reposition : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        _player = GameObject.FindGameObjectWithTag("Player");
         pos = gameObject.transform.GetChild(0).gameObject;
     }
 
@@ -17,9 +16,9 @@ public class Reposition : MonoBehaviour
     {
         if(other.tag == "Player")
         {
-            _player.transform.GetComponent<CharacterController>().enabled = false;
+            _player.GetComponent<CharacterController>().enabled = false;
             _player.transform.position = new Vector3(pos.transform.position.x, _player.transform.position.y,pos.transform.position.z);
-            _player.transform.GetComponent<CharacterController>().enabled = true;
+            _player.GetComponent<CharacterController>().enabled = true;
         }
     }
     // Update is called once per frame
