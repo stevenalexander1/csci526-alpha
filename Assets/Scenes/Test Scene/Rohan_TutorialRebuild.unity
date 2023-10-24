@@ -15719,12 +15719,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!1 &779849469 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4135013735270702863, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
-    type: 3}
-  m_PrefabInstance: {fileID: 1338708589}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &786937549
 GameObject:
   m_ObjectHideFlags: 0
@@ -25662,7 +25656,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1338708593, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1338708593, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: SprintSpeed
@@ -25676,15 +25670,6 @@ PrefabInstance:
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 1473374040}
-    - target: {fileID: 2109684790, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
-      propertyPath: gravityManager
-      value: 
-      objectReference: {fileID: 1338708600}
-    - target: {fileID: 4650972021024038300, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
-        type: 3}
-      propertyPath: maxStealthMeter
-      value: 0.3
-      objectReference: {fileID: 0}
     - target: {fileID: 7066923253265674936, guid: c5efc39a8aaf6e64ea40e9ad573e9b47,
         type: 3}
       propertyPath: m_LocalPosition.y
@@ -25794,50 +25779,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2def21ed814ada94fa05221ff16c9350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1338708600
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338708592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dfbcbc9cddf29574bb37df94d402ce5a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1338708607
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1338708592}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70983f0eb9eaa6b4392b7a0a8b3edbb3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MoveSpeed: 4
-  SprintSpeed: 6
-  RotationSpeed: 1
-  SpeedChangeRate: 10
-  JumpHeight: 1.2
-  Gravity: -15
-  JumpTimeout: 0.1
-  FallTimeout: 0.15
-  Grounded: 1
-  GroundedOffset: -0.14
-  GroundedRadius: 0.5
-  GroundLayers:
-    serializedVersion: 2
-    m_Bits: 16897
-  CinemachineCameraTarget: {fileID: 779849469}
-  TopClamp: 90
-  BottomClamp: -90
-  ignoreLayer:
-    serializedVersion: 2
-    m_Bits: 2048
 --- !u!1001 &1358020551
 PrefabInstance:
   m_ObjectHideFlags: 0
