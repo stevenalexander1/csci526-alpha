@@ -210,7 +210,7 @@ namespace StarterAssets
 			}
 
 			// move the player
-			Debug.Log(_verticalVelocity);
+			//Debug.Log(_verticalVelocity);
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 		}
 
@@ -218,10 +218,10 @@ namespace StarterAssets
 		{
 			if(_gravityManager.IsGravityInverted)
             {
-				Debug.Log("up");
+				//Debug.Log("up");
 				Gravity = 15f;
 				JumpHeight = -1.2f;
-				GroundedOffset = -0.5f;
+				GroundedOffset = -0.4f;
 				if (Grounded)
 				{
 					// reset the fall timeout timer
@@ -264,16 +264,16 @@ namespace StarterAssets
 				// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
 				if (-_verticalVelocity > -_terminalVelocity)
 				{
-					Debug.Log("gravity");
+					//Debug.Log("gravity");
 					_verticalVelocity += Gravity * Time.deltaTime;
 				}
 			}
 			else
             {
-				Debug.Log("down");
+				//Debug.Log("down");
 				Gravity = -15f;
 				JumpHeight = 1.2f;
-				GroundedOffset = 0.5f;
+				GroundedOffset = 0.4f;
 				if (Grounded)
 				{
 					// reset the fall timeout timer
@@ -316,7 +316,7 @@ namespace StarterAssets
 				// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
 				if (_verticalVelocity < _terminalVelocity)
 				{
-					Debug.Log("gravity");
+					//Debug.Log("gravity");
 					_verticalVelocity += Gravity * Time.deltaTime;
 				}
 			}
