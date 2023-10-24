@@ -8,9 +8,12 @@ public class CameraManager : MonoBehaviour
     
     [SerializeField] private GameObject playerFollowCamera;
     private GameObject _currentActiveCamera;
-    
+
     public GameObject PlayerFollowCamera => playerFollowCamera;
     public GameObject CurrentActiveCamera => _currentActiveCamera;
+    
+    public SecurityCameraComponent CurrentActiveCameraComponent { get; set; }
+
     public bool PlayerCameraActive => _currentActiveCamera == playerFollowCamera;
     private void Start()
     {

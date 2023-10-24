@@ -1,10 +1,15 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
 public class SecurityCameraComponent : MonoBehaviour
 {
+    [Header("References")]
+    private GameManager _gameManager;
+    [Header("Camera")]
     [SerializeField] private GameObject securityCamera;
-
+    [SerializeField] private bool doesInvertGravity = false;
+    
     [Header("Camera Pan")]
     [SerializeField] private bool rotateCamera = true; // Add this line to control camera rotation
     private bool startNextRotation = true;
@@ -15,6 +20,12 @@ public class SecurityCameraComponent : MonoBehaviour
     [Header("Camera UI")] [SerializeField] private GameObject cameraUIButton;
     
     public GameObject SecurityCamera => securityCamera;
+    public bool DoesInvertGravity => doesInvertGravity;
+
+    private void Start()
+    {
+        _gameManager = GameManager.Instance;
+    }
 
     void Update()
     {
