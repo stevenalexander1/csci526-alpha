@@ -368,7 +368,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7959201152282057398}
   m_Layer: 0
-  m_Name: Cam
+  m_Name: PF_SecurityCamera
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -55,7 +55,7 @@ GameObject:
   - component: {fileID: 6876866562690529874}
   - component: {fileID: 7280789}
   m_Layer: 0
-  m_Name: Security Camera
+  m_Name: PF_SecurityCameraCinemachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
