@@ -22454,6 +22454,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.20833334
       objectReference: {fileID: 0}
+    - target: {fileID: 6875131654129298895, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: doesInvertGravity
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7959201152029799447, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
         type: 3}
       propertyPath: rotateCamera

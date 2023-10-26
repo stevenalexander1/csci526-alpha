@@ -359,9 +359,8 @@ namespace StarterAssets
 			CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
 			if (!cameraManager.PlayerCameraActive)
 			{
-				_gameManager.UIManager.ToggleCrosshairVisibility();
 				if (_gravityManager.IsGravityInverted) _gravityManager.InvertGravity();
-				cameraManager.ActivateCameraByName("PlayerFollowCamera");
+				cameraManager.ActivateCameraByObject(cameraManager.PlayerFollowCamera);
 				mainCameraComponent.cullingMask &= ~(1 << laserLayer);
 			}
 			else
@@ -369,17 +368,11 @@ namespace StarterAssets
 				GameObject cameraPlayerLookingAt = GetCameraPlayerLookingAt();
 				if (cameraPlayerLookingAt != null)
 				{
-					SecurityCameraComponent securityCameraComponent = cameraPlayerLookingAt.GetComponent<SecurityCameraComponent>();
+					SecurityCameraComponent securityCameraComponent = cameraPlayerLookingAt.GetComponentInParent<SecurityCameraComponent>();
 					if (securityCameraComponent != null)
 					{
-						_gameManager.UIManager.ToggleCrosshairVisibility();
-
 						cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
-						
-						if (securityCameraComponent.DoesInvertGravity) _gravityManager.InvertGravity();
-						
 						mainCameraComponent.cullingMask |= 1 << laserLayer;
-
 						//Analytics for Camera count
 						SendToGoogle.setCameraCount(1);
 						Debug.Log("Camera Count : " + SendToGoogle.getCameraCount());

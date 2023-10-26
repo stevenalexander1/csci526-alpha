@@ -9,8 +9,8 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     
-    private static GameManager instance;
-    public static GameManager Instance { get { return instance; } }
+    private static GameManager _instance;
+    public static GameManager Instance => _instance;
 
     // Delegates
     public delegate void GameOverEventDelegate();
@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] private UIManager uiManager;
     [SerializeField] private PlayerCharacter playerCharacter;
     [SerializeField] private GravityManager gravityManager;
-
+    [SerializeField] private CameraManager cameraManager;
+    private GameObject _mainCamera;
     [Header("Level")] 
     [SerializeField] private List<Level> levels;
     private Level currentLevel;
@@ -35,19 +36,27 @@ public class GameManager : MonoBehaviour
     
     public PlayerCharacter PlayerCharacter => playerCharacter;
     public GravityManager GravityManager => gravityManager;
+    
+    public CameraManager CameraManager => cameraManager;
 
     private void Awake()
     {
     // Make sure there is only one instance of this object
-        if (instance == null)
+        if (_instance == null)
         {
-            instance = this;
+            _instance = this;
         }
         else
         {
             Destroy(this.gameObject);
         }
-        Cursor.lockState = CursorLockMode.Locked;    }
+        Cursor.lockState = CursorLockMode.Locked;    
+        if (_mainCamera == null)
+        {
+            _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            cameraManager = _mainCamera.GetComponent<CameraManager>();
+        }
+    }
 
     // Start is called before the first frame update
     void Start()

@@ -17,6 +17,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI GameMessageText;
     [SerializeField] private GameObject moveInstructions;
     private GameManager _gameManager;
+    private CameraManager _cameraManager;
     // Properties
     public Image Crosshair => crosshair;
     public Text GameOverText => gameOverText;
@@ -42,6 +43,11 @@ public class UIManager : MonoBehaviour
             {
                 playerCharacter.StealthMeterChangedEvent += HandleStealthMeterChanged;
                 playerCharacter.CashChangedEvent += HandleCashChanged;
+            }
+            _cameraManager = _gameManager.CameraManager;
+            if (_cameraManager)
+            {
+                _cameraManager.CameraChangedEvent += HandleCameraChangedEvent;
             }
         }
     }
@@ -71,6 +77,11 @@ public class UIManager : MonoBehaviour
         crosshair.enabled = !crosshair.enabled;
     }
     
+    public void SetCrossHairVisibility(bool visible)
+    {
+        crosshair.enabled = visible;
+    }
+    
     public void ToggleGameMessageText()
     {
         GameMessageText.enabled = !GameMessageText.enabled;
@@ -94,6 +105,12 @@ public class UIManager : MonoBehaviour
     private void HandleCashChanged(int prev, int next)
     {
         cashText.text = "Cash: $" + next + "/1000";
+    }
+    
+    private void HandleCameraChangedEvent(GameObject camera)
+    {
+        if (camera == null) return;
+        SetCrossHairVisibility(_cameraManager.PlayerCameraActive);
     }
 
 }

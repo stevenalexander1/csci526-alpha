@@ -4,10 +4,15 @@ using Cinemachine;
 
 public class CameraManager : MonoBehaviour
 {
+    //  Delegates
+    public delegate void CameraChangedEventDelegate(GameObject newCamera);
+    public CameraChangedEventDelegate CameraChangedEvent;
+    
     [SerializeField] private List<CinemachineVirtualCamera> virtualCameras = new List<CinemachineVirtualCamera>();
     
     [SerializeField] private GameObject playerFollowCamera;
     private GameObject _currentActiveCamera;
+    private GameObject _lastUsedSecurityCamera;
 
     public GameObject PlayerFollowCamera => playerFollowCamera;
     public GameObject CurrentActiveCamera => _currentActiveCamera;
@@ -20,9 +25,9 @@ public class CameraManager : MonoBehaviour
         // Find all Cinemachine Virtual Cameras in the scene
         CinemachineVirtualCamera[] allVirtualCameras = FindObjectsOfType<CinemachineVirtualCamera>();
         virtualCameras.AddRange(allVirtualCameras);
-
+        playerFollowCamera = GameObject.Find("PlayerFollowCamera");
         // Activate PlayerFollowCamera
-        ActivateCameraByName("PlayerFollowCamera");
+        ActivateCameraByObject(playerFollowCamera);
     }
 
     public void ActivateCameraByName(string cameraName)
@@ -37,6 +42,7 @@ public class CameraManager : MonoBehaviour
             GameObject o;
             (o = targetCamera.gameObject).SetActive(true);
             _currentActiveCamera = o;
+            CameraChangedEvent?.Invoke(o);
         }
         else
         {
@@ -52,15 +58,28 @@ public class CameraManager : MonoBehaviour
         // Activate the specified camera
         cameraObject.SetActive(true);
         _currentActiveCamera = cameraObject;
+        CameraChangedEvent?.Invoke(cameraObject);
+    }
+    
+    public void ActivateCameraBySecurityCameraComponent(SecurityCameraComponent securityCameraComponent)
+    {
+        // Deactivate all cameras
+        DeactivateAllCameras();
+        Debug.Log("Activating camera: " + securityCameraComponent.gameObject.name);
+        // Activate the specified camera
+        securityCameraComponent.gameObject.SetActive(true);
+        _currentActiveCamera = securityCameraComponent.SecurityCamera;
+        CameraChangedEvent?.Invoke(securityCameraComponent.SecurityCamera);
     }
 
-    public void DeactivateAllCameras()
+    private void DeactivateAllCameras()
     {
-        Debug.Log("Deactivating all cameras");
         // Deactivate all virtual cameras
-        foreach (var camera in virtualCameras)
+        foreach (var cam in virtualCameras)
         {
-            camera.gameObject.SetActive(false);
+            cam.gameObject.SetActive(false);
         }
     }
+    
+    
 }
