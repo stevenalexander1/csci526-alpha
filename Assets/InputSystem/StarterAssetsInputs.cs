@@ -14,6 +14,7 @@ namespace StarterAssets
 		public bool sprint;
 		public bool interact;
 		public bool changePerspective;
+		public bool lastUsedCamera;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -55,6 +56,13 @@ namespace StarterAssets
 		{
 			ChangePerspectiveInput(value.isPressed);
 		}
+		
+		public void OnAccessLastUsedCamera(InputValue value)
+		{
+			LastUsedCameraInput(value.isPressed);
+		}
+		
+		 
 #endif
 
 
@@ -88,6 +96,10 @@ namespace StarterAssets
 			changePerspective = newPerspectiveState;
 		}
 		
+		private void LastUsedCameraInput(bool newLastUsedCameraState)
+		{
+			lastUsedCamera = newLastUsedCameraState;
+		}
 		private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);

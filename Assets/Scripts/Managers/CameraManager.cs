@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
@@ -16,8 +17,10 @@ public class CameraManager : MonoBehaviour
 
     public GameObject PlayerFollowCamera => playerFollowCamera;
     public GameObject CurrentActiveCamera => _currentActiveCamera;
-    
+    public GameObject LastUsedSecurityCamera => _lastUsedSecurityCamera;
+
     public SecurityCameraComponent CurrentActiveCameraComponent { get; set; }
+    
 
     public bool PlayerCameraActive => _currentActiveCamera == playerFollowCamera;
     private void Start()
@@ -28,6 +31,16 @@ public class CameraManager : MonoBehaviour
         playerFollowCamera = GameObject.Find("PlayerFollowCamera");
         // Activate PlayerFollowCamera
         ActivateCameraByObject(playerFollowCamera);
+    }
+
+    private void OnEnable()
+    {
+        CameraChangedEvent += HandleCameraChangedEvent;
+    }
+    
+    private void OnDisable()
+    {
+        CameraChangedEvent -= HandleCameraChangedEvent;
     }
 
     public void ActivateCameraByName(string cameraName)
@@ -53,6 +66,7 @@ public class CameraManager : MonoBehaviour
     public void ActivateCameraByObject(GameObject cameraObject)
     {
         // Deactivate all cameras
+        if (null == cameraObject) return;
         DeactivateAllCameras();
         Debug.Log("Activating camera: " + cameraObject.name);
         // Activate the specified camera
@@ -78,6 +92,15 @@ public class CameraManager : MonoBehaviour
         foreach (var cam in virtualCameras)
         {
             cam.gameObject.SetActive(false);
+        }
+    }
+    
+    private void HandleCameraChangedEvent(GameObject newCamera)
+    {
+        if (null == newCamera) return;
+        if (newCamera != playerFollowCamera)
+        {
+            _lastUsedSecurityCamera = newCamera;
         }
     }
     

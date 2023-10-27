@@ -126,6 +126,7 @@ namespace StarterAssets
 				GroundedCheck();
 				Move();
 				ChangePerspective();
+				AccessLastUsedCamera();
 			}
 		}
 
@@ -381,6 +382,17 @@ namespace StarterAssets
 			}
 			_input.changePerspective = false;
 		}
+
+		private void AccessLastUsedCamera()
+		{
+			if (!_input.lastUsedCamera) return;
+			Debug.Log("asdf");
+			CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
+			if (!cameraManager.PlayerCameraActive) return;
+			cameraManager.ActivateCameraByObject(cameraManager.LastUsedSecurityCamera);
+			_input.lastUsedCamera = false;
+		}
+			
 
 		private GameObject GetCameraPlayerLookingAt()
 		{
