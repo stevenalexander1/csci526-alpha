@@ -12,6 +12,7 @@ TagManager:
   - Message
   - Trigger
   - Jump
+  - HarmfulTerrain
   layers:
   - Default
   - TransparentFX

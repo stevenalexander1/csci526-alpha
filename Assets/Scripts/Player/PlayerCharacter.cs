@@ -75,7 +75,15 @@ public class PlayerCharacter : MonoBehaviour
                 gameManager.UIManager.ToggleGameMessageText();
             }
         }
-        if (other.CompareTag("Message")) gameManager.UIManager.DisableInstructionText();
+        if (other.CompareTag("Message"))
+        {
+            gameManager.UIManager.ShowInstructionText(gameManager.TutorialManager.GetNextInstruction());
+        }
+        if (other.CompareTag("HarmfulTerrain"))
+        {
+            if (gameManager.IsGameOver) return;
+            gameManager.GameOver();
+        }
     }
     
     private void OnTriggerStay(Collider other)
@@ -105,6 +113,11 @@ public class PlayerCharacter : MonoBehaviour
             {
                 gameManager.UIManager.ToggleGameMessageText();
             }
+        }
+        if (other.CompareTag("Message"))
+        {
+            gameManager.UIManager.HideInstructionText();
+            Destroy(other.gameObject);
         }
     }
 

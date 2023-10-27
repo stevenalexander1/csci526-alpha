@@ -98,6 +98,7 @@ MonoBehaviour:
   sprint: 0
   interact: 0
   changePerspective: 0
+  lastUsedCamera: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -215,6 +216,8 @@ MonoBehaviour:
   uiManager: {fileID: 0}
   playerCharacter: {fileID: 3565629667955505234}
   gravityManager: {fileID: 8629335909671255521}
+  cameraManager: {fileID: 0}
+  tutorialManager: {fileID: 0}
   levels: []
 --- !u!114 &3565629667955505234
 MonoBehaviour:

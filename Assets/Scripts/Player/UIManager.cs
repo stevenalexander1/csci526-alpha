@@ -4,6 +4,7 @@ using UnityEngine.UI;  // Import the UI namespace
 using Cinemachine;
 using System.Collections.Generic;
 using TMPro;
+using System.Collections;
 
 public class UIManager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private StealthBar stealthBar;
 
     [SerializeField] private TextMeshProUGUI GameMessageText;
-    [SerializeField] private GameObject moveInstructions;
+    [SerializeField] private TextMeshProUGUI instructions;
     private GameManager _gameManager;
     private CameraManager _cameraManager;
     // Properties
@@ -25,6 +26,8 @@ public class UIManager : MonoBehaviour
     public GameObject GameOverPanel => gameOverPanel;
     
     public StealthBar StealthBar => stealthBar;
+
+    public TextMeshProUGUI Instructions => instructions;
 
     void Start()
     {
@@ -87,9 +90,15 @@ public class UIManager : MonoBehaviour
         GameMessageText.enabled = !GameMessageText.enabled;
     }
 
-    public void DisableInstructionText()
+    public void ShowInstructionText(string s)
     {
-        moveInstructions.SetActive(false);
+        instructions.text = s;
+        StartCoroutine(FadeTextToFullAlpha(0.15f, instructions));
+    }
+
+    public void HideInstructionText()
+    {
+        StartCoroutine(FadeTextToZeroAlpha(0.15f, instructions));
     }
 
     private void HandleGameOver()
@@ -111,6 +120,26 @@ public class UIManager : MonoBehaviour
     {
         if (camera == null) return;
         SetCrossHairVisibility(_cameraManager.PlayerCameraActive);
+    }
+
+    public IEnumerator FadeTextToFullAlpha(float t, TextMeshProUGUI i)
+    {
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
+        while (i.color.a < 1.0f)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
+            yield return null;
+        }
+    }
+
+    public IEnumerator FadeTextToZeroAlpha(float t, TextMeshProUGUI i)
+    {
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
+        while (i.color.a > 0.0f)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
+            yield return null;
+        }
     }
 
 }

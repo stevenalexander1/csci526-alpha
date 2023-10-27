@@ -22,6 +22,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private PlayerCharacter playerCharacter;
     [SerializeField] private GravityManager gravityManager;
     [SerializeField] private CameraManager cameraManager;
+    [SerializeField] private TutorialManager tutorialManager;
     private GameObject _mainCamera;
     [Header("Level")] 
     [SerializeField] private List<Level> levels;
@@ -38,6 +39,8 @@ public class GameManager : MonoBehaviour
     public GravityManager GravityManager => gravityManager;
     
     public CameraManager CameraManager => cameraManager;
+
+    public TutorialManager TutorialManager => tutorialManager;
 
     private void Awake()
     {
