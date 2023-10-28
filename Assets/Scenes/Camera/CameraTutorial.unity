@@ -855,6 +855,51 @@ Transform:
   m_Father: {fileID: 124643468}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &501561233
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 501561234}
+  - component: {fileID: 501561235}
+  m_Layer: 0
+  m_Name: CamInst
+  m_TagString: Message
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &501561234
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501561233}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 9.25, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1515671321}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &501561235
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 501561233}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 3, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &543832745
 GameObject:
   m_ObjectHideFlags: 0
@@ -1872,6 +1917,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &733251508 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5652595815400407525, guid: c204e08ad7d24dd40bb4c25d19d00911,
+    type: 3}
+  m_PrefabInstance: {fileID: 1719595422243323060}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848776837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bb5eaef5fce2a284c94ea6ee4bbf0e19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &768002352
 GameObject:
   m_ObjectHideFlags: 0
@@ -1882,7 +1939,7 @@ GameObject:
   m_Component:
   - component: {fileID: 768002353}
   m_Layer: 0
-  m_Name: Entitites
+  m_Name: Cameras
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1902,7 +1959,7 @@ Transform:
   m_Children:
   - {fileID: 922782853}
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!43 &788175376
 Mesh:
@@ -2068,6 +2125,24 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!1 &848776837 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1719595421437001530, guid: c204e08ad7d24dd40bb4c25d19d00911,
+    type: 3}
+  m_PrefabInstance: {fileID: 1719595422243323060}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &848776841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 848776837}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43e076ca58abed94aab73bef77dd7d90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &861403995
 Mesh:
   m_ObjectHideFlags: 0
@@ -2353,7 +2428,7 @@ PrefabInstance:
     - target: {fileID: 7959201152525413596, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
         type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 75
+      value: 85
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3eca78cfdcfd24b2b992c6ea1fef8810, type: 3}
@@ -3252,7 +3327,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: You can move while using a camera
+  m_text: 'You can move while using a camera '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -3366,6 +3441,39 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &1515671320
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1515671321}
+  m_Layer: 0
+  m_Name: TriggerFields
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1515671321
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1515671320}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.75, y: 0, z: -14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 501561234}
+  - {fileID: 1567996803}
+  m_Father: {fileID: 0}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1539414546
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3381,7 +3489,7 @@ PrefabInstance:
     - target: {fileID: 1123334328178760602, guid: 0727b1e1e2ad8414d8d80625931163b6,
         type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1123334328178760602, guid: 0727b1e1e2ad8414d8d80625931163b6,
         type: 3}
@@ -3790,6 +3898,51 @@ Transform:
   m_Father: {fileID: 124643468}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1567996802
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1567996803}
+  - component: {fileID: 1567996804}
+  m_Layer: 0
+  m_Name: LastCamInst
+  m_TagString: Message
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1567996803
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567996802}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 4.75, z: -1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1515671321}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1567996804
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567996802}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 3, z: 3}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1653616088
 GameObject:
   m_ObjectHideFlags: 0
@@ -5591,6 +5744,21 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5652595815400407525, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: instructions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5652595815400407525, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: instructions.Array.data[0]
+      value: Press 'R' while looking at a camera to hack it
+      objectReference: {fileID: 0}
+    - target: {fileID: 5652595815400407525, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: instructions.Array.data[1]
+      value: Press 'T' to access last used camera
+      objectReference: {fileID: 0}
     - target: {fileID: 6703514897934746563, guid: c204e08ad7d24dd40bb4c25d19d00911,
         type: 3}
       propertyPath: m_Name
@@ -5606,6 +5774,11 @@ PrefabInstance:
       propertyPath: cameraManager
       value: 
       objectReference: {fileID: 1719595422243323061}
+    - target: {fileID: 7362542956513988160, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: tutorialManager
+      value: 
+      objectReference: {fileID: 733251508}
     - target: {fileID: 7720791089945083129, guid: c204e08ad7d24dd40bb4c25d19d00911,
         type: 3}
       propertyPath: near clip plane

@@ -117,7 +117,7 @@ public class PlayerCharacter : MonoBehaviour
         if (other.CompareTag("Message"))
         {
             gameManager.UIManager.HideInstructionText();
-            Destroy(other.gameObject);
+            other.gameObject.SetActive(false);
         }
     }
 

@@ -17,6 +17,8 @@ public class UIManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI GameMessageText;
     [SerializeField] private TextMeshProUGUI instructions;
+    [SerializeField] private GameObject cameraBar;
+
     private GameManager _gameManager;
     private CameraManager _cameraManager;
     // Properties
@@ -84,6 +86,11 @@ public class UIManager : MonoBehaviour
     {
         crosshair.enabled = visible;
     }
+
+    private void SetCameraBarVisibility()
+    {
+        cameraBar.SetActive(!cameraBar.activeInHierarchy);
+    }
     
     public void ToggleGameMessageText()
     {
@@ -120,6 +127,7 @@ public class UIManager : MonoBehaviour
     {
         if (camera == null) return;
         SetCrossHairVisibility(_cameraManager.PlayerCameraActive);
+        SetCameraBarVisibility();
     }
 
     public IEnumerator FadeTextToFullAlpha(float t, TextMeshProUGUI i)

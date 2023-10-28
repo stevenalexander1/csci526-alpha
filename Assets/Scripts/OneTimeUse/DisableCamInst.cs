@@ -1,17 +1,14 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
-public class Holographic : MonoBehaviour
+public class DisableCamInst : MonoBehaviour
 {
-    // Add this script to the parent of the holographic object
-    private GameObject obj;
     private GameManager _gameManager;
 
     void Start()
     {
-        obj = transform.GetChild(0).gameObject;
         _gameManager = GameManager.Instance;
     }
 
@@ -35,7 +32,6 @@ public class Holographic : MonoBehaviour
     private void HandleCameraChangedEvent(GameObject cam)
     {
         if (cam == null) return;
-        if (cam == _gameManager.CameraManager.PlayerFollowCamera) obj.SetActive(false);
-        else obj.SetActive(true);
+        if (cam != _gameManager.CameraManager.PlayerFollowCamera) gameObject.GetComponent<TMP_Text>().text = "";
     }
 }
