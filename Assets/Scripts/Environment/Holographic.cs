@@ -35,7 +35,15 @@ public class Holographic : MonoBehaviour
     private void HandleCameraChangedEvent(GameObject cam)
     {
         if (cam == null) return;
-        if (cam == _gameManager.CameraManager.PlayerFollowCamera) obj.SetActive(false);
-        else obj.SetActive(true);
+        if (cam == _gameManager.CameraManager.PlayerFollowCamera)
+        {
+            obj.SetActive(false);
+            return;
+        }
+        SecurityCameraComponent securityCameraComponent = cam.GetComponentInParent<SecurityCameraComponent>();
+        if (securityCameraComponent != null && securityCameraComponent.IsHolographic)
+        {
+            obj.SetActive(true);
+        }
     }
 }
