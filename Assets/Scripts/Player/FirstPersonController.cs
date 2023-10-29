@@ -124,6 +124,7 @@ namespace StarterAssets
 				GroundedCheck();
 				Move();
 				ChangePerspective();
+				InGameMenu();
 			}
 		}
 
@@ -283,13 +284,19 @@ namespace StarterAssets
 			_playerCharacter.GrabObject();
 			_input.interact = false;
 		}
+
+		private void InGameMenu()
+        {
+			if (!_input.inGameMenu) return;
+			_gameManager.popInGameMenu();
+			_input.inGameMenu = false;
+		}
 		
 		private void ChangePerspective()
 		{
 			if (!_input.changePerspective) return;
 			//Analytics for R count 
 			SendToGoogle.setrCount(1);
-			Debug.Log("R Count : " + SendToGoogle.getrCount());
 
 			int laserLayer = LayerMask.NameToLayer("Laser");
 			var mainCameraComponent = _mainCamera.GetComponent<Camera>();

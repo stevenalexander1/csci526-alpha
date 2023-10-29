@@ -94,7 +94,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
     }
-
+    
     private void HandleGameOver()
     {
         isGameOver = true;
@@ -103,7 +103,21 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
     }
     
+    public void popInGameMenu()
+    {
+        if (!isGameOver)
+        {
+            uiManager.InGamePanel.SetActive(true);
+            Time.timeScale = 0;
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+    }
 
-    
-
+    public void resumeGame()
+    {
+        isGameOver = false;
+        uiManager.InGamePanel.SetActive(false);
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 }

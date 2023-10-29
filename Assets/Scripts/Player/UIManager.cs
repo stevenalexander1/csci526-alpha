@@ -5,6 +5,7 @@ using Cinemachine;
 using System.Collections.Generic;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image crosshair;  
     [SerializeField] private Text gameOverText;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject inGamePanel;
     [SerializeField] private Text cashText;
     [SerializeField] private StealthBar stealthBar;
 
@@ -26,7 +28,9 @@ public class UIManager : MonoBehaviour
     public Text GameOverText => gameOverText;
     public Text CashText => cashText;
     public GameObject GameOverPanel => gameOverPanel;
-    
+
+    public GameObject InGamePanel => inGamePanel;
+
     public StealthBar StealthBar => stealthBar;
 
     public TextMeshProUGUI Instructions => instructions;
@@ -35,6 +39,7 @@ public class UIManager : MonoBehaviour
     {
         gameOverPanel.SetActive(false);
         _gameManager = GameManager.Instance;
+        inGamePanel.SetActive(false);
     }
 
     private void OnEnable()
@@ -149,5 +154,4 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
     }
-
 }
