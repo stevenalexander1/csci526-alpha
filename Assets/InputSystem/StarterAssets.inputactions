@@ -60,6 +60,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "AccessLastUsedCamera",
+                    "type": "Button",
+                    "id": "c5fde7ee-99ab-4c19-9b5e-3afbaf717a68",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "InGameMenu",
                     "type": "Button",
                     "id": "4d58a349-924c-44af-8e31-42b5b4471f52",
@@ -221,6 +230,17 @@
                     "processors": "",
                     "groups": "KeyboardMouse",
                     "action": "ChangePerspective",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "5602d22c-c14e-490b-b4cc-12288abe718d",
+                    "path": "<Keyboard>/t",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "AccessLastUsedCamera",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },

@@ -11,6 +11,8 @@ public class StealthBar : MonoBehaviour
     [SerializeField] private PlayerCharacter playerCharacter;
 
     [SerializeField] private Slider _stealthSlider;
+    
+    public Slider StealthSlider => _stealthSlider;
     // Start is called before the first frame update
     void Start()
     {

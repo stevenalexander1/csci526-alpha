@@ -14,6 +14,7 @@ namespace StarterAssets
 		public bool sprint;
 		public bool interact;
 		public bool changePerspective;
+		public bool lastUsedCamera;
 		public bool inGameMenu;
 
 		[Header("Movement Settings")]
@@ -56,12 +57,16 @@ namespace StarterAssets
 		{
 			ChangePerspectiveInput(value.isPressed);
 		}
-
+		
+		public void OnAccessLastUsedCamera(InputValue value)
+		{
+			LastUsedCameraInput(value.isPressed);
+		}
+		
 		public void OnInGameMenu(InputValue value)
-        {
+    {
 			InGameMenuInput(value.isPressed);
-        }
-
+    }
 
 #endif
 
@@ -101,6 +106,10 @@ namespace StarterAssets
 			inGameMenu = newInGameState;
         }
 		
+		private void LastUsedCameraInput(bool newLastUsedCameraState)
+		{
+			lastUsedCamera = newLastUsedCameraState;
+		}
 		private void OnApplicationFocus(bool hasFocus)
 		{
 			SetCursorState(cursorLocked);

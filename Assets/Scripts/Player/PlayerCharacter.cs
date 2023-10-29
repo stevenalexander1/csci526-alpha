@@ -7,6 +7,13 @@ using UnityEngine.UI;
 
 public class PlayerCharacter : MonoBehaviour
 {
+    
+    // Delegates
+    public delegate void StealthMeterChangedEventDelegate(float prev, float next);
+    public StealthMeterChangedEventDelegate StealthMeterChangedEvent;
+
+    public delegate void CashChangedEventDelegate(int prev, int next);
+    public CashChangedEventDelegate CashChangedEvent;
     [Header("References")]
     GameManager gameManager;
     UIManager uiManager;
@@ -37,7 +44,20 @@ public class PlayerCharacter : MonoBehaviour
         uiManager = gameManager.UIManager;
         uiManager.StealthBar.SetMaxStealth(maxStealthMeter);
     }
+    
+    public void OnEnable()
+    {
+        StealthMeterChangedEvent += HandleStealthMeterChanged;
+        CashChangedEvent += HandleCashChanged;
+    }
+    
+    public void OnDisable()
+    {
+        StealthMeterChangedEvent -= HandleStealthMeterChanged;
+        CashChangedEvent -= HandleCashChanged;
+    }
 
+  
     private void Update()
     {
         
@@ -55,7 +75,15 @@ public class PlayerCharacter : MonoBehaviour
                 gameManager.UIManager.ToggleGameMessageText();
             }
         }
-        if (other.CompareTag("Message")) gameManager.UIManager.DisableInstructionText();
+        if (other.CompareTag("Message"))
+        {
+            gameManager.UIManager.ShowInstructionText(gameManager.TutorialManager.GetNextInstruction());
+        }
+        if (other.CompareTag("HarmfulTerrain"))
+        {
+            if (gameManager.IsGameOver) return;
+            gameManager.GameOver();
+        }
     }
     
     private void OnTriggerStay(Collider other)
@@ -86,6 +114,11 @@ public class PlayerCharacter : MonoBehaviour
                 gameManager.UIManager.ToggleGameMessageText();
             }
         }
+        if (other.CompareTag("Message"))
+        {
+            gameManager.UIManager.HideInstructionText();
+            other.gameObject.SetActive(false);
+        }
     }
 
     public void GrabObject()
@@ -102,20 +135,27 @@ public class PlayerCharacter : MonoBehaviour
     
     private void UpdateCash(int cash)
     {
-        _cash += cash;
-        gameManager.UIManager.CashText.text = "Cash: $" + _cash + "/1000";
+        CashChangedEvent?.Invoke(_cash, _cash + cash);
     }
     
     public void ChangeCurrentStealthValue(float value)
     {
-        currentStealthMeter += value;
-        uiManager.StealthBar.SetStealth(currentStealthMeter);
+        StealthMeterChangedEvent?.Invoke(currentStealthMeter, currentStealthMeter + value);
+    }
+    
+    private void HandleStealthMeterChanged(float prev, float next)
+    {
+        currentStealthMeter = next;
         Debug.Log("Stealth meter: " + currentStealthMeter);
         if (currentStealthMeter <= 0)
         {
-            uiManager.StealthBar.SetStealth(0);
             gameManager.GameOver();
         }
+    }
+    
+    private void HandleCashChanged(int prev, int next)
+    {
+        _cash = next;
     }
 
 }

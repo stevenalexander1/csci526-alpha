@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using StarterAssets;
@@ -7,13 +8,22 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
-    public static GameManager Instance { get { return instance; } }
-    [Header("References")]
-    [SerializeField] private FirstPersonController fpsController;
-    [SerializeField] private UIManager uiManager;
-   
+    
+    private static GameManager _instance;
+    public static GameManager Instance => _instance;
 
+    // Delegates
+    public delegate void GameOverEventDelegate();
+
+    public GameOverEventDelegate GameOverEvent;
+    
+    [Header("References")]
+    [SerializeField] private UIManager uiManager;
+    [SerializeField] private PlayerCharacter playerCharacter;
+    [SerializeField] private GravityManager gravityManager;
+    [SerializeField] private CameraManager cameraManager;
+    [SerializeField] private TutorialManager tutorialManager;
+    private GameObject _mainCamera;
     [Header("Level")] 
     [SerializeField] private List<Level> levels;
     private Level currentLevel;
@@ -25,32 +35,54 @@ public class GameManager : MonoBehaviour
     public bool IsGameOver => isGameOver;
     public UIManager UIManager => uiManager;
     
-    // Start is called before the first frame update
-    void Start()
+    public PlayerCharacter PlayerCharacter => playerCharacter;
+    public GravityManager GravityManager => gravityManager;
+    
+    public CameraManager CameraManager => cameraManager;
+
+    public TutorialManager TutorialManager => tutorialManager;
+
+    private void Awake()
     {
-        // Make sure there is only one instance of this object
-        if (instance == null)
+    // Make sure there is only one instance of this object
+        if (_instance == null)
         {
-            instance = this;
+            _instance = this;
         }
         else
         {
             Destroy(this.gameObject);
         }
-        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;    
+        if (_mainCamera == null)
+        {
+            _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            cameraManager = _mainCamera.GetComponent<CameraManager>();
+        }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    private void OnEnable()
+    {
+        GameOverEvent += HandleGameOver;
+    }
+    
+    private void OnDisable()
+    {
+        GameOverEvent -= HandleGameOver;
     }
     
 
     public void GameOver()
     {
         if (isGameOver) return;
-        isGameOver = true;
-        Debug.Log("Game Over!");
-        uiManager.GameOverPanel.SetActive(true);
-        Time.timeScale = 0;
-        Cursor.lockState = CursorLockMode.Confined;
+        GameOverEvent?.Invoke();
     }
-    
  
     
     public void RestartGame()
@@ -62,7 +94,15 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
     }
-
+    
+    private void HandleGameOver()
+    {
+        isGameOver = true;
+        Debug.Log("Game Over!");
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+    
     public void popInGameMenu()
     {
         if (!isGameOver)

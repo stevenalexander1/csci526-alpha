@@ -7,14 +7,10 @@ using UnityEngine.Networking;
 public class AnalyticsManager : MonoBehaviour
 {
     private string URL;
-    public  GameObject checkpoint;
+    public GameObject checkpoint;
 
     // Start is called before the first frame update
-    void OnApplicationQuit()
-    {
-        // Gather and send necessary data to your analytics system here
-        Send();
-    }
+    
     void Start()
     {
 
@@ -25,6 +21,7 @@ public class AnalyticsManager : MonoBehaviour
     {
 
     }
+    #if !UNITY_EDITOR
     private void Awake()
     {
         // For Analytics:
@@ -37,6 +34,7 @@ public class AnalyticsManager : MonoBehaviour
         URL = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSeTkEB_0KQ9_WZ4IDevxjPEKgVs28y3uYIxHBQnGPF2MyvGng/formResponse";
        // SendToGoogle.setCameraCount(UnityEngine.Random.Range(0, 101) ); 
        // SendToGoogle.setrCount(UnityEngine.Random.Range(0, 101));
+       
         SendToGoogle.setPlayerPosition(transform.position);
         SendToGoogle.setCheckpointPosition(checkpoint.transform.position);
 
@@ -80,8 +78,13 @@ public class AnalyticsManager : MonoBehaviour
 
 
     }
+void OnApplicationQuit()
+    {
+        // Gather and send necessary data to your analytics system here
+        Send();
+    }
 
-
+#endif
 
 
 
