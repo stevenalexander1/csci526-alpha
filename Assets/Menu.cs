@@ -13,9 +13,11 @@ public class Menu : MonoBehaviour
     [SerializeField] private Button easyButton;
     [SerializeField] private Button mediumButton;
     [SerializeField] private Button hardButton;
+    [SerializeField] private GameObject levelsPanel;
 
     public GameObject ctrlPanel => controlsPanel;
     public GameObject diffPanel => difficultyPanel;
+    public GameObject lvlPanel => levelsPanel;
     private string level;
     private string difficulty;
     private Hashtable diff_map = new Hashtable();
@@ -34,6 +36,7 @@ public class Menu : MonoBehaviour
     {
         ctrlPanel.SetActive(false);
         diffPanel.SetActive(false);
+        lvlPanel.SetActive(false);
         tut_button.gameObject.SetActive(true);
         easy_button.gameObject.SetActive(true);
         med_button.gameObject.SetActive(true);
@@ -115,6 +118,7 @@ public class Menu : MonoBehaviour
     public void OnMovementButton() {
         level = "movement";
         activate_valid_buttons();
+        lvlPanel.SetActive(false);
         diffPanel.SetActive(true);
     }
 
@@ -122,6 +126,7 @@ public class Menu : MonoBehaviour
     {
         level = "camera";
         activate_valid_buttons();
+        lvlPanel.SetActive(false);
         diffPanel.SetActive(true);
     }
 
@@ -129,6 +134,7 @@ public class Menu : MonoBehaviour
     {
         level = "gravity";
         activate_valid_buttons();
+        lvlPanel.SetActive(false);
         diffPanel.SetActive(true);
     }
 
@@ -136,6 +142,7 @@ public class Menu : MonoBehaviour
     {
         level = "laser";
         activate_valid_buttons();
+        lvlPanel.SetActive(false);
         diffPanel.SetActive(true);
     }
 
@@ -143,6 +150,7 @@ public class Menu : MonoBehaviour
     {
         level = "guard";
         activate_valid_buttons();
+        lvlPanel.SetActive(false);
         diffPanel.SetActive(true);
     }
 
@@ -150,12 +158,14 @@ public class Menu : MonoBehaviour
     {
         level = "hologram";
         activate_valid_buttons();
+        lvlPanel.SetActive(false);
         diffPanel.SetActive(true);
     }
 
     public void OnCloseButton()
     {
         diffPanel.SetActive(false);
+        lvlPanel.SetActive(true);
         level = "";
         difficulty = "";
         scene_name = "";
@@ -205,4 +215,20 @@ public class Menu : MonoBehaviour
         ctrlPanel.SetActive(false);
     }
 
+    public void ShowLevelPanel()
+    {
+        lvlPanel.SetActive(true);
+    }
+
+    public void OnCloseLevels()
+    {
+        lvlPanel.SetActive(false);
+        level = "";
+        difficulty = "";
+    }
+
+    public void LaunchNewGame()
+    {
+        SceneManager.LoadScene("MoveTutorial");
+    }
 }
