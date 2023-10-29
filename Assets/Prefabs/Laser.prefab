@@ -243,4 +243,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   startPoint: {fileID: 1809861520190080259}
-  _player: {fileID: 0}
+  laserLength: 100
+  laserDirection: {x: 1, y: 0, z: 0}
+  enableMovement: 0
