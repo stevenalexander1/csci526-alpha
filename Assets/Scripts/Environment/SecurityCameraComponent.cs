@@ -11,6 +11,7 @@ public class SecurityCameraComponent : MonoBehaviour
     [Header("Camera")]
     [SerializeField] private GameObject securityCamera;
     [SerializeField] private bool doesInvertGravity = false;
+    [SerializeField] private bool isHolographic = false;
 
     [Header("Camera Pan")]
     [SerializeField] private bool rotateCamera = true;
@@ -29,6 +30,7 @@ public class SecurityCameraComponent : MonoBehaviour
 
     public GameObject SecurityCamera => securityCamera;
     public bool DoesInvertGravity => doesInvertGravity;
+    public bool IsHolographic => isHolographic;
 
     private void Start()
     {

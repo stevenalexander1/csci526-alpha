@@ -13,6 +13,7 @@ TagManager:
   - Trigger
   - Jump
   - HarmfulTerrain
+  - Button
   layers:
   - Default
   - TransparentFX
