@@ -118,4 +118,11 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    public void QuitGame()
+    {
+        isGameOver = false;
+        SceneManager.LoadScene("BetaMainMenu"); 
+        Time.timeScale = 1;
+    }
 }
