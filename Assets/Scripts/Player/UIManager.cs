@@ -116,6 +116,22 @@ public class UIManager : MonoBehaviour
     private void HandleGameOver()
     {
         gameOverPanel.SetActive(true);
+        // Ienumerator to change text from "Respawning in 3..." and count down to 0
+        StartCoroutine(RespawnCountdown());
+    }
+
+    IEnumerator RespawnCountdown()
+    {
+        Debug.Log("RespawnCountdown");
+        int count = 3;
+        while (count > 0)
+        {
+            gameOverText.text = "Respawning in " + count + "...";
+            count--;
+            yield return new WaitForSeconds(1);
+        }
+        gameOverText.text = "Respawning in " + count + "...";
+        _gameManager.RestartGame();
     }
 
     private void HandleStealthMeterChanged(float prev, float next)

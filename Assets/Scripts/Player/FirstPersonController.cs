@@ -288,7 +288,7 @@ namespace StarterAssets
 		private void InGameMenu()
         {
 			if (!_input.inGameMenu) return;
-			_gameManager.popInGameMenu();
+			_gameManager.PopInGameMenu();
 			_input.inGameMenu = false;
 		}
 		
