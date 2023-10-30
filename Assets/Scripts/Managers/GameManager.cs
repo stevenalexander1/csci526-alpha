@@ -103,17 +103,15 @@ public class GameManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.Confined;
     }
     
-    public void popInGameMenu()
+    public void PopInGameMenu()
     {
-        if (!isGameOver)
-        {
-            uiManager.InGamePanel.SetActive(true);
-            Time.timeScale = 0;
-            Cursor.lockState = CursorLockMode.Confined;
-        }
+        if (isGameOver) return;
+        uiManager.InGamePanel.SetActive(true);
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.Confined;
     }
 
-    public void resumeGame()
+    public void ResumeGame()
     {
         isGameOver = false;
         uiManager.InGamePanel.SetActive(false);
