@@ -54,16 +54,16 @@ public class Menu : MonoBehaviour
         tut_map.Add("gravity", "");
         tut_map.Add("laser", "");
         tut_map.Add("guard", "");
-        tut_map.Add("hologram", "");
+        tut_map.Add("hologram", "Holo-Tutorial");
         // easy
-        easy_map.Add("movement", "MoveSection2");
+        easy_map.Add("movement", "MoveEasy1");
         easy_map.Add("camera", "");
         easy_map.Add("gravity", "GravitySection");
         easy_map.Add("laser", "");
         easy_map.Add("guard", "");
         easy_map.Add("hologram", "");
         // medium
-        med_map.Add("movement", "");
+        med_map.Add("movement", "MoveSection2");
         med_map.Add("camera", "");
         med_map.Add("gravity", "");
         med_map.Add("laser", "");
