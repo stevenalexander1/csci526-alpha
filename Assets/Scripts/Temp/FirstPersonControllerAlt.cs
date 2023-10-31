@@ -76,7 +76,7 @@ namespace StarterAssets
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
 		
-		private const float _threshold = 0.01f;
+		private const float _threshold = 0.0f;
 
 		private bool IsCurrentDeviceMouse
 		{
@@ -362,15 +362,12 @@ namespace StarterAssets
 			//Analytics for R count 
 			SendToGoogle.setrCount(1);
 			Debug.Log("R Count : " + SendToGoogle.getrCount());
-
-			int laserLayer = LayerMask.NameToLayer("Laser");
-			var mainCameraComponent = _mainCamera.GetComponent<Camera>();
 			CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
+			Debug.Log(cameraManager.PlayerCameraActive);
 			if (!cameraManager.PlayerCameraActive)
 			{
 				if (_gravityManager.IsGravityInverted) _gravityManager.InvertGravity();
 				cameraManager.ActivateCameraByObject(cameraManager.PlayerFollowCamera);
-				mainCameraComponent.cullingMask &= ~(1 << laserLayer);
 			}
 			else
 			{
@@ -381,7 +378,6 @@ namespace StarterAssets
 					if (securityCameraComponent != null)
 					{
 						cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
-						mainCameraComponent.cullingMask |= 1 << laserLayer;
 						//Analytics for Camera count
 						SendToGoogle.setCameraCount(1);
 						Debug.Log("Camera Count : " + SendToGoogle.getCameraCount());
@@ -392,11 +388,11 @@ namespace StarterAssets
 		}
 
 		private void AccessLastUsedCamera()
-		{
-			if (!_input.lastUsedCamera) return;
-			Debug.Log("asdf");
+		{			
 			CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
+			if (!_input.lastUsedCamera) return;
 			if (!cameraManager.PlayerCameraActive) return;
+			
 			cameraManager.ActivateCameraByObject(cameraManager.LastUsedSecurityCamera);
 			_input.lastUsedCamera = false;
 		}

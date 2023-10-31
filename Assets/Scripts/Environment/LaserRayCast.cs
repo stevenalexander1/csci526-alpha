@@ -41,7 +41,6 @@ public class LaserRayCast : MonoBehaviour
 
         if (Physics.Raycast(startPoint.position, laserDirection, out var hit))
         {
-            Debug.Log("Hit: " + hit.transform.gameObject.name);
             if (hit.collider)
             {
                 lr.SetPosition(1, hit.point);

@@ -7,37 +7,45 @@ public class CameraManager : MonoBehaviour
 {
     //  Delegates
     public delegate void CameraChangedEventDelegate(GameObject newCamera);
+
     public CameraChangedEventDelegate CameraChangedEvent;
-    
+
     [SerializeField] private List<CinemachineVirtualCamera> virtualCameras = new List<CinemachineVirtualCamera>();
-    
+
     [SerializeField] private GameObject playerFollowCamera;
     private GameObject _currentActiveCamera;
     private GameObject _lastUsedSecurityCamera;
-
+    private GameObject _mainCamera;
     public GameObject PlayerFollowCamera => playerFollowCamera;
     public GameObject CurrentActiveCamera => _currentActiveCamera;
     public GameObject LastUsedSecurityCamera => _lastUsedSecurityCamera;
 
     public SecurityCameraComponent CurrentActiveCameraComponent { get; set; }
-    
+
 
     public bool PlayerCameraActive => _currentActiveCamera == playerFollowCamera;
+
     private void Start()
     {
         // Find all Cinemachine Virtual Cameras in the scene
         CinemachineVirtualCamera[] allVirtualCameras = FindObjectsOfType<CinemachineVirtualCamera>();
         virtualCameras.AddRange(allVirtualCameras);
         playerFollowCamera = GameObject.Find("PlayerFollowCamera");
+        if (_mainCamera == null)
+        {
+            _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
+            Debug.Log("Main camera found: " + _mainCamera.name);
+        }
         // Activate PlayerFollowCamera
-        ActivateCameraByObject(playerFollowCamera);
+        //ActivateCameraByObject(playerFollowCamera);
+        
     }
 
     private void OnEnable()
     {
         CameraChangedEvent += HandleCameraChangedEvent;
     }
-    
+
     private void OnDisable()
     {
         CameraChangedEvent -= HandleCameraChangedEvent;
@@ -62,7 +70,7 @@ public class CameraManager : MonoBehaviour
             Debug.LogWarning("Camera not found: " + cameraName);
         }
     }
-    
+
     public void ActivateCameraByObject(GameObject cameraObject)
     {
         // Deactivate all cameras
@@ -74,7 +82,7 @@ public class CameraManager : MonoBehaviour
         _currentActiveCamera = cameraObject;
         CameraChangedEvent?.Invoke(cameraObject);
     }
-    
+
     public void ActivateCameraBySecurityCameraComponent(SecurityCameraComponent securityCameraComponent)
     {
         // Deactivate all cameras
@@ -94,15 +102,20 @@ public class CameraManager : MonoBehaviour
             cam.gameObject.SetActive(false);
         }
     }
-    
+
     private void HandleCameraChangedEvent(GameObject newCamera)
     {
         if (null == newCamera) return;
+        var mainCameraComponent = _mainCamera.GetComponent<Camera>();
+        int laserLayer = LayerMask.NameToLayer("Laser");
         if (newCamera != playerFollowCamera)
         {
             _lastUsedSecurityCamera = newCamera;
+            mainCameraComponent.cullingMask |= 1 << laserLayer;
+        }
+        else if (newCamera == playerFollowCamera)
+        {
+            mainCameraComponent.cullingMask &= ~(1 << laserLayer);
         }
     }
-    
-    
 }
