@@ -32,6 +32,12 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Movement/MoveEasy1.unity
     guid: ee1023516f97470489e576b60786b633
+  - enabled: 1
+    path: Assets/Scenes/LaserTutorial/LaserTutorial.unity
+    guid: b4451650300ea8b488bdef12201fcbe8
+  - enabled: 1
+    path: Assets/Scenes/LaserTutorial/LaserEasy.unity
+    guid: 9b8b55a3b33483346b21102baedb0965
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
       type: 2}
