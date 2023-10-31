@@ -2077,6 +2077,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: InGameMenu
       objectReference: {fileID: 0}
+    - target: {fileID: 7551814545496292604, guid: aba925830dd852d4680dc278b3832d13,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7551814545496292607, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}
       propertyPath: m_Pivot.x
@@ -2095,32 +2100,32 @@ PrefabInstance:
     - target: {fileID: 7551814545496292607, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7551814545496292607, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7551814545496292607, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}
       propertyPath: m_AnchorMin.x
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7551814545496292607, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}
       propertyPath: m_AnchorMin.y
-      value: 0.5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7551814545496292607, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1564
+      value: 764
       objectReference: {fileID: 0}
     - target: {fileID: 7551814545496292607, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}
       propertyPath: m_SizeDelta.y
-      value: 384.5824
+      value: 16.582397
       objectReference: {fileID: 0}
     - target: {fileID: 7551814545496292607, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}
