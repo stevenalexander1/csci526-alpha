@@ -94,16 +94,35 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
     }
-
+    
     private void HandleGameOver()
     {
         isGameOver = true;
         Debug.Log("Game Over!");
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
     }
     
+    public void PopInGameMenu()
+    {
+        if (isGameOver) return;
+        uiManager.InGamePanel.SetActive(true);
+        Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
 
-    
+    public void ResumeGame()
+    {
+        isGameOver = false;
+        uiManager.InGamePanel.SetActive(false);
+        Time.timeScale = 1;
+        Cursor.lockState = CursorLockMode.Locked;
+    }
 
+    public void QuitGame()
+    {
+        isGameOver = false;
+        SceneManager.LoadScene("BetaMainMenu"); 
+        Time.timeScale = 1;
+    }
 }

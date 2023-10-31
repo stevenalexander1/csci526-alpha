@@ -5,6 +5,7 @@ using Cinemachine;
 using System.Collections.Generic;
 using TMPro;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 public class UIManager : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private Image crosshair;  
     [SerializeField] private Text gameOverText;
     [SerializeField] private GameObject gameOverPanel;
+    [SerializeField] private GameObject inGamePanel;
     [SerializeField] private Text cashText;
     [SerializeField] private StealthBar stealthBar;
 
@@ -26,7 +28,9 @@ public class UIManager : MonoBehaviour
     public Text GameOverText => gameOverText;
     public Text CashText => cashText;
     public GameObject GameOverPanel => gameOverPanel;
-    
+
+    public GameObject InGamePanel => inGamePanel;
+
     public StealthBar StealthBar => stealthBar;
 
     public TextMeshProUGUI Instructions => instructions;
@@ -35,6 +39,7 @@ public class UIManager : MonoBehaviour
     {
         gameOverPanel.SetActive(false);
         _gameManager = GameManager.Instance;
+        inGamePanel.SetActive(false);
     }
 
     private void OnEnable()
@@ -111,6 +116,22 @@ public class UIManager : MonoBehaviour
     private void HandleGameOver()
     {
         gameOverPanel.SetActive(true);
+        // Ienumerator to change text from "Respawning in 3..." and count down to 0
+        StartCoroutine(RespawnCountdown());
+    }
+
+    IEnumerator RespawnCountdown()
+    {
+        Debug.Log("RespawnCountdown");
+        int count = 3;
+        while (count > 0)
+        {
+            gameOverText.text = "Respawning in " + count + "...";
+            count--;
+            yield return new WaitForSeconds(1);
+        }
+        gameOverText.text = "Respawning in " + count + "...";
+        _gameManager.RestartGame();
     }
 
     private void HandleStealthMeterChanged(float prev, float next)
@@ -149,5 +170,4 @@ public class UIManager : MonoBehaviour
             yield return null;
         }
     }
-
 }

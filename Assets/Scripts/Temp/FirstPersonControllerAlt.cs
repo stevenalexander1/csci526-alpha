@@ -127,6 +127,7 @@ namespace StarterAssets
 				Move();
 				ChangePerspective();
 				AccessLastUsedCamera();
+				InGameMenu();
 			}
 		}
 
@@ -347,7 +348,14 @@ namespace StarterAssets
 			_playerCharacter.GrabObject();
 			_input.interact = false;
 		}
-		
+
+		private void InGameMenu()
+		{
+			if (!_input.inGameMenu) return;
+			_gameManager.PopInGameMenu();
+			_input.inGameMenu = false;
+		}
+
 		private void ChangePerspective()
 		{
 			if (!_input.changePerspective) return;
