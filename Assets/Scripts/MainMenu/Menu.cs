@@ -54,7 +54,7 @@ public class Menu : MonoBehaviour
         tut_map.Add("gravity", "");
         tut_map.Add("laser", "LaserTutorial");
         tut_map.Add("guard", "");
-        tut_map.Add("hologram", "Holo-Tutorial");
+        tut_map.Add("hologram", "HoloTutorial");
         // easy
         easy_map.Add("movement", "MoveEasy");
         easy_map.Add("camera", "CameraEasyLevel");
@@ -63,12 +63,12 @@ public class Menu : MonoBehaviour
         easy_map.Add("guard", "");
         easy_map.Add("hologram", "");
         // medium
-        med_map.Add("movement", "MoveSection2");
+        med_map.Add("movement", "");
         med_map.Add("camera", "");
         med_map.Add("gravity", "");
         med_map.Add("laser", "");
         med_map.Add("guard", "");
-        med_map.Add("hologram", "Holo-Medium");
+        med_map.Add("hologram", "HoloMedium");
         // hard
         hard_map.Add("movement", "");
         hard_map.Add("camera", "");

@@ -7,9 +7,11 @@ public class Level : ScriptableObject
 {
     [Header("Level Settings")]
     [SerializeField] private string sceneName;
-    [SerializeField] private int levelIndex;
-    [SerializeField] private bool isUnlocked;
+    [SerializeField] private string nextLevelSceneName;
+
     public string SceneName => sceneName;
+    
+    public string NextLevelSceneName => nextLevelSceneName;
     
    
 }

@@ -6,22 +6,16 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BetaSandbox.unity
-    guid: 95ecf928a1428ea49a4b854ec69db3a5
-  - enabled: 1
     path: Assets/Scenes/MainAndIn-gameMenu/BetaMainMenu.unity
     guid: d1465b14743622a4fbf2995d56425f5a
-  - enabled: 0
-    path: Assets/Scenes/MainAndIn-gameMenu/VinuthaInGameMenu.unity
-    guid: 2fecffca9a518b94f9b03a8b054f27cf
   - enabled: 1
     path: Assets/Scenes/Movement/MoveTutorial.unity
     guid: 72899688aa65b98499530cff51c00ea9
   - enabled: 1
-    path: Assets/Scenes/Movement/MoveSection2.unity
-    guid: ed2e4ee792387874daef4f3e40047784
+    path: Assets/Scenes/Movement/MoveEasy.unity
+    guid: ee1023516f97470489e576b60786b633
   - enabled: 1
-    path: Assets/Scenes/Gravity/GravitySection.unity
+    path: Assets/Scenes/Gravity/GravityTutorial.unity
     guid: b630463b54c58ca4f9af75137ffebbcf
   - enabled: 1
     path: Assets/Scenes/Camera/CameraTutorial.unity
@@ -29,9 +23,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Holographic/HoloTutorial.unity
     guid: 5447fed5e6a12ce49ba5614a66d7aa1d
-  - enabled: 1
-    path: Assets/Scenes/Movement/MoveEasy.unity
-    guid: ee1023516f97470489e576b60786b633
   - enabled: 1
     path: Assets/Scenes/LaserTutorial/LaserTutorial.unity
     guid: b4451650300ea8b488bdef12201fcbe8

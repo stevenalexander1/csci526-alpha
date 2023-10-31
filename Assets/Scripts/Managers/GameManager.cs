@@ -27,6 +27,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GravityManager gravityManager;
     [SerializeField] private CameraManager cameraManager;
     [SerializeField] private TutorialManager tutorialManager;
+    [SerializeField] private LevelManager levelManager;
     private GameObject _mainCamera;
     [Header("Level")] 
     [SerializeField] private List<Level> levels;
@@ -43,6 +44,8 @@ public class GameManager : MonoBehaviour
     public CameraManager CameraManager => cameraManager;
 
     public TutorialManager TutorialManager => tutorialManager;
+    
+    public LevelManager LevelManager => levelManager;
 
     private void Awake()
     {
@@ -66,7 +69,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        levelManager = LevelManager.Instance;
     }
 
     private void OnEnable()
@@ -93,10 +96,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("No more levels to load!");
             return;
         }
-        _currentLevelIndex++;
-        Level nextLevel = levels[_currentLevelIndex];
-        Debug.Log("Loading next level: " + nextLevel.SceneName);
-        SceneManager.LoadScene(nextLevel.SceneName);
+        //SceneManager.LoadScene(levelManager.currentLevel.NextLevelSceneName);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
  
     

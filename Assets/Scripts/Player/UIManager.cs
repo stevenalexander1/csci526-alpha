@@ -99,6 +99,7 @@ public class UIManager : MonoBehaviour
     
     public void ToggleGameMessageText()
     {
+        if (GameMessageText == null) return;
         GameMessageText.enabled = !GameMessageText.enabled;
     }
 
