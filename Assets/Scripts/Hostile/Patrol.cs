@@ -16,8 +16,12 @@ public class Patrol : MonoBehaviour
     private int increment = 1;
 
     // Variables for smooth rotation
-    [SerializeField] private float rotationSpeed = 2.0f; // Adjust the rotation speed as needed
+    [SerializeField]
+    private float rotationSpeed = 2.0f; // Adjust the rotation speed as needed
     private Quaternion targetRotation;
+
+    // Variable to track whether the object is currently waiting
+    private bool isWaiting = false;
 
     void Start()
     {
@@ -43,19 +47,30 @@ public class Patrol : MonoBehaviour
         targetRotation = Quaternion.LookRotation(targetDirection);
         transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
 
-        transform.position = Vector3.MoveTowards(transform.position, moveSpots[index].position, speed * Time.deltaTime);
-
-        if (Vector2.Distance(transform.position, moveSpots[index].position) < 0.2f)
+        if (!isWaiting)
         {
+            // Move towards the patrol point if not waiting
+            transform.position = Vector3.MoveTowards(transform.position, moveSpots[index].position, speed * Time.deltaTime);
+
+            if (Vector3.Distance(transform.position, moveSpots[index].position) < 0.2f)
+            {
+                // Start waiting when reaching the patrol point
+                isWaiting = true;
+            }
+        }
+        else
+        {
+            // Handle waiting logic
+            waitTime -= Time.deltaTime;
             if (waitTime <= 0)
             {
+                // Stop waiting and continue patrolling
+                isWaiting = false;
                 if (index == 0 || index == moveSpots.Count - 1)
                     increment *= -1;
                 index += increment;
                 waitTime = startWaitTime;
             }
-            else
-                waitTime -= Time.deltaTime;
         }
     }
 }
