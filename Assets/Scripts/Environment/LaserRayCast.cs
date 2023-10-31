@@ -10,9 +10,10 @@ public class LaserRayCast : MonoBehaviour
     [SerializeField] private float laserLength = 100f;
     [SerializeField] private Vector3 laserDirection = Vector3.right;
     [SerializeField] private bool enableMovement = true; // Add a checkbox for movement control
-    private GameObject _player;
+    private PlayerCharacter _playerCharacter;
     private GameObject _mainCamera;
     private bool _isGameOver = false;
+    private GameManager _gameManager;
 
     private void Awake()
     {
@@ -20,7 +21,6 @@ public class LaserRayCast : MonoBehaviour
         {
             _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
         }
-        _player = GameObject.FindGameObjectWithTag("Player");
     }
 
     private void Start()
@@ -28,6 +28,9 @@ public class LaserRayCast : MonoBehaviour
         _isGameOver = false;
         lr = GetComponent<LineRenderer>();
         lr.positionCount = 2;
+        
+        _gameManager = GameManager.Instance;
+        _playerCharacter = _gameManager.PlayerCharacter;
     }
 
     void Update()
@@ -36,17 +39,17 @@ public class LaserRayCast : MonoBehaviour
         Vector3 endPoint = startPoint.position + laserDirection * laserLength;
         lr.SetPosition(1, endPoint);
 
-        RaycastHit hit;
-        if (Physics.Raycast(startPoint.position, laserDirection, out hit, laserLength))
+        if (Physics.Raycast(startPoint.position, laserDirection, out var hit))
         {
+            Debug.Log("Hit: " + hit.transform.gameObject.name);
             if (hit.collider)
             {
                 lr.SetPosition(1, hit.point);
             }
-            if (hit.transform.CompareTag("Player"))
+            if (hit.transform.parent.gameObject == _playerCharacter.gameObject
+                 || hit.transform.gameObject == _playerCharacter.gameObject)
             {
-                _isGameOver = true;
-                Debug.Log("Player hit");
+                _playerCharacter.ChangeCurrentStealthValue(-Time.deltaTime);
             }
         }
 

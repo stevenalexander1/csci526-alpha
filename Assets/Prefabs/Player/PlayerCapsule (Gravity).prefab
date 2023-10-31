@@ -19,7 +19,7 @@ GameObject:
   - component: {fileID: 8629335909671255521}
   - component: {fileID: 8210127145872123357}
   m_Layer: 8
-  m_Name: ayerCapsule (Gravity)
+  m_Name: PlayerCapsule (Gravity)
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -219,6 +219,7 @@ MonoBehaviour:
   gravityManager: {fileID: 8629335909671255521}
   cameraManager: {fileID: 0}
   tutorialManager: {fileID: 0}
+  levelManager: {fileID: 0}
   levels:
   - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}
   - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}

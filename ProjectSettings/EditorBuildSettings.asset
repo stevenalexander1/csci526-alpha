@@ -27,10 +27,10 @@ EditorBuildSettings:
     path: Assets/Scenes/Gravity/GravityEasy.unity
     guid: dc721a6042f85f740a1e4c6dee83a5ed
   - enabled: 1
-    path: Assets/Scenes/LaserTutorial/LaserTutorial.unity
+    path: Assets/Scenes/Laser/LaserTutorial.unity
     guid: b4451650300ea8b488bdef12201fcbe8
   - enabled: 1
-    path: Assets/Scenes/LaserTutorial/LaserEasy.unity
+    path: Assets/Scenes/Laser/LaserEasy.unity
     guid: 9b8b55a3b33483346b21102baedb0965
   - enabled: 1
     path: Assets/Scenes/Guard/GuardTutorial.unity
