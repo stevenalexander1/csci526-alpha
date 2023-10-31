@@ -5,7 +5,7 @@ using UnityEngine.InputSystem;
 
 // Script for handling Door Button in CameraEasyLevel
 
-public class ButtonDoorController : MonoBehaviour
+public class CameraEasyLevel : MonoBehaviour
 {
     private GameObject _mainCamera;
     private float _distanceThreshold = 6f;
