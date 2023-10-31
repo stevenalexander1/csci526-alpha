@@ -12,13 +12,12 @@ public class Patrol : MonoBehaviour
     public Transform locations;
 
     private List<Transform> moveSpots = new List<Transform>();
-    private int index = 1;
+    private int index = 0; // Start at the first point
     private int increment = 1;
 
     // Variables for smooth rotation
     [SerializeField]
     private float rotationSpeed = 2.0f; // Adjust the rotation speed as needed
-    private Quaternion targetRotation;
 
     // Variable to track whether the object is currently waiting
     private bool isWaiting = false;
@@ -32,7 +31,6 @@ public class Patrol : MonoBehaviour
         waitTime = startWaitTime;
         if (moveSpots.Count == 0)
             return;
-        transform.LookAt(moveSpots[index]);
     }
 
     void Update()
@@ -42,14 +40,9 @@ public class Patrol : MonoBehaviour
 
         if (!isWaiting)
         {
-            // Move towards the patrol point if not waiting
-            transform.position = Vector3.MoveTowards(transform.position, moveSpots[index].position, speed * Time.deltaTime);
-        }
-        else
-        {
-            // Calculate the direction to the next patrol point and smoothly interpolate the rotation
+            // Calculate the direction to the next patrol point
             Vector3 targetDirection = moveSpots[index].position - transform.position;
-            targetRotation = Quaternion.LookRotation(targetDirection);
+            Quaternion targetRotation = Quaternion.LookRotation(targetDirection);
             transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
         }
 
@@ -68,12 +61,18 @@ public class Patrol : MonoBehaviour
                 {
                     // Stop waiting and continue patrolling
                     isWaiting = false;
-                    if (index == 0 || index == moveSpots.Count - 1)
-                        increment *= -1;
-                    index += increment;
+                    index = (index + increment) % moveSpots.Count; // Cycle through the points
+                    if (index < 0)
+                        index = moveSpots.Count - 1;
                     waitTime = startWaitTime;
                 }
             }
+        }
+
+        // Move towards the patrol point
+        if (!isWaiting)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, moveSpots[index].position, speed * Time.deltaTime);
         }
     }
 }
