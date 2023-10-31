@@ -382,7 +382,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7959201152282057399}
-  m_LocalRotation: {x: -0, y: -0.6315911, z: -0, w: 0.7753017}
+  m_LocalRotation: {x: 0, y: -0.6315896, z: 0, w: 0.77530295}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -409,11 +409,12 @@ MonoBehaviour:
   _gameManager: {fileID: 0}
   securityCamera: {fileID: 1960482624944073231}
   doesInvertGravity: 0
-  rotateCamera: 1
-  cameraUIButton: {fileID: 1873107114193450733}
+  isHolographic: 0
+  rotateCamera: 0
   rotationDuration: 10
   waitDuration: 2
   maxRotationAngle: 40
+  cameraUIButton: {fileID: 1873107114193450733}
 --- !u!1001 &6008295254772238233
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -429,7 +430,7 @@ PrefabInstance:
     - target: {fileID: 7060859784845245130, guid: 0b3df4e3698d27f40931a2e2fea6adb3,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7060859784845245131, guid: 0b3df4e3698d27f40931a2e2fea6adb3,
         type: 3}
@@ -439,7 +440,7 @@ PrefabInstance:
     - target: {fileID: 7060859784845245131, guid: 0b3df4e3698d27f40931a2e2fea6adb3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.077
+      value: 0.051567554
       objectReference: {fileID: 0}
     - target: {fileID: 7060859784845245131, guid: 0b3df4e3698d27f40931a2e2fea6adb3,
         type: 3}
@@ -449,7 +450,7 @@ PrefabInstance:
     - target: {fileID: 7060859784845245131, guid: 0b3df4e3698d27f40931a2e2fea6adb3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.398
+      value: 0.52118987
       objectReference: {fileID: 0}
     - target: {fileID: 7060859784845245131, guid: 0b3df4e3698d27f40931a2e2fea6adb3,
         type: 3}

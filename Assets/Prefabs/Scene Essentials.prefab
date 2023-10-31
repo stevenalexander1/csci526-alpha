@@ -1400,6 +1400,11 @@ PrefabInstance:
       propertyPath: tutorialManager
       value: 
       objectReference: {fileID: 5652595815400407525}
+    - target: {fileID: 8210127145872123357, guid: 11a2434a9353d2b4b9c9cecd6de96883,
+        type: 3}
+      propertyPath: GroundedRadius
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11a2434a9353d2b4b9c9cecd6de96883, type: 3}
 --- !u!4 &1941701541929111192 stripped
