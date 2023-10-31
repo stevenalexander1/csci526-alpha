@@ -30,14 +30,13 @@ public class CameraManager : MonoBehaviour
         // Find all Cinemachine Virtual Cameras in the scene
         CinemachineVirtualCamera[] allVirtualCameras = FindObjectsOfType<CinemachineVirtualCamera>();
         virtualCameras.AddRange(allVirtualCameras);
-        playerFollowCamera = GameObject.Find("PlayerFollowCamera");
         if (_mainCamera == null)
         {
             _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
             Debug.Log("Main camera found: " + _mainCamera.name);
         }
         // Activate PlayerFollowCamera
-        //ActivateCameraByObject(playerFollowCamera);
+        ActivateCameraByObject(playerFollowCamera);
         
     }
 

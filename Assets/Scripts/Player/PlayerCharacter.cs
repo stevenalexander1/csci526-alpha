@@ -17,15 +17,18 @@ public class PlayerCharacter : MonoBehaviour
     public CashChangedEventDelegate CashChangedEvent;
     [Header("References")] GameManager gameManager;
     UIManager uiManager;
+    [SerializeField] private GameObject _playerFollowCamera;
     [Header("Grabbables")] private GameObject _grabbableGameObject;
     private bool _canGrabObject = false;
 
-    [Header("Player State")] [SerializeField]
+    [Header("Player State")] 
+    [SerializeField]
     private float maxStealthMeter = 0.25f;
 
     private float currentStealthMeter;
     private int _cash = 0;
 
+    public GameObject PlayerFollowCamera => _playerFollowCamera;
     public float CurrentStealthMeter
     {
         get => currentStealthMeter;

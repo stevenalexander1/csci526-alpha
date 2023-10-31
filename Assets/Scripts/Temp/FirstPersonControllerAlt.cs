@@ -361,7 +361,7 @@ namespace StarterAssets
 			if (!_input.changePerspective) return;
 			//Analytics for R count 
 			SendToGoogle.setrCount(1);
-			Debug.Log("R Count : " + SendToGoogle.getrCount());
+			//Debug.Log("R Count : " + SendToGoogle.getrCount());
 			CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
 			Debug.Log(cameraManager.PlayerCameraActive);
 			if (!cameraManager.PlayerCameraActive)
@@ -380,7 +380,7 @@ namespace StarterAssets
 						cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
 						//Analytics for Camera count
 						SendToGoogle.setCameraCount(1);
-						Debug.Log("Camera Count : " + SendToGoogle.getCameraCount());
+						//Debug.Log("Camera Count : " + SendToGoogle.getCameraCount());
 					}
 				}
 			}
@@ -391,8 +391,12 @@ namespace StarterAssets
 		{			
 			CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
 			if (!_input.lastUsedCamera) return;
-			if (!cameraManager.PlayerCameraActive) return;
-			
+			if (!cameraManager.PlayerCameraActive)
+			{
+				_input.lastUsedCamera = false;
+				return;
+			}
+			Debug.Log("Accessing last used camera");
 			cameraManager.ActivateCameraByObject(cameraManager.LastUsedSecurityCamera);
 			_input.lastUsedCamera = false;
 		}
