@@ -43,7 +43,7 @@ public class LaserRayCast : MonoBehaviour
             {
                 lr.SetPosition(1, hit.point);
             }
-            if (hit.transform.tag == "Player")
+            if (hit.transform.CompareTag("Player"))
             {
                 _isGameOver = true;
                 Debug.Log("Player hit");

@@ -14,12 +14,14 @@ public class GameManager : MonoBehaviour
 
     private static int _currentLevelIndex = 0;
     
-    
-
     // Delegates
     public delegate void GameOverEventDelegate();
 
     public GameOverEventDelegate GameOverEvent;
+    
+    public delegate void LevelCompleteEventDelegate();
+    
+    public LevelCompleteEventDelegate LevelCompleteEvent;
     
     [Header("References")]
     [SerializeField] private UIManager uiManager;
@@ -75,11 +77,13 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         GameOverEvent += HandleGameOver;
+        LevelCompleteEvent += HandleLevelComplete;
     }
     
     private void OnDisable()
     {
         GameOverEvent -= HandleGameOver;
+        LevelCompleteEvent -= HandleLevelComplete;
     }
     
 
@@ -97,8 +101,15 @@ public class GameManager : MonoBehaviour
             return;
         }
         //SceneManager.LoadScene(levelManager.currentLevel.NextLevelSceneName);
+        if (SceneManager.GetActiveScene().buildIndex + 1 >= SceneManager.sceneCountInBuildSettings)
+        {
+            Debug.Log("No more levels to load!");
+            // Load main menu
+            SceneManager.LoadScene("BetaMainMenu");
+        }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+    
  
     
     public void RestartGame()
@@ -118,6 +129,15 @@ public class GameManager : MonoBehaviour
         //Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
     }
+    
+    private void HandleLevelComplete()
+    {
+        isGameOver = true;
+        Debug.Log("Level Complete!");
+        //Time.timeScale = 0;
+        Cursor.lockState = CursorLockMode.Confined;
+    }
+    
     
     public void PopInGameMenu()
     {

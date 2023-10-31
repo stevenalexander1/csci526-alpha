@@ -30,7 +30,4 @@ public class StealthBar : MonoBehaviour
         _stealthSlider.value = Mathf.Clamp(stealth, 0, _stealthSlider.maxValue);
 
     }
-
-    
-
 }
