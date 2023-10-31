@@ -12,6 +12,10 @@ public class GameManager : MonoBehaviour
     private static GameManager _instance;
     public static GameManager Instance => _instance;
 
+    private static int _currentLevelIndex = 0;
+    
+    
+
     // Delegates
     public delegate void GameOverEventDelegate();
 
@@ -26,8 +30,6 @@ public class GameManager : MonoBehaviour
     private GameObject _mainCamera;
     [Header("Level")] 
     [SerializeField] private List<Level> levels;
-    private Level currentLevel;
-    private int currentLevelIndex = 0;
     
     [Header("Game State")]
     private bool isGameOver = false; // Track game over state
@@ -82,6 +84,19 @@ public class GameManager : MonoBehaviour
     {
         if (isGameOver) return;
         GameOverEvent?.Invoke();
+    }
+    
+    public void LoadNextLevel()
+    {
+        if (_currentLevelIndex >= levels.Count)
+        {
+            Debug.Log("No more levels to load!");
+            return;
+        }
+        _currentLevelIndex++;
+        Level nextLevel = levels[_currentLevelIndex];
+        Debug.Log("Loading next level: " + nextLevel.SceneName);
+        SceneManager.LoadScene(nextLevel.SceneName);
     }
  
     

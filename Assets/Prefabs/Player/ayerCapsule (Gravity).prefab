@@ -99,6 +99,7 @@ MonoBehaviour:
   interact: 0
   changePerspective: 0
   lastUsedCamera: 0
+  inGameMenu: 0
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
@@ -218,7 +219,20 @@ MonoBehaviour:
   gravityManager: {fileID: 8629335909671255521}
   cameraManager: {fileID: 0}
   tutorialManager: {fileID: 0}
-  levels: []
+  levels:
+  - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}
+  - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}
+  - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}
+  - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}
+  - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}
+  - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}
+  - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}
+  - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}
+  - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}
+  - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}
+  - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}
+  - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}
+  - {fileID: 11400000, guid: 771203454af6bf345888736e5d3c9b08, type: 2}
 --- !u!114 &3565629667955505234
 MonoBehaviour:
   m_ObjectHideFlags: 0

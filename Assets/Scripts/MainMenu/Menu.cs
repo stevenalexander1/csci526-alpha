@@ -56,7 +56,7 @@ public class Menu : MonoBehaviour
         tut_map.Add("guard", "");
         tut_map.Add("hologram", "Holo-Tutorial");
         // easy
-        easy_map.Add("movement", "MoveEasy1");
+        easy_map.Add("movement", "MoveEasy");
         easy_map.Add("camera", "CameraEasyLevel");
         easy_map.Add("gravity", "GravitySection");
         easy_map.Add("laser", "LaserEasy");

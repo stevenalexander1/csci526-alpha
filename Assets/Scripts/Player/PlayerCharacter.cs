@@ -7,23 +7,22 @@ using UnityEngine.UI;
 
 public class PlayerCharacter : MonoBehaviour
 {
-    
     // Delegates
     public delegate void StealthMeterChangedEventDelegate(float prev, float next);
+
     public StealthMeterChangedEventDelegate StealthMeterChangedEvent;
 
     public delegate void CashChangedEventDelegate(int prev, int next);
+
     public CashChangedEventDelegate CashChangedEvent;
-    [Header("References")]
-    GameManager gameManager;
+    [Header("References")] GameManager gameManager;
     UIManager uiManager;
-    [Header("Grabbables")]
-    private GameObject _grabbableGameObject;
+    [Header("Grabbables")] private GameObject _grabbableGameObject;
     private bool _canGrabObject = false;
 
-    [Header("Player State")] 
-    [SerializeField]
+    [Header("Player State")] [SerializeField]
     private float maxStealthMeter = 0.25f;
+
     private float currentStealthMeter;
     private int _cash = 0;
 
@@ -44,48 +43,44 @@ public class PlayerCharacter : MonoBehaviour
         uiManager = gameManager.UIManager;
         uiManager.StealthBar.SetMaxStealth(maxStealthMeter);
     }
-    
+
     public void OnEnable()
     {
         StealthMeterChangedEvent += HandleStealthMeterChanged;
         CashChangedEvent += HandleCashChanged;
     }
-    
+
     public void OnDisable()
     {
         StealthMeterChangedEvent -= HandleStealthMeterChanged;
         CashChangedEvent -= HandleCashChanged;
     }
 
-  
+
     private void Update()
     {
-        
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("FinishLine")) {
-            if (_cash >= 1000)
-            {
-                gameManager.UIManager.GameOverText.text = "Mission Passed";
-                gameManager.GameOver();
-            }
-            else 
-            {
-                gameManager.UIManager.ToggleGameMessageText();
-            }
+        if (other.CompareTag("FinishLine"))
+        {
+            gameManager.UIManager.GameOverText.text = "Mission Passed";
+            gameManager.LoadNextLevel();
         }
+
         if (other.CompareTag("Message"))
         {
             gameManager.UIManager.ShowInstructionText(gameManager.TutorialManager.GetNextInstruction());
         }
+
         if (other.CompareTag("HarmfulTerrain"))
         {
             if (gameManager.IsGameOver) return;
             gameManager.GameOver();
         }
     }
-    
+
     private void OnTriggerStay(Collider other)
     {
         // Check if the grabber collided with an object that can be grabbed.
@@ -94,6 +89,7 @@ public class PlayerCharacter : MonoBehaviour
             _canGrabObject = true;
             _grabbableGameObject = other.gameObject;
         }
+
         if (other.CompareTag("Laser"))
         {
             if (gameManager.IsGameOver) return;
@@ -107,13 +103,16 @@ public class PlayerCharacter : MonoBehaviour
         {
             _canGrabObject = false;
             _grabbableGameObject = null;
-        }  
-        if (other.CompareTag("FinishLine")) {
+        }
+
+        if (other.CompareTag("FinishLine"))
+        {
             if (_cash < 1000)
             {
                 gameManager.UIManager.ToggleGameMessageText();
             }
         }
+
         if (other.CompareTag("Message"))
         {
             gameManager.UIManager.HideInstructionText();
@@ -124,25 +123,25 @@ public class PlayerCharacter : MonoBehaviour
     public void GrabObject()
     {
         Debug.Log("Grabbing object");
-        if (!_canGrabObject 
-            || !_grabbableGameObject 
+        if (!_canGrabObject
+            || !_grabbableGameObject
             || _grabbableGameObject.GetComponent<GrabbableObject>().IsGrabbed) return;
         GrabbableObject grabbableObject = _grabbableGameObject.GetComponent<GrabbableObject>();
         grabbableObject.IsGrabbed = true;
         _grabbableGameObject.SetActive(false);
         UpdateCash(grabbableObject.ItemValue);
     }
-    
+
     private void UpdateCash(int cash)
     {
         CashChangedEvent?.Invoke(_cash, _cash + cash);
     }
-    
+
     public void ChangeCurrentStealthValue(float value)
     {
         StealthMeterChangedEvent?.Invoke(currentStealthMeter, currentStealthMeter + value);
     }
-    
+
     private void HandleStealthMeterChanged(float prev, float next)
     {
         currentStealthMeter = next;
@@ -152,10 +151,9 @@ public class PlayerCharacter : MonoBehaviour
             gameManager.GameOver();
         }
     }
-    
+
     private void HandleCashChanged(int prev, int next)
     {
         _cash = next;
     }
-
 }
