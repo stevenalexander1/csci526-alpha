@@ -393,6 +393,7 @@ namespace StarterAssets
 			if (!_input.lastUsedCamera) return;
 			if (!cameraManager.PlayerCameraActive)
 			{
+				cameraManager.ActivateCameraByObject(cameraManager.PlayerFollowCamera);
 				_input.lastUsedCamera = false;
 				return;
 			}

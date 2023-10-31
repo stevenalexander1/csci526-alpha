@@ -33,6 +33,12 @@ EditorBuildSettings:
     path: Assets/Scenes/Laser/LaserEasy.unity
     guid: 9b8b55a3b33483346b21102baedb0965
   - enabled: 1
+    path: Assets/Scenes/Holographic/HoloTutorial.unity
+    guid: 5447fed5e6a12ce49ba5614a66d7aa1d
+  - enabled: 1
+    path: Assets/Scenes/Holographic/HoloMedium.unity
+    guid: c0e96b2849a5e7f43a7b4a9aa10d89eb
+  - enabled: 1
     path: Assets/Scenes/Guard/GuardTutorial.unity
     guid: 7be5fbdd7affc4dd2802de093fea75ee
   - enabled: 1
@@ -41,12 +47,6 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Guard/GuardMedium.unity
     guid: 1c2edb3cade0a4d5eb8a8050928ba08f
-  - enabled: 1
-    path: Assets/Scenes/Holographic/HoloTutorial.unity
-    guid: 5447fed5e6a12ce49ba5614a66d7aa1d
-  - enabled: 1
-    path: Assets/Scenes/Holographic/HoloMedium.unity
-    guid: c0e96b2849a5e7f43a7b4a9aa10d89eb
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
       type: 2}

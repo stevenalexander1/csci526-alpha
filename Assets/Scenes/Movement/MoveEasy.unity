@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -10497,6 +10497,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1719595420582445854, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: playerFollowCamera
+      value: 
+      objectReference: {fileID: 1719595422243323064}
     - target: {fileID: 1719595421011765856, guid: c204e08ad7d24dd40bb4c25d19d00911,
         type: 3}
       propertyPath: m_IsActive
@@ -10665,3 +10670,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0648d3ea5fddc0408612d958ea6869e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1719595422243323064 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7945720120830259927, guid: c204e08ad7d24dd40bb4c25d19d00911,
+    type: 3}
+  m_PrefabInstance: {fileID: 1719595422243323060}
+  m_PrefabAsset: {fileID: 0}

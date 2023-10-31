@@ -106,6 +106,7 @@ public class GameManager : MonoBehaviour
             Debug.Log("No more levels to load!");
             // Load main menu
             SceneManager.LoadScene("BetaMainMenu");
+            return;
         }
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }

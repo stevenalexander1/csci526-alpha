@@ -24560,6 +24560,12 @@ Transform:
   m_Father: {fileID: 1617479095}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1460788051 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7945720120830259927, guid: c204e08ad7d24dd40bb4c25d19d00911,
+    type: 3}
+  m_PrefabInstance: {fileID: 1719595422243323060}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1575427566
 Mesh:
   m_ObjectHideFlags: 0
@@ -34363,6 +34369,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1047375968542726304, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -15.000183
+      objectReference: {fileID: 0}
+    - target: {fileID: 1719595420582445854, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: playerFollowCamera
+      value: 
+      objectReference: {fileID: 1460788051}
     - target: {fileID: 1941701541929111192, guid: c204e08ad7d24dd40bb4c25d19d00911,
         type: 3}
       propertyPath: m_LocalPosition.x

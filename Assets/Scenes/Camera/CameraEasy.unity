@@ -51312,6 +51312,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -15.000122
       objectReference: {fileID: 0}
+    - target: {fileID: 1719595420582445854, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: playerFollowCamera
+      value: 
+      objectReference: {fileID: 1846862674}
     - target: {fileID: 1719595421011765856, guid: c204e08ad7d24dd40bb4c25d19d00911,
         type: 3}
       propertyPath: m_IsActive
@@ -51459,6 +51464,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c204e08ad7d24dd40bb4c25d19d00911, type: 3}
+--- !u!1 &1846862674 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7945720120830259927, guid: c204e08ad7d24dd40bb4c25d19d00911,
+    type: 3}
+  m_PrefabInstance: {fileID: 1846862673}
+  m_PrefabAsset: {fileID: 0}
 --- !u!43 &1860757628
 Mesh:
   m_ObjectHideFlags: 0
