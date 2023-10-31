@@ -148,7 +148,6 @@ public class PlayerCharacter : MonoBehaviour
     private void HandleStealthMeterChanged(float prev, float next)
     {
         currentStealthMeter = next;
-        Debug.Log("Stealth meter: " + currentStealthMeter);
         if (currentStealthMeter <= 0)
         {
             gameManager.GameOver();
