@@ -392,7 +392,7 @@ namespace StarterAssets
 			CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
 			if (!_input.lastUsedCamera) return;
 			if (!cameraManager.PlayerCameraActive) return;
-			
+			Debug.Log("Accessing last used camera");
 			cameraManager.ActivateCameraByObject(cameraManager.LastUsedSecurityCamera);
 			_input.lastUsedCamera = false;
 		}

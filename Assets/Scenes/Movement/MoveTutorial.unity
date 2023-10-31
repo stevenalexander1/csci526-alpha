@@ -21332,6 +21332,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3565629667955505234, guid: 11a2434a9353d2b4b9c9cecd6de96883,
+        type: 3}
+      propertyPath: _playerFollowCamera
+      value: 
+      objectReference: {fileID: 242398832}
     - target: {fileID: 8210127144717973435, guid: 11a2434a9353d2b4b9c9cecd6de96883,
         type: 3}
       propertyPath: checkpoint

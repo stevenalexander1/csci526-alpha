@@ -37,7 +37,7 @@ public class CameraManager : MonoBehaviour
             Debug.Log("Main camera found: " + _mainCamera.name);
         }
         // Activate PlayerFollowCamera
-        //ActivateCameraByObject(playerFollowCamera);
+        ActivateCameraByObject(playerFollowCamera);
         
     }
 
