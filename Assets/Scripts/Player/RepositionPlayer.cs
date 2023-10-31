@@ -5,15 +5,19 @@ using UnityEngine;
 public class RepositionPlayer : MonoBehaviour
 {
     // Add this to the holographic object
-    [SerializeField] private GameObject _player;
+    private GameObject _player;
     [SerializeField] private bool repositionX = true;
     [SerializeField] private bool repositionY = true;
     [SerializeField] private bool repositionZ = true;
+
+    private GameManager _gameManager;
 
     private Vector3 telePostion;
     void Start()
     {
         telePostion = transform.GetChild(0).position;
+        _gameManager = GameManager.Instance;
+        _player = _gameManager.PlayerCharacter.gameObject;
     }
 
     private void OnTriggerEnter(Collider other)

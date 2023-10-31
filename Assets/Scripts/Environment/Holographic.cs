@@ -9,9 +9,13 @@ public class Holographic : MonoBehaviour
     private GameObject obj;
     private GameManager _gameManager;
 
-    void Start()
+    private void Awake()
     {
         obj = transform.GetChild(0).gameObject;
+    }
+    void Start()
+    {
+        
         _gameManager = GameManager.Instance;
     }
 
