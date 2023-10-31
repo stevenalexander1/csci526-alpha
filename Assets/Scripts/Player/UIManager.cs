@@ -48,6 +48,7 @@ public class UIManager : MonoBehaviour
         if (_gameManager)
         {
             _gameManager.GameOverEvent += HandleGameOver;
+            _gameManager.LevelCompleteEvent += HandleLoadNextLevel;
             PlayerCharacter playerCharacter = _gameManager.PlayerCharacter;
             if (playerCharacter)
             {
@@ -68,6 +69,7 @@ public class UIManager : MonoBehaviour
         if (_gameManager)
         {
             _gameManager.GameOverEvent -= HandleGameOver;
+            _gameManager.LevelCompleteEvent -= HandleLoadNextLevel;
             PlayerCharacter playerCharacter = _gameManager.PlayerCharacter;
             if (playerCharacter)
             {
@@ -117,9 +119,28 @@ public class UIManager : MonoBehaviour
     private void HandleGameOver()
     {
         gameOverPanel.SetActive(true);
-        // Ienumerator to change text from "Respawning in 3..." and count down to 0
         StartCoroutine(RespawnCountdown());
     }
+
+    private void HandleLoadNextLevel()
+    {
+        gameOverPanel.SetActive(true);
+        StartCoroutine(LoadNextLevelCountdown());
+    }
+
+    IEnumerator LoadNextLevelCountdown()
+    {
+        int count = 3;
+        while (count > 0)
+        {
+            gameOverText.text = "Loading next level in " + count + "...";
+            count--;
+            yield return new WaitForSeconds(1);
+        }
+        gameOverText.text = "Loading next level in " + count + "...";
+        _gameManager.LoadNextLevel();
+    }
+    
 
     IEnumerator RespawnCountdown()
     {

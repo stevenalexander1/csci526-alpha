@@ -30732,7 +30732,7 @@ PrefabInstance:
     - target: {fileID: 6888467902013538992, guid: 788fc8d1905eebd499b04c213d885011,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.2028084
+      value: -3.75
       objectReference: {fileID: 0}
     - target: {fileID: 6888467902013538992, guid: 788fc8d1905eebd499b04c213d885011,
         type: 3}
@@ -30777,7 +30777,7 @@ PrefabInstance:
     - target: {fileID: 6888467902307792090, guid: 788fc8d1905eebd499b04c213d885011,
         type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 70
+      value: 80
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 788fc8d1905eebd499b04c213d885011, type: 3}

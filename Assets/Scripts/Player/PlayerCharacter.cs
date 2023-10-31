@@ -66,7 +66,7 @@ public class PlayerCharacter : MonoBehaviour
         if (other.CompareTag("FinishLine"))
         {
             gameManager.UIManager.GameOverText.text = "Mission Passed";
-            gameManager.LoadNextLevel();
+            gameManager.LevelCompleteEvent?.Invoke();
         }
 
         if (other.CompareTag("Message"))

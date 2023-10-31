@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -201,7 +201,7 @@ PrefabInstance:
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
@@ -1300,7 +1300,7 @@ PrefabInstance:
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
@@ -2054,7 +2054,7 @@ PrefabInstance:
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
@@ -2145,18 +2145,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1512213952}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &242398833 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8762286023885395323, guid: 9c489a8547f4d9e4387da15a4ff82c81,
-    type: 3}
-  m_PrefabInstance: {fileID: 1512213952}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242398832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &260799836
 GameObject:
   m_ObjectHideFlags: 0
@@ -4182,7 +4170,7 @@ PrefabInstance:
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
@@ -5807,7 +5795,7 @@ PrefabInstance:
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
@@ -6201,7 +6189,7 @@ PrefabInstance:
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
@@ -6434,10 +6422,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ee3c41c0a0547dd93fe0ed096c6724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameobject1: {fileID: 242398833}
-  textMesh: {fileID: 1275697355}
-  activeText: 
-  inactiveText: Press 'R' to re-enter First Person View
 --- !u!1001 &1299060889
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6478,7 +6462,7 @@ PrefabInstance:
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
@@ -17761,7 +17745,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 861271965, guid: c59e663febeb98f46ba47c930aa3ff23, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 861271967, guid: c59e663febeb98f46ba47c930aa3ff23, type: 3}
       propertyPath: playerCharacter
@@ -17774,12 +17758,12 @@ PrefabInstance:
     - target: {fileID: 94401144835223148, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}
       propertyPath: m_RootOrder
-      value: 9
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 810997944536485858, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}
       propertyPath: m_RootOrder
-      value: 10
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 810997944539072325, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}
@@ -17791,15 +17775,20 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: ResumeGame
       objectReference: {fileID: 0}
+    - target: {fileID: 1825149755774960989, guid: c59e663febeb98f46ba47c930aa3ff23,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -15.000168
+      objectReference: {fileID: 0}
     - target: {fileID: 4309738244652288469, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4309738244652288469, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4599793773000290475, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}
@@ -19656,7 +19645,7 @@ PrefabInstance:
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
@@ -19787,7 +19776,7 @@ PrefabInstance:
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
@@ -20207,7 +20196,7 @@ PrefabInstance:
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
@@ -20496,7 +20485,7 @@ PrefabInstance:
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
@@ -21053,7 +21042,7 @@ PrefabInstance:
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
@@ -21337,7 +21326,7 @@ PrefabInstance:
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
@@ -22113,7 +22102,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1366882176}
-  m_RootOrder: 11
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -22930,7 +22919,7 @@ PrefabInstance:
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
-      value: 3.2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
