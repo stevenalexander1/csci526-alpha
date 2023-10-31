@@ -40,36 +40,39 @@ public class Patrol : MonoBehaviour
         if (moveSpots.Count == 0)
             return;
 
-        // Calculate the direction to the next patrol point
-        Vector3 targetDirection = moveSpots[index].position - transform.position;
-
-        // Smoothly interpolate the rotation to the new look direction
-        targetRotation = Quaternion.LookRotation(targetDirection);
-        transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
-
         if (!isWaiting)
         {
             // Move towards the patrol point if not waiting
             transform.position = Vector3.MoveTowards(transform.position, moveSpots[index].position, speed * Time.deltaTime);
+        }
+        else
+        {
+            // Calculate the direction to the next patrol point and smoothly interpolate the rotation
+            Vector3 targetDirection = moveSpots[index].position - transform.position;
+            targetRotation = Quaternion.LookRotation(targetDirection);
+            transform.rotation = Quaternion.Slerp(transform.rotation, targetRotation, Time.deltaTime * rotationSpeed);
+        }
 
-            if (Vector3.Distance(transform.position, moveSpots[index].position) < 0.2f)
+        if (Vector3.Distance(transform.position, moveSpots[index].position) < 0.2f)
+        {
+            if (!isWaiting)
             {
                 // Start waiting when reaching the patrol point
                 isWaiting = true;
             }
-        }
-        else
-        {
-            // Handle waiting logic
-            waitTime -= Time.deltaTime;
-            if (waitTime <= 0)
+            else
             {
-                // Stop waiting and continue patrolling
-                isWaiting = false;
-                if (index == 0 || index == moveSpots.Count - 1)
-                    increment *= -1;
-                index += increment;
-                waitTime = startWaitTime;
+                // Handle waiting logic
+                waitTime -= Time.deltaTime;
+                if (waitTime <= 0)
+                {
+                    // Stop waiting and continue patrolling
+                    isWaiting = false;
+                    if (index == 0 || index == moveSpots.Count - 1)
+                        increment *= -1;
+                    index += increment;
+                    waitTime = startWaitTime;
+                }
             }
         }
     }
