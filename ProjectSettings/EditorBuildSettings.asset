@@ -6,38 +6,47 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/BetaSandbox.unity
-    guid: 95ecf928a1428ea49a4b854ec69db3a5
-  - enabled: 1
     path: Assets/Scenes/MainAndIn-gameMenu/BetaMainMenu.unity
     guid: d1465b14743622a4fbf2995d56425f5a
-  - enabled: 0
-    path: Assets/Scenes/MainAndIn-gameMenu/VinuthaInGameMenu.unity
-    guid: 2fecffca9a518b94f9b03a8b054f27cf
   - enabled: 1
     path: Assets/Scenes/Movement/MoveTutorial.unity
     guid: 72899688aa65b98499530cff51c00ea9
   - enabled: 1
-    path: Assets/Scenes/Movement/MoveSection2.unity
-    guid: ed2e4ee792387874daef4f3e40047784
-  - enabled: 1
-    path: Assets/Scenes/Gravity/GravitySection.unity
-    guid: b630463b54c58ca4f9af75137ffebbcf
+    path: Assets/Scenes/Movement/MoveEasy.unity
+    guid: ee1023516f97470489e576b60786b633
   - enabled: 1
     path: Assets/Scenes/Camera/CameraTutorial.unity
     guid: 12ba73299533d134092bbf5fc5ea4494
   - enabled: 1
-    path: Assets/Scenes/Holographic/Holo-Tutorial.unity
-    guid: 5447fed5e6a12ce49ba5614a66d7aa1d
+    path: Assets/Scenes/Camera/CameraEasy.unity
+    guid: 45dca8e7ad5bc2b4ba911af65c15978e
   - enabled: 1
-    path: Assets/Scenes/Movement/MoveEasy1.unity
-    guid: ee1023516f97470489e576b60786b633
+    path: Assets/Scenes/Gravity/GravityTutorial.unity
+    guid: b630463b54c58ca4f9af75137ffebbcf
   - enabled: 1
-    path: Assets/Scenes/LaserTutorial/LaserTutorial.unity
+    path: Assets/Scenes/Gravity/GravityEasy.unity
+    guid: dc721a6042f85f740a1e4c6dee83a5ed
+  - enabled: 1
+    path: Assets/Scenes/Laser/LaserTutorial.unity
     guid: b4451650300ea8b488bdef12201fcbe8
   - enabled: 1
-    path: Assets/Scenes/LaserTutorial/LaserEasy.unity
+    path: Assets/Scenes/Laser/LaserEasy.unity
     guid: 9b8b55a3b33483346b21102baedb0965
+  - enabled: 1
+    path: Assets/Scenes/Guard/GuardTutorial.unity
+    guid: 7be5fbdd7affc4dd2802de093fea75ee
+  - enabled: 1
+    path: Assets/Scenes/Guard/GuardEasy.unity
+    guid: 27cc7167e0bd449d68e63ecb66f114b1
+  - enabled: 1
+    path: Assets/Scenes/Guard/GuardMedium.unity
+    guid: 1c2edb3cade0a4d5eb8a8050928ba08f
+  - enabled: 1
+    path: Assets/Scenes/Holographic/HoloTutorial.unity
+    guid: 5447fed5e6a12ce49ba5614a66d7aa1d
+  - enabled: 1
+    path: Assets/Scenes/Holographic/HoloMedium.unity
+    guid: c0e96b2849a5e7f43a7b4a9aa10d89eb
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7,
       type: 2}

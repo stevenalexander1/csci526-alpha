@@ -63,7 +63,6 @@ public class GravityManager : MonoBehaviour
             return;
         }
         SecurityCameraComponent securityCameraComponent = cam.GetComponentInParent<SecurityCameraComponent>();
-        Debug.Log("HandleCameraChangedEvent: " + securityCameraComponent);
         if (securityCameraComponent != null && securityCameraComponent.DoesInvertGravity)
         {
             InvertGravity();
