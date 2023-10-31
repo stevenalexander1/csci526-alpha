@@ -2685,6 +2685,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1719595420582445854, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: playerFollowCamera
+      value: 
+      objectReference: {fileID: 691306024}
     - target: {fileID: 1941701541929111192, guid: c204e08ad7d24dd40bb4c25d19d00911,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2809,6 +2814,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0648d3ea5fddc0408612d958ea6869e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &691306024 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7945720120830259927, guid: c204e08ad7d24dd40bb4c25d19d00911,
+    type: 3}
+  m_PrefabInstance: {fileID: 691306022}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &709118737 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7959201152282057398, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
