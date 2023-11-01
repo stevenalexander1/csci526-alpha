@@ -49,6 +49,7 @@ public class UIManager : MonoBehaviour
         {
             _gameManager.GameOverEvent += HandleGameOver;
             _gameManager.LevelCompleteEvent += HandleLoadNextLevel;
+            _gameManager.PauseGameEvent += HandlePauseGame;
             PlayerCharacter playerCharacter = _gameManager.PlayerCharacter;
             if (playerCharacter)
             {
@@ -63,13 +64,16 @@ public class UIManager : MonoBehaviour
         }
     }
 
-   
+    
+
+
     private void OnDisable()
     {
         if (_gameManager)
         {
             _gameManager.GameOverEvent -= HandleGameOver;
             _gameManager.LevelCompleteEvent -= HandleLoadNextLevel;
+            _gameManager.PauseGameEvent -= HandlePauseGame;
             PlayerCharacter playerCharacter = _gameManager.PlayerCharacter;
             if (playerCharacter)
             {
@@ -99,6 +103,8 @@ public class UIManager : MonoBehaviour
         cameraBar.SetActive(!cameraBar.activeInHierarchy);
     }
     
+    
+    
     public void ToggleGameMessageText()
     {
         if (GameMessageText == null) return;
@@ -116,6 +122,10 @@ public class UIManager : MonoBehaviour
         StartCoroutine(FadeTextToZeroAlpha(0.15f, instructions));
     }
 
+    private void HandlePauseGame()
+    {
+        InGamePanel.SetActive(true);
+    }
     private void HandleGameOver()
     {
         gameOverPanel.SetActive(true);
@@ -135,7 +145,7 @@ public class UIManager : MonoBehaviour
         {
             gameOverText.text = "Loading next level in " + count + "...";
             count--;
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
         }
         gameOverText.text = "Loading next level in " + count + "...";
         _gameManager.LoadNextLevel();
@@ -150,7 +160,7 @@ public class UIManager : MonoBehaviour
         {
             gameOverText.text = "Respawning in " + count + "...";
             count--;
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(0.5f);
         }
         gameOverText.text = "Respawning in " + count + "...";
         _gameManager.RestartGame();

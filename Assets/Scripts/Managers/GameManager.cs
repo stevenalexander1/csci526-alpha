@@ -23,6 +23,10 @@ public class GameManager : MonoBehaviour
     
     public LevelCompleteEventDelegate LevelCompleteEvent;
     
+    public delegate void PauseGameEventDelegate();
+    
+    public PauseGameEventDelegate PauseGameEvent;
+    
     [Header("References")]
     [SerializeField] private UIManager uiManager;
     [SerializeField] private PlayerCharacter playerCharacter;
@@ -35,9 +39,12 @@ public class GameManager : MonoBehaviour
     [SerializeField] private List<Level> levels;
     
     [Header("Game State")]
-    private bool isGameOver = false; // Track game over state
+    private bool _isGameOver = false; // Track game over state
+    private bool _isPaused = false; // Track pause state
+    public bool IsGameOver => _isGameOver;
     
-    public bool IsGameOver => isGameOver;
+    public bool IsPaused => _isPaused;
+
     public UIManager UIManager => uiManager;
     
     public PlayerCharacter PlayerCharacter => playerCharacter;
@@ -78,6 +85,7 @@ public class GameManager : MonoBehaviour
     {
         GameOverEvent += HandleGameOver;
         LevelCompleteEvent += HandleLevelComplete;
+         
     }
     
     private void OnDisable()
@@ -89,7 +97,7 @@ public class GameManager : MonoBehaviour
 
     public void GameOver()
     {
-        if (isGameOver) return;
+        if (_isGameOver) return;
         GameOverEvent?.Invoke();
     }
     
@@ -115,42 +123,47 @@ public class GameManager : MonoBehaviour
     
     public void RestartGame()
     {
-        if (!isGameOver) return;
-        isGameOver = false;
+        //if (!isGameOver) return;
+        _isGameOver = false;
+        _isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
         uiManager.GameOverPanel.SetActive(false);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
     }
     
+    private void HandlePauseGame()
+    {
+        
+    }
     private void HandleGameOver()
     {
-        isGameOver = true;
+        _isGameOver = true;
         Debug.Log("Game Over!");
-        //Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
     }
     
     private void HandleLevelComplete()
     {
-        isGameOver = true;
+        _isGameOver = true;
         Debug.Log("Level Complete!");
-        //Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
     }
     
     
     public void PopInGameMenu()
     {
-        if (isGameOver) return;
-        uiManager.InGamePanel.SetActive(true);
+        if (_isGameOver) return;
+        PauseGameEvent?.Invoke();
+        _isPaused = true;
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
     }
 
     public void ResumeGame()
     {
-        isGameOver = false;
+        _isGameOver = false;
+        _isPaused = false;
         uiManager.InGamePanel.SetActive(false);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
@@ -158,7 +171,8 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
-        isGameOver = false;
+        _isGameOver = false;
+        _isPaused = false;
         SceneManager.LoadScene("BetaMainMenu"); 
         Time.timeScale = 1;
     }

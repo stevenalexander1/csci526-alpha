@@ -120,7 +120,7 @@ namespace StarterAssets
 
 		private void Update()
 		{
-			if (!_gameManager.IsGameOver)
+			if (!_gameManager.IsGameOver && !_gameManager.IsPaused)
 			{
 				JumpAndGravity();
 				GroundedCheck();
@@ -133,7 +133,7 @@ namespace StarterAssets
 
 		private void LateUpdate()
 		{
-			if (!_gameManager.IsGameOver)
+			if (!_gameManager.IsGameOver && !_gameManager.IsPaused)
 			{
 				CameraRotation();
 			}
