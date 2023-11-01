@@ -33,7 +33,6 @@ public class CameraManager : MonoBehaviour
         if (_mainCamera == null)
         {
             _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
-            Debug.Log("Main camera found: " + _mainCamera.name);
         }
         // Activate PlayerFollowCamera
         ActivateCameraByObject(playerFollowCamera);
@@ -75,7 +74,6 @@ public class CameraManager : MonoBehaviour
         // Deactivate all cameras
         if (null == cameraObject) return;
         DeactivateAllCameras();
-        Debug.Log("Activating camera: " + cameraObject.name);
         // Activate the specified camera
         cameraObject.SetActive(true);
         _currentActiveCamera = cameraObject;
@@ -86,7 +84,6 @@ public class CameraManager : MonoBehaviour
     {
         // Deactivate all cameras
         DeactivateAllCameras();
-        Debug.Log("Activating camera: " + securityCameraComponent.gameObject.name);
         // Activate the specified camera
         securityCameraComponent.gameObject.SetActive(true);
         _currentActiveCamera = securityCameraComponent.SecurityCamera;
