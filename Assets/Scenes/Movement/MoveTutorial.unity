@@ -16955,7 +16955,7 @@ PrefabInstance:
     - target: {fileID: 6462444594475015192, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}
       propertyPath: instructions.Array.data[0]
-      value: W,A,S,D to Move <br> SHIFT to Sprint
+      value: W,A,S,D to Move
       objectReference: {fileID: 0}
     - target: {fileID: 6462444594475015192, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}

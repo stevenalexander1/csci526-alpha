@@ -60,7 +60,7 @@ namespace StarterAssets
 		private float _speed;
 		private float _rotationVelocity;
 		private float _verticalVelocity;
-		private float _terminalVelocity = 53.0f;
+		private float _terminalVelocity = 20.0f;
 		private PlayerCharacter _playerCharacter;
 		// timeout deltatime
 		private float _jumpTimeoutDelta;
@@ -212,7 +212,6 @@ namespace StarterAssets
 			}
 
 			// move the player
-			//Debug.Log(_verticalVelocity);
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 		}
 
@@ -264,7 +263,7 @@ namespace StarterAssets
 				}
 
 				// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-				if (-_verticalVelocity > -_terminalVelocity)
+				if (_terminalVelocity > -_verticalVelocity)
 				{
 					//Debug.Log("gravity");
 					_verticalVelocity += Gravity * Time.deltaTime;
@@ -316,7 +315,7 @@ namespace StarterAssets
 				}
 
 				// apply gravity over time if under terminal (multiply by delta time twice to linearly speed up over time)
-				if (_verticalVelocity < _terminalVelocity)
+				if (-_terminalVelocity <_verticalVelocity)
 				{
 					//Debug.Log("gravity");
 					_verticalVelocity += Gravity * Time.deltaTime;
