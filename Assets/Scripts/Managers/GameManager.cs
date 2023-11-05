@@ -78,7 +78,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        levelManager = LevelManager.Instance;
+        levelManager = LevelManager.Instance;  
     }
 
     private void OnEnable()
@@ -111,6 +111,15 @@ public class GameManager : MonoBehaviour
         //SceneManager.LoadScene(levelManager.currentLevel.NextLevelSceneName);
         if (SceneManager.GetActiveScene().buildIndex + 1 >= SceneManager.sceneCountInBuildSettings)
         {
+            // Send Analytics:
+            if (SendToGoogle.prevSessionID != SendToGoogle.getSessionId())
+            {
+
+                gameObject.GetComponent<AnalyticsManager>().Send();
+                SendToGoogle.prevSessionID = SendToGoogle.getSessionId();
+                SendToGoogle.resetParameters();
+            }
+
             Debug.Log("No more levels to load!");
             // Load main menu
             SceneManager.LoadScene("BetaMainMenu");
@@ -148,6 +157,20 @@ public class GameManager : MonoBehaviour
         _isGameOver = true;
         Debug.Log("Level Complete!");
         Cursor.lockState = CursorLockMode.Confined;
+
+        // Analytics:
+        if(SendToGoogle.getPlayerDieCount()>3)
+        {
+            SendToGoogle.setPlayerFailLevels(SceneManager.GetActiveScene().name);
+            Debug.Log("Setting failed level"+ SendToGoogle.getPlayerFailLevels());
+        }
+        else
+        {
+            SendToGoogle.setPlayerPassLevels(SceneManager.GetActiveScene().name);
+            Debug.Log("Setting Passed level" + SendToGoogle.getPlayerPassLevels());
+        }
+        SendToGoogle.setPlayerDieCount(-SendToGoogle.getPlayerDieCount());
+        Debug.Log("Reset Die Count"+SendToGoogle.getPlayerDieCount());
     }
     
     
@@ -175,5 +198,15 @@ public class GameManager : MonoBehaviour
         _isPaused = false;
         SceneManager.LoadScene("BetaMainMenu"); 
         Time.timeScale = 1;
+
+        // Send analytics
+        Debug.Log("Quit game");
+        if(SendToGoogle.prevSessionID!=SendToGoogle.getSessionId())
+        {
+           
+            gameObject.GetComponent<AnalyticsManager>().Send();
+            SendToGoogle.prevSessionID = SendToGoogle.getSessionId();
+            SendToGoogle.resetParameters();
+        }
     }
 }
