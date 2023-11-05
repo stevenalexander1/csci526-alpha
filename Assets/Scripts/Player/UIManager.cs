@@ -163,6 +163,11 @@ public class UIManager : MonoBehaviour
             yield return new WaitForSeconds(0.5f);
         }
         gameOverText.text = "Respawning in " + count + "...";
+
+        //Analytics: increase die count
+        SendToGoogle.setPlayerDieCount(1);
+        Debug.Log("Die Count"+SendToGoogle.getPlayerDieCount());
+
         _gameManager.RestartGame();
     }
 

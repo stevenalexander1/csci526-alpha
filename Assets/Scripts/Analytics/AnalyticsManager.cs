@@ -1,14 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Web;
 using UnityEngine;
 using UnityEngine.Networking;
 
 public class AnalyticsManager : MonoBehaviour
 {
     private string URL;
-    public GameObject checkpoint;
-
+ 
     // Start is called before the first frame update
     
     void Start()
@@ -21,48 +21,48 @@ public class AnalyticsManager : MonoBehaviour
     {
 
     }
-    #if !UNITY_EDITOR
+   
     private void Awake()
     {
         // For Analytics:
         SendToGoogle.setSessionId(DateTime.Now.Ticks);
     }
 
+   
+
     public void Send()
     {
         // Assign variables
-        URL = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSeTkEB_0KQ9_WZ4IDevxjPEKgVs28y3uYIxHBQnGPF2MyvGng/formResponse";
-       // SendToGoogle.setCameraCount(UnityEngine.Random.Range(0, 101) ); 
-       // SendToGoogle.setrCount(UnityEngine.Random.Range(0, 101));
-       
-        SendToGoogle.setPlayerPosition(transform.position);
-        SendToGoogle.setCheckpointPosition(checkpoint.transform.position);
+        URL = "https://docs.google.com/forms/u/1/d/e/1FAIpQLSc2qypU9cSSGMJ3e-wkbSoxs7b-DXlTFtE_Hh4koQizjJZb_g/formResponse";
 
         string sid = SendToGoogle.getSessionId().ToString();
         string c_count = SendToGoogle.getCameraCount().ToString();
         string r_count = SendToGoogle.getrCount().ToString();
-        string player_pos = SendToGoogle.getPlayerPosition().ToString();
-        string checkpoint_pos = SendToGoogle.getCheckpointPosition().ToString();
-        StartCoroutine(Post(sid, c_count,r_count,player_pos, checkpoint_pos));
+        string pass_levels = SendToGoogle.getPlayerPassLevels().ToString();
+        string fail_levels = SendToGoogle.getPlayerFailLevels().ToString();
+        StartCoroutine(Post(sid, c_count,r_count,pass_levels, fail_levels));
 
 
     }
 
 
 
-    private IEnumerator Post(string sessionID, string cameraCount, string rCount, string playerPosition, string checkpointPosition)
+    public IEnumerator Post(string sessionID, string cameraCount, string rCount, string passLevels, string failLevels)
     {
+        
         // Create the form and enter responses
         WWWForm form = new WWWForm();
-        form.AddField("entry.216176141", sessionID);
-        form.AddField("entry.790488099", cameraCount);
-        form.AddField("entry.950443003", rCount);
-        form.AddField("entry.47542420", playerPosition);
-        form.AddField("entry.724589010", checkpointPosition);
+        form.AddField("entry.1045228917", sessionID);
+        form.AddField("entry.2000942908", cameraCount);
+        form.AddField("entry.159052367", rCount);
+        form.AddField("entry.1717970724", passLevels);
+        form.AddField("entry.1476162569", failLevels);
+       
 
-        // Send responses and verify result
+        // Send responses and verify result 
         using (UnityWebRequest www = UnityWebRequest.Post(URL, form))
         {
+           
             yield return www.SendWebRequest();
             if (www.result != UnityWebRequest.Result.Success)
             {
@@ -74,17 +74,19 @@ public class AnalyticsManager : MonoBehaviour
             }
         }
 
-
-
-
     }
 void OnApplicationQuit()
     {
-        // Gather and send necessary data to your analytics system here
-        Send();
+        // Send data to google forms.
+        if (SendToGoogle.prevSessionID != SendToGoogle.getSessionId())
+        {
+            Send();
+            SendToGoogle.prevSessionID = SendToGoogle.getSessionId();
+            SendToGoogle.resetParameters();
+        }
+
     }
 
-#endif
 
 
 

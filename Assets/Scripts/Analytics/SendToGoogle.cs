@@ -6,9 +6,24 @@ public  static  class SendToGoogle
     private static long _sessionID;
     private static int _cameraCount=0;
     private static int _rCount=0;
-    private static Vector3  _playerPosition;
-    private static Vector3 _checkpointPosition;
-    
+
+    //for player level success
+    private static int _playerDieCount = 0;
+    private static string _playerPassLevels = " ";
+    private static string _playerFailLevels = " ";
+    public static long prevSessionID=0;
+
+
+    public static void resetParameters()
+    {
+        _playerFailLevels = "";
+        _playerPassLevels = "";
+        _playerDieCount = 0;
+        _cameraCount = 0;
+        _rCount = 0;
+        _sessionID = System.DateTime.Now.Ticks;
+
+    }
     public static void setSessionId(long s_id)
     {
         _sessionID = s_id;
@@ -21,13 +36,17 @@ public  static  class SendToGoogle
     {
         _rCount += count;
     }
-    public static void setPlayerPosition(Vector3 pos)
+    public static  void setPlayerDieCount(int count)
     {
-        _playerPosition = pos;
+        _playerDieCount += count;
     }
-    public static void setCheckpointPosition(Vector3 pos)
+    public static void setPlayerPassLevels(string str)
     {
-        _checkpointPosition = pos;
+        _playerPassLevels += str+",";
+    }
+    public static void setPlayerFailLevels(string str)
+    {
+        _playerFailLevels += str + ",";
     }
 
     // getter
@@ -43,16 +62,21 @@ public  static  class SendToGoogle
     {
         return _rCount;
     }
-    public static Vector3 getPlayerPosition()
+    
+    public static int getPlayerDieCount()
     {
-        return _playerPosition ;
+        return _playerDieCount;
     }
-    public static Vector3 getCheckpointPosition()
+    public static string getPlayerPassLevels()
     {
-       return  _checkpointPosition;
+        return _playerPassLevels;
+    }
+    public static string getPlayerFailLevels()
+    {
+        return _playerFailLevels;
     }
 
 
 
-   
+
 }
