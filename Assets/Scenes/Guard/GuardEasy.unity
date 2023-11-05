@@ -5961,6 +5961,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Essentials
       objectReference: {fileID: 0}
+    - target: {fileID: 7362542956513988160, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: _lvlName
+      value: 
+      objectReference: {fileID: 1037340888}
     - target: {fileID: 7720791089945083129, guid: c204e08ad7d24dd40bb4c25d19d00911,
         type: 3}
       propertyPath: near clip plane
@@ -6026,6 +6031,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1037340885}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1037340888 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2242769829047343784, guid: c204e08ad7d24dd40bb4c25d19d00911,
+    type: 3}
+  m_PrefabInstance: {fileID: 1037340885}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1071087624 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7205643305772174581, guid: 0ddd1b9ea63fdd1448f0dfa608388583,

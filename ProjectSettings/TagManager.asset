@@ -15,6 +15,7 @@ TagManager:
   - HarmfulTerrain
   - DoorButton
   - Button
+  - LevelName
   layers:
   - Default
   - TransparentFX

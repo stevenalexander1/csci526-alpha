@@ -11382,6 +11382,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 934666241}
     - target: {fileID: 2109684790, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: _lvlName
+      value: 
+      objectReference: {fileID: 1366882176}
+    - target: {fileID: 2109684790, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: uiManager
       value: 
       objectReference: {fileID: 1473374040}
@@ -11704,6 +11708,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1366882174}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1366882176 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 631297427416680277, guid: c59e663febeb98f46ba47c930aa3ff23,
+    type: 3}
+  m_PrefabInstance: {fileID: 1366882174}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1384676243
 GameObject:
   m_ObjectHideFlags: 0
