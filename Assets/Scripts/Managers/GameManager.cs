@@ -249,4 +249,9 @@ public class GameManager : MonoBehaviour
             SendToGoogle.resetParameters();
         }
     }
+
+    public void ButtonRestart()
+    {
+        RestartGame();
+    }
 }

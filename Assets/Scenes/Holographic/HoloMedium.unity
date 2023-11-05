@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -34564,6 +34564,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -15.000183
+      objectReference: {fileID: 0}
+    - target: {fileID: 1242667137540543959, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1719595422243323062}
+    - target: {fileID: 1242667137540543959, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonRestart
       objectReference: {fileID: 0}
     - target: {fileID: 1719595420582445854, guid: c204e08ad7d24dd40bb4c25d19d00911,
         type: 3}
