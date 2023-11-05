@@ -133,12 +133,14 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         //if (!isGameOver) return;
+
         _isGameOver = false;
         _isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
         uiManager.GameOverPanel.SetActive(false);
         Time.timeScale = 1;
         Cursor.lockState = CursorLockMode.Locked;
+
     }
     
     private void HandlePauseGame()
@@ -158,19 +160,57 @@ public class GameManager : MonoBehaviour
         Debug.Log("Level Complete!");
         Cursor.lockState = CursorLockMode.Confined;
 
-        // Analytics:
+        // Analytics 2:
         if(SendToGoogle.getPlayerDieCount()>3)
         {
             SendToGoogle.setPlayerFailLevels(SceneManager.GetActiveScene().name);
-            Debug.Log("Setting failed level"+ SendToGoogle.getPlayerFailLevels());
+            //Debug.Log("Setting failed level"+ SendToGoogle.getPlayerFailLevels());
         }
         else
         {
             SendToGoogle.setPlayerPassLevels(SceneManager.GetActiveScene().name);
-            Debug.Log("Setting Passed level" + SendToGoogle.getPlayerPassLevels());
+            //Debug.Log("Setting Passed level" + SendToGoogle.getPlayerPassLevels());
         }
         SendToGoogle.setPlayerDieCount(-SendToGoogle.getPlayerDieCount());
-        Debug.Log("Reset Die Count"+SendToGoogle.getPlayerDieCount());
+        //Debug.Log("Reset Die Count"+SendToGoogle.getPlayerDieCount());
+
+        //Analytics 3: Player vs Laser
+        if(SendToGoogle.laserExists)
+        {
+            if (SendToGoogle.getIsLaserDeath())
+            {
+                SendToGoogle.setLaserFailLevels(SceneManager.GetActiveScene().name);
+                //Debug.Log("Fail laser level" + SendToGoogle.getLaserFailLevels());
+            }
+            else
+            {
+                SendToGoogle.setLaserPassLevels(SceneManager.GetActiveScene().name);
+                //Debug.Log("Pass laser level" + SendToGoogle.getLaserPassLevels());
+            }
+            SendToGoogle.setIsLaserDeath(false);
+            SendToGoogle.laserExists = false;
+        }
+        
+        //Analytics 4: Player vs Guard
+        if(SendToGoogle.guardExists)
+        {
+            if (SendToGoogle.getIsGuardDeath())
+            {
+                SendToGoogle.setGuardFailLevels(SceneManager.GetActiveScene().name);
+                //Debug.Log("Fail guard level" + SendToGoogle.getGuardFailLevels());
+            }
+            else
+            {
+                SendToGoogle.setGuardPassLevels(SceneManager.GetActiveScene().name);
+                //Debug.Log("Pass guard level" + SendToGoogle.getGuardPassLevels());
+            }
+            SendToGoogle.setIsGuardDeath(false);
+            SendToGoogle.guardExists = false;
+
+        }
+        
+
+
     }
     
     

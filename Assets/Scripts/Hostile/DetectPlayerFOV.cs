@@ -36,6 +36,7 @@ public class DetectPlayerFOV : MonoBehaviour
     {
         StartCoroutine(DetectFOV());
         gameManager = _player.GetComponent<GameManager>();
+        SendToGoogle.guardExists = true;
     }
 
     private IEnumerator MakeLightVisible()
@@ -82,6 +83,9 @@ public class DetectPlayerFOV : MonoBehaviour
 
                 if (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, obstructionMask)) // Check if a raycast is not hitting an obstruction
                 {
+                    // Analytics 4: Player vs Guard
+                    SendToGoogle.setIsGuardDeath(true);
+
                     _canSeePlayer = true;
                     _player.GetComponent<PlayerCharacter>().ChangeCurrentStealthValue(-10);
                     StartCoroutine(MakeLightVisible());
