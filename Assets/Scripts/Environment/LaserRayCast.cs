@@ -31,6 +31,7 @@ public class LaserRayCast : MonoBehaviour
         
         _gameManager = GameManager.Instance;
         _playerCharacter = _gameManager.PlayerCharacter;
+        SendToGoogle.laserExists = true;
     }
 
     void Update()
@@ -48,6 +49,9 @@ public class LaserRayCast : MonoBehaviour
             if (hit.transform.parent.gameObject == _playerCharacter.gameObject
                  || hit.transform.gameObject == _playerCharacter.gameObject)
             {
+                // Analytics 3: Player vs Laser
+                SendToGoogle.setIsLaserDeath(true);
+
                 _playerCharacter.ChangeCurrentStealthValue(-Time.deltaTime);
             }
         }
