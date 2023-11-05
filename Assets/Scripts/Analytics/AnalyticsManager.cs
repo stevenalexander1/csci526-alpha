@@ -40,14 +40,19 @@ public class AnalyticsManager : MonoBehaviour
         string r_count = SendToGoogle.getrCount().ToString();
         string pass_levels = SendToGoogle.getPlayerPassLevels().ToString();
         string fail_levels = SendToGoogle.getPlayerFailLevels().ToString();
-        StartCoroutine(Post(sid, c_count,r_count,pass_levels, fail_levels));
+        string laser_pass = SendToGoogle.getLaserPassLevels().ToString();
+        string laser_fail = SendToGoogle.getLaserFailLevels().ToString();
+        string guard_pass = SendToGoogle.getGuardPassLevels().ToString();
+        string guard_fail = SendToGoogle.getGuardFailLevels().ToString();
+
+        StartCoroutine(Post(sid, c_count,r_count,pass_levels, fail_levels,laser_pass,laser_fail,guard_pass,guard_fail));
 
 
     }
 
 
 
-    public IEnumerator Post(string sessionID, string cameraCount, string rCount, string passLevels, string failLevels)
+    public IEnumerator Post(string sessionID, string cameraCount, string rCount, string passLevels, string failLevels,string laser_pass,string laser_fail,string guard_pass,string guard_fail)
     {
         
         // Create the form and enter responses
@@ -57,7 +62,11 @@ public class AnalyticsManager : MonoBehaviour
         form.AddField("entry.159052367", rCount);
         form.AddField("entry.1717970724", passLevels);
         form.AddField("entry.1476162569", failLevels);
-       
+        form.AddField("entry.122221755", laser_pass);
+        form.AddField("entry.785915813", laser_fail);
+        form.AddField("entry.550389176", guard_pass);
+        form.AddField("entry.1720907055", guard_fail);
+
 
         // Send responses and verify result 
         using (UnityWebRequest www = UnityWebRequest.Post(URL, form))
