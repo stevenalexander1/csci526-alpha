@@ -21,18 +21,18 @@ public class PlayerCharacter : MonoBehaviour
     [Header("Grabbables")] private GameObject _grabbableGameObject;
     private bool _canGrabObject = false;
 
-    [Header("Player State")] 
-    [SerializeField]
+    [Header("Player State")] [SerializeField]
     private float maxStealthMeter = 0.25f;
-
-    private float currentStealthMeter;
+    private float _currentStealthMeter;
     private int _cash = 0;
-
+    private bool _inRangeOfInteractable = false;
+    private GameObject interactable = null;
     public GameObject PlayerFollowCamera => _playerFollowCamera;
+
     public float CurrentStealthMeter
     {
-        get => currentStealthMeter;
-        set => currentStealthMeter = value;
+        get => _currentStealthMeter;
+        set => _currentStealthMeter = value;
     }
 
     private void Awake()
@@ -41,7 +41,7 @@ public class PlayerCharacter : MonoBehaviour
 
     public void Start()
     {
-        currentStealthMeter = maxStealthMeter;
+        _currentStealthMeter = maxStealthMeter;
         gameManager = GetComponent<GameManager>();
         uiManager = gameManager.UIManager;
         uiManager.StealthBar.SetMaxStealth(maxStealthMeter);
@@ -98,6 +98,12 @@ public class PlayerCharacter : MonoBehaviour
             if (gameManager.IsGameOver) return;
             ChangeCurrentStealthValue(-Time.deltaTime);
         }
+
+        if (other.GetComponent<DoorController>() != null)
+        {
+            _inRangeOfInteractable = true;
+            interactable = other.gameObject;
+        }
     }
 
     private void OnTriggerExit(Collider other)
@@ -121,6 +127,17 @@ public class PlayerCharacter : MonoBehaviour
             gameManager.UIManager.HideInstructionText();
             other.gameObject.SetActive(false);
         }
+        if (other.GetComponent<DoorController>() != null)
+        {
+            _inRangeOfInteractable = false;
+            interactable = null;
+        }
+    }
+    
+    public void InteractWithDoor()
+    {
+        if (!_inRangeOfInteractable) return;
+        interactable.GetComponent<DoorController>().OpenDoor();
     }
 
     public void GrabObject()
@@ -141,13 +158,13 @@ public class PlayerCharacter : MonoBehaviour
 
     public void ChangeCurrentStealthValue(float value)
     {
-        StealthMeterChangedEvent?.Invoke(currentStealthMeter, currentStealthMeter + value);
+        StealthMeterChangedEvent?.Invoke(_currentStealthMeter, _currentStealthMeter + value);
     }
 
     private void HandleStealthMeterChanged(float prev, float next)
     {
-        currentStealthMeter = next;
-        if (currentStealthMeter <= 0)
+        _currentStealthMeter = next;
+        if (_currentStealthMeter <= 0)
         {
             gameManager.GameOver();
         }

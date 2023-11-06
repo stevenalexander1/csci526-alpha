@@ -347,6 +347,7 @@ namespace StarterAssets
 		{
 			if (!_input.interact) return;
 			_playerCharacter.GrabObject();
+			_playerCharacter.InteractWithDoor();
 			_input.interact = false;
 		}
 
