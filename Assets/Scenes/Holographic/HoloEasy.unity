@@ -13016,6 +13016,18 @@ Mesh:
     offset: 0
     size: 0
     path: 
+--- !u!114 &1191581695 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2242769829047343784, guid: c204e08ad7d24dd40bb4c25d19d00911,
+    type: 3}
+  m_PrefabInstance: {fileID: 1719595422243323060}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1272563243
 GameObject:
   m_ObjectHideFlags: 0
@@ -31668,10 +31680,8 @@ MonoBehaviour:
   m_VersionIndex: 2870
   m_IsSelectable: 1
   m_SelectedFaces: 
-  m_SelectedEdges:
-  - a: 963
-    b: 962
-  m_SelectedVertices: c3030000c2030000
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!1 &2063509359
 GameObject:
   m_ObjectHideFlags: 0
@@ -32986,6 +32996,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Essentials
       objectReference: {fileID: 0}
+    - target: {fileID: 7362542956513988160, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: _lvlName
+      value: 
+      objectReference: {fileID: 1191581695}
     - target: {fileID: 7720791089945083129, guid: c204e08ad7d24dd40bb4c25d19d00911,
         type: 3}
       propertyPath: near clip plane
