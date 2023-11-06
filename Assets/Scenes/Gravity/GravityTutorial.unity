@@ -2348,7 +2348,7 @@ GameObject:
   - component: {fileID: 731077086}
   - component: {fileID: 731077085}
   - component: {fileID: 731077084}
-  m_Layer: 9
+  m_Layer: 0
   m_Name: Blocker
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3131,9 +3131,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 827375748}
-  m_LocalRotation: {x: 6.7954253e-12, y: 4.074194e-21, z: 5.995495e-10, w: 1}
-  m_LocalPosition: {x: 2.5, y: 7, z: -13.5}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 6.7954522e-12, y: -0, z: 5.995496e-10, w: 1}
+  m_LocalPosition: {x: 2.4999983, y: 7, z: -13.500004}
+  m_LocalScale: {x: 1.0000002, y: 1, z: 1.0000002}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 929892563}
@@ -10847,6 +10847,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 306175018871816397, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: m_CullingMask.m_Bits
+      value: 139777
+      objectReference: {fileID: 0}
     - target: {fileID: 857294806368575071, guid: c204e08ad7d24dd40bb4c25d19d00911,
         type: 3}
       propertyPath: m_RootOrder
@@ -11007,6 +11012,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Scene Essentials
       objectReference: {fileID: 0}
+    - target: {fileID: 6925610055822273113, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: targetCamera
+      value: 
+      objectReference: {fileID: 1907822605}
+    - target: {fileID: 6925610055822273113, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: layerToAdd.m_Bits
+      value: 16384
+      objectReference: {fileID: 0}
+    - target: {fileID: 6925610055822273113, guid: c204e08ad7d24dd40bb4c25d19d00911,
+        type: 3}
+      propertyPath: layerToRemove.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     - target: {fileID: 7107611899157999889, guid: c204e08ad7d24dd40bb4c25d19d00911,
         type: 3}
       propertyPath: m_IsActive
@@ -11079,6 +11099,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!20 &1907822605 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 306175018871816397, guid: c204e08ad7d24dd40bb4c25d19d00911,
+    type: 3}
+  m_PrefabInstance: {fileID: 1907822601}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1925449699
 GameObject:
   m_ObjectHideFlags: 0
