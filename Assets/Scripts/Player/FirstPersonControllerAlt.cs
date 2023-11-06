@@ -364,7 +364,6 @@ namespace StarterAssets
 			SendToGoogle.setrCount(1);
 			//Debug.Log("R Count : " + SendToGoogle.getrCount());
 			CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
-			Debug.Log(cameraManager.PlayerCameraActive);
 			if (!cameraManager.PlayerCameraActive)
 			{
 				if (_gravityManager.IsGravityInverted) _gravityManager.InvertGravity();
