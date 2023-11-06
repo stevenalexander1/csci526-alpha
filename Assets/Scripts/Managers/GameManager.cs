@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using StarterAssets;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -34,6 +35,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private CameraManager cameraManager;
     [SerializeField] private TutorialManager tutorialManager;
     [SerializeField] private LevelManager levelManager;
+    [SerializeField] public TMP_Text _lvlName;
+
+    private TMP_Text _lname=>_lvlName;
     private GameObject _mainCamera;
     [Header("Level")] 
     [SerializeField] private List<Level> levels;
@@ -84,8 +88,7 @@ public class GameManager : MonoBehaviour
     private void OnEnable()
     {
         GameOverEvent += HandleGameOver;
-        LevelCompleteEvent += HandleLevelComplete;
-         
+        LevelCompleteEvent += HandleLevelComplete; 
     }
     
     private void OnDisable()
@@ -219,6 +222,7 @@ public class GameManager : MonoBehaviour
         if (_isGameOver) return;
         PauseGameEvent?.Invoke();
         _isPaused = true;
+        _lname.text = SceneManager.GetActiveScene().name.ToString();
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
     }

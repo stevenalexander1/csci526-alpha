@@ -1770,18 +1770,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1512213952}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &242398833 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8762286023885395323, guid: 9c489a8547f4d9e4387da15a4ff82c81,
-    type: 3}
-  m_PrefabInstance: {fileID: 1512213952}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 242398832}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45e653bab7fb20e499bda25e1b646fea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &260799836
 GameObject:
   m_ObjectHideFlags: 0
@@ -5685,10 +5673,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63ee3c41c0a0547dd93fe0ed096c6724, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameobject1: {fileID: 242398833}
-  textMesh: {fileID: 1275697355}
-  activeText: 
-  inactiveText: Press 'R' to re-enter First Person View
 --- !u!1001 &1323031648
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -17140,6 +17124,18 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1366882174}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1366882177 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 631297427416680277, guid: c59e663febeb98f46ba47c930aa3ff23,
+    type: 3}
+  m_PrefabInstance: {fileID: 1366882174}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1384676243
 GameObject:
   m_ObjectHideFlags: 0
@@ -21352,6 +21348,16 @@ PrefabInstance:
       propertyPath: checkpoint
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8210127145020742136, guid: 11a2434a9353d2b4b9c9cecd6de96883,
+        type: 3}
+      propertyPath: _lname
+      value: 
+      objectReference: {fileID: 1366882177}
+    - target: {fileID: 8210127145020742136, guid: 11a2434a9353d2b4b9c9cecd6de96883,
+        type: 3}
+      propertyPath: _lvlName
+      value: 
+      objectReference: {fileID: 1366882177}
     - target: {fileID: 8210127145020742136, guid: 11a2434a9353d2b4b9c9cecd6de96883,
         type: 3}
       propertyPath: uiManager
