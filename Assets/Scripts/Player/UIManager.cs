@@ -188,7 +188,7 @@ public class UIManager : MonoBehaviour
         SetCameraBarVisibility();
     }
 
-    public IEnumerator FadeTextToFullAlpha(float t, TextMeshProUGUI i)
+    private IEnumerator FadeTextToFullAlpha(float t, TextMeshProUGUI i)
     {
         i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
         while (i.color.a < 1.0f)
@@ -198,7 +198,7 @@ public class UIManager : MonoBehaviour
         }
     }
 
-    public IEnumerator FadeTextToZeroAlpha(float t, TextMeshProUGUI i)
+    private IEnumerator FadeTextToZeroAlpha(float t, TextMeshProUGUI i)
     {
         i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
         while (i.color.a > 0.0f)
