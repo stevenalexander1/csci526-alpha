@@ -183,7 +183,7 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.009433746
+        value: 0.053394318
         inSlope: 0
         outSlope: 0
         tangentMode: 0
@@ -246,3 +246,4 @@ MonoBehaviour:
   laserLength: 100
   laserDirection: {x: 1, y: 0, z: 0}
   enableMovement: 0
+  laserSpeed: 1
