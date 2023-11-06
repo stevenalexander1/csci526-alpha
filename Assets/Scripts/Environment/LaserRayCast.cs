@@ -1,3 +1,4 @@
+
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,7 +10,8 @@ public class LaserRayCast : MonoBehaviour
     [SerializeField] private Transform startPoint;
     [SerializeField] private float laserLength = 100f;
     [SerializeField] private Vector3 laserDirection = Vector3.right;
-    [SerializeField] private bool enableMovement = true; // Add a checkbox for movement control
+    [SerializeField] private bool enableMovement = true;
+    [SerializeField] private float laserSpeed = 1.0f; // Add a speed variable
     private PlayerCharacter _playerCharacter;
     private GameObject _mainCamera;
     private bool _isGameOver = false;
@@ -28,7 +30,7 @@ public class LaserRayCast : MonoBehaviour
         _isGameOver = false;
         lr = GetComponent<LineRenderer>();
         lr.positionCount = 2;
-        
+
         _gameManager = GameManager.Instance;
         _playerCharacter = _gameManager.PlayerCharacter;
         SendToGoogle.laserExists = true;
@@ -49,7 +51,6 @@ public class LaserRayCast : MonoBehaviour
             if (hit.transform.parent.gameObject == _playerCharacter.gameObject
                  || hit.transform.gameObject == _playerCharacter.gameObject)
             {
-                // Analytics 3: Player vs Laser
                 SendToGoogle.setIsLaserDeath(true);
 
                 _playerCharacter.ChangeCurrentStealthValue(-Time.deltaTime);
@@ -58,27 +59,30 @@ public class LaserRayCast : MonoBehaviour
 
         if (enableMovement)
         {
+            float laserSpeedMultiplier = laserSpeed * Time.deltaTime; // Calculate the speed factor
+
             // Move the cube and laser vertically
             if (laserDirection == Vector3.left || laserDirection == Vector3.right)
             {
-                float yOffset = Mathf.Sin(Time.time) * 0.5f; // Adjust the amplitude and speed as needed
-                transform.Translate(Vector3.up * yOffset * Time.deltaTime);
+                float yOffset = Mathf.Sin(Time.time) * 0.5f * laserSpeedMultiplier;
+                transform.Translate(Vector3.up * yOffset);
             }
             else
             {
-                transform.Translate(Vector3.zero); // Stop horizontal movement if laser direction is not (x=-1, y=0, z=0) or (x=1, y=0, z=0)
+                transform.Translate(Vector3.zero);
             }
 
             // Move the cube and laser horizontally
             if (laserDirection == Vector3.up || laserDirection == Vector3.down)
             {
-                float xOffset = Mathf.Sin(Time.time) * 0.5f; // Adjust the amplitude and speed as needed
-                transform.Translate(Vector3.right * xOffset * Time.deltaTime);
+                float xOffset = Mathf.Sin(Time.time) * 0.5f * laserSpeedMultiplier;
+                transform.Translate(Vector3.right * xOffset);
             }
             else
             {
-                transform.Translate(Vector3.zero); // Stop vertical movement if laser direction is not (x=0, y=1, z=0) or (x=0, y=-1, z=0)
+                transform.Translate(Vector3.zero);
             }
         }
     }
 }
+
