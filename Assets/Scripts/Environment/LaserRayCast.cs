@@ -17,6 +17,10 @@ public class LaserRayCast : MonoBehaviour
     private bool _isGameOver = false;
     private GameManager _gameManager;
 
+    [SerializeField] private bool isElectricCam = false;
+    public bool IsElectricCam => isElectricCam;
+
+
     private void Awake()
     {
         if (_mainCamera == null)
@@ -83,6 +87,54 @@ public class LaserRayCast : MonoBehaviour
                 transform.Translate(Vector3.zero);
             }
         }
+    }
+
+    private void OnEnable()
+    {
+        _gameManager = GameManager.Instance;
+        if (_gameManager != null)
+        {
+            _gameManager.CameraManager.CameraChangedEvent += HandleCameraChangedEvent;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (_gameManager != null)
+        {
+            _gameManager.CameraManager.CameraChangedEvent -= HandleCameraChangedEvent;
+        }
+
+    }
+
+    private void HandleCameraChangedEvent(GameObject cam)
+    {
+       if (cam == null) return;
+        if(isElectricCam)
+        {
+            if (cam == _gameManager.CameraManager.PlayerFollowCamera)
+            {
+                enableMovement = false;
+                return;
+            }
+            SecurityCameraComponent securityCameraComponent = cam.GetComponentInParent<SecurityCameraComponent>();
+
+            if (securityCameraComponent != null && securityCameraComponent.IsElectric)
+            {
+                enableMovement = true;
+            }
+            else
+            {
+                enableMovement = false;
+            }
+
+        }
+        
+
+        
+
+
+
     }
 }
 
