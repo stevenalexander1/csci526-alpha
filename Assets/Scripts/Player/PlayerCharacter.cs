@@ -125,7 +125,6 @@ public class PlayerCharacter : MonoBehaviour
 
     public void GrabObject()
     {
-        Debug.Log("Grabbing object");
         if (!_canGrabObject
             || !_grabbableGameObject
             || _grabbableGameObject.GetComponent<GrabbableObject>().IsGrabbed) return;

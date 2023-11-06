@@ -145,7 +145,7 @@ PrefabInstance:
     - target: {fileID: 7959201152525413596, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
         type: 3}
       propertyPath: m_Lens.FieldOfView
-      value: 90
+      value: 70
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3eca78cfdcfd24b2b992c6ea1fef8810, type: 3}
