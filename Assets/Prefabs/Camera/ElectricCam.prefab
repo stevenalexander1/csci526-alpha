@@ -11,17 +11,27 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: 77ef1639081a6ce4d81e518e96d10b20, type: 2}
+      objectReference: {fileID: 2100000, guid: 765e0a9ff561fd24eaf0d6c9ae829fcc, type: 2}
     - target: {fileID: 6361871516422843916, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7ab977a21c92388468ee65ad1c0e5a78, type: 2}
+    - target: {fileID: 6361871516444744959, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 77ef1639081a6ce4d81e518e96d10b20, type: 2}
     - target: {fileID: 6361871517533401306, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 77ef1639081a6ce4d81e518e96d10b20, type: 2}
+    - target: {fileID: 6875131654129298895, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: isElectric
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7693178815394167665, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
         type: 3}
       propertyPath: m_text
