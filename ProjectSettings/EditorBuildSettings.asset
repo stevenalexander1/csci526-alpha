@@ -54,6 +54,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Guard/GuardMedium.unity
     guid: 1c2edb3cade0a4d5eb8a8050928ba08f
   - enabled: 1
+    path: Assets/Scenes/Camera/CameraChainTutorial.unity
+    guid: 071a6d8e5c797364aadb87f422c56611
+  - enabled: 1
     path: Assets/Scenes/Electric/ElectricTutorial.unity
     guid: 215e623eafe87f3439da820af4234e8e
   m_configObjects:

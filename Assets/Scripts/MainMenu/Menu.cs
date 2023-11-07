@@ -55,6 +55,8 @@ public class Menu : MonoBehaviour
         tut_map.Add("laser", "LaserTutorial");
         tut_map.Add("guard", "GuardTutorial");
         tut_map.Add("hologram", "HoloTutorial");
+        tut_map.Add("camera_chain", "CameraChainTutorial");
+        tut_map.Add("electric_cam", "");
         // easy
         easy_map.Add("movement", "MoveEasy");
         easy_map.Add("camera", "CameraEasy");
@@ -62,6 +64,8 @@ public class Menu : MonoBehaviour
         easy_map.Add("laser", "LaserEasy");
         easy_map.Add("guard", "GuardEasy");
         easy_map.Add("hologram", "HoloEasy");
+        easy_map.Add("camera_chain", "");
+        easy_map.Add("electric_cam", "");
         // medium
         med_map.Add("movement", "");
         med_map.Add("camera", "");
@@ -69,6 +73,8 @@ public class Menu : MonoBehaviour
         med_map.Add("laser", "");
         med_map.Add("guard", "GuardMedium");
         med_map.Add("hologram", "HoloMedium");
+        med_map.Add("camera_chain", "");
+        med_map.Add("electric_cam", "");
         // hard
         hard_map.Add("movement", "");
         hard_map.Add("camera", "");
@@ -76,6 +82,8 @@ public class Menu : MonoBehaviour
         hard_map.Add("laser", "");
         hard_map.Add("guard", "");
         hard_map.Add("hologram", "");
+        hard_map.Add("camera_chain", "");
+        hard_map.Add("electric_cam", "");
         scene_name = "";
     }
 
@@ -133,6 +141,22 @@ public class Menu : MonoBehaviour
     public void OnGravityButton()
     {
         level = "gravity";
+        activate_valid_buttons();
+        lvlPanel.SetActive(false);
+        diffPanel.SetActive(true);
+    }
+
+    public void OnChainButton()
+    {
+        level = "camera_chain";
+        activate_valid_buttons();
+        lvlPanel.SetActive(false);
+        diffPanel.SetActive(true);
+    }
+
+    public void OnElectricButton()
+    {
+        level = "electric_cam";
         activate_valid_buttons();
         lvlPanel.SetActive(false);
         diffPanel.SetActive(true);

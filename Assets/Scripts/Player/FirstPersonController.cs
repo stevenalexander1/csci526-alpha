@@ -76,6 +76,7 @@ namespace StarterAssets
 		private GameObject _mainCamera;
 
 		private const float _threshold = 0.01f;
+		private int cameraIndex = 0;
 
 		private bool IsCurrentDeviceMouse
 		{
@@ -125,6 +126,7 @@ namespace StarterAssets
 				Move();
 				ChangePerspective();
 				InGameMenu();
+				ChainCamera();
 			}
 		}
 
@@ -291,7 +293,34 @@ namespace StarterAssets
 			_gameManager.PopInGameMenu();
 			_input.inGameMenu = false;
 		}
-		
+
+		private void ChainCamera()
+		{
+			if (!_input.chainState) return;
+			CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
+			GameObject[] collectibles = GameObject.FindGameObjectsWithTag("ChainCamera");
+			if (collectibles.Length > 0)
+			{
+				if (collectibles[cameraIndex] != null)
+				{
+					SecurityCameraComponent securityCameraComponent = collectibles[cameraIndex].GetComponentInParent<SecurityCameraComponent>();
+					if (securityCameraComponent != null)
+					{
+						cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
+					}
+					if (cameraIndex == collectibles.Length - 1)
+					{
+						cameraIndex = 0;
+					}
+					else
+					{
+						cameraIndex += 1;
+					}
+				}
+			}
+			_input.chainState = false;
+		}
+
 		private void ChangePerspective()
 		{
 			if (!_input.changePerspective) return;
