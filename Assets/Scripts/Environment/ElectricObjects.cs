@@ -46,7 +46,7 @@ public class ElectricObjects : MonoBehaviour
         _initialRotation = transform.rotation;
         _playerObj = GameObject.FindWithTag("Player");
         _playerParent = _playerObj.transform.parent;
-        _centerPoint = transform.position + transform.TransformVector(GetComponent<BoxCollider>().center);
+        _centerPoint = transform.position;
     }
 
     private void OnEnable()
@@ -80,7 +80,7 @@ public class ElectricObjects : MonoBehaviour
                     StopCoroutine(_slideCoroutine);
                     StopCoroutine(_slideCoroutine1);
                     
-                    transform.position = _initialPosition;
+                    //transform.position = _initialPosition;
                 }
                 return;
             }
@@ -104,8 +104,8 @@ public class ElectricObjects : MonoBehaviour
                 if (_slideCoroutine != null)
                 {
                     StopCoroutine(_slideCoroutine);
-                    transform.rotation = _initialRotation;
-                    transform.position = _initialPosition;
+                    //transform.rotation = _initialRotation;
+                    //transform.position = _initialPosition;
 
                 }
                 

@@ -1248,7 +1248,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   virtualCameras: []
-  playerFollowCamera: {fileID: 0}
+  playerFollowCamera: {fileID: 7945720120830259927}
 --- !u!114 &1719595420582445855
 MonoBehaviour:
   m_ObjectHideFlags: 0
