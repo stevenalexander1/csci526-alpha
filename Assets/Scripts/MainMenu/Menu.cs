@@ -56,7 +56,7 @@ public class Menu : MonoBehaviour
         tut_map.Add("guard", "GuardTutorial");
         tut_map.Add("hologram", "HoloTutorial");
         tut_map.Add("camera_chain", "CameraChainTutorial");
-        tut_map.Add("electric_cam", "");
+        tut_map.Add("electric_cam", "ElectricTutorial");
         // easy
         easy_map.Add("movement", "MoveEasy");
         easy_map.Add("camera", "CameraEasy");
