@@ -37,13 +37,13 @@ public class DisclaimerComponent : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         StartCoroutine(FadeToZeroAlpha(1.5f, _disclaimerText));
         StartCoroutine(FadeToZeroAlphaIMG(1.5f, _img));
-        yield return new WaitForSeconds(2f);
-        StartCoroutine(FadeToFullAlpha(1.0f, _disclaimerOSText));
-        yield return new WaitForSeconds(5.0f);
-        StartCoroutine(FadeToZeroAlpha(1.0f, _disclaimerOSText));
-        yield return new WaitForSeconds(2f);
-        // load next scene
+        yield return new WaitForSeconds(1.75f);
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        //StartCoroutine(FadeToFullAlpha(1.0f, _disclaimerOSText));
+       // yield return new WaitForSeconds(5.0f);
+        //StartCoroutine(FadeToZeroAlpha(1.0f, _disclaimerOSText));
+        //yield return new WaitForSeconds(2f);
+        // load next scene
     }
     
     private IEnumerator FadeToFullAlphaIMG(float t, Image i)
