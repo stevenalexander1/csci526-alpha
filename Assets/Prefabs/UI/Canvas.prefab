@@ -1936,6 +1936,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 6489265371754413382}
     m_Modifications:
+    - target: {fileID: 2855012978408428971, guid: aba925830dd852d4680dc278b3832d13,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 2855012978408428971, guid: aba925830dd852d4680dc278b3832d13,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 31
+      objectReference: {fileID: 0}
     - target: {fileID: 3659530317320907405, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}
       propertyPath: m_AnchorMax.y
@@ -1949,7 +1959,12 @@ PrefabInstance:
     - target: {fileID: 3659530317320907405, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 112
+      value: 102
+      objectReference: {fileID: 0}
+    - target: {fileID: 4035450004845887872, guid: aba925830dd852d4680dc278b3832d13,
+        type: 3}
+      propertyPath: m_text
+      value: 'Camera Chaining:  ''C'''
       objectReference: {fileID: 0}
     - target: {fileID: 7551814544442518980, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}
@@ -1960,6 +1975,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -105
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551814544800727866, guid: aba925830dd852d4680dc278b3832d13,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 7551814544800727869, guid: aba925830dd852d4680dc278b3832d13,
+        type: 3}
+      propertyPath: m_text
+      value: 'Previous Camera View: ''T'''
       objectReference: {fileID: 0}
     - target: {fileID: 7551814544838677927, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}
@@ -2019,7 +2044,7 @@ PrefabInstance:
     - target: {fileID: 7551814545396308953, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -115
+      value: -105
       objectReference: {fileID: 0}
     - target: {fileID: 7551814545461037769, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}
@@ -2195,6 +2220,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_fontColor32.rgba
       value: 4294630420
+      objectReference: {fileID: 0}
+    - target: {fileID: 7732259096405898312, guid: aba925830dd852d4680dc278b3832d13,
+        type: 3}
+      propertyPath: m_VerticalAlignment
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 7795295242823737043, guid: aba925830dd852d4680dc278b3832d13,
         type: 3}

@@ -77,6 +77,8 @@ namespace StarterAssets
 		private CharacterController _controller;
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
+		private int cameraIndex=0;
+
 		
 		private const float _threshold = 0.0f;
 
@@ -130,6 +132,7 @@ namespace StarterAssets
 				ChangePerspective();
 				AccessLastUsedCamera();
 				InGameMenu();
+				ChainCamera();
 			}
 		}
 
@@ -356,6 +359,33 @@ namespace StarterAssets
 			if (!_input.inGameMenu) return;
 			_gameManager.PopInGameMenu();
 			_input.inGameMenu = false;
+		}
+
+		private void ChainCamera()
+		{
+			if (!_input.chainState) return;
+			CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
+			GameObject[] collectibles = GameObject.FindGameObjectsWithTag("ChainCamera");
+			if(collectibles.Length > 0)
+			{
+				if (collectibles[cameraIndex] != null)
+				{
+					SecurityCameraComponent securityCameraComponent = collectibles[cameraIndex].GetComponentInParent<SecurityCameraComponent>();
+					if (securityCameraComponent != null)
+					{
+						cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
+					}
+					if (cameraIndex == collectibles.Length - 1)
+					{
+						cameraIndex = 0;
+					}
+					else
+					{
+						cameraIndex += 1;
+					}
+				}
+			}
+			_input.chainState = false;
 		}
 
 		private void ChangePerspective()

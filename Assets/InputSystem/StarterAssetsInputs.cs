@@ -16,6 +16,7 @@ namespace StarterAssets
 		public bool changePerspective;
 		public bool lastUsedCamera;
 		public bool inGameMenu;
+		public bool chainState;
 
 		[Header("Movement Settings")]
 		public bool analogMovement;
@@ -68,6 +69,11 @@ namespace StarterAssets
 			InGameMenuInput(value.isPressed);
     }
 
+
+		public void OnCameraChain(InputValue value)
+        {
+			ChainToNextCamera(value.isPressed);
+        }
 #endif
 
 
@@ -104,6 +110,11 @@ namespace StarterAssets
 		private void InGameMenuInput(bool newInGameState)
         {
 			inGameMenu = newInGameState;
+        }
+
+		private void ChainToNextCamera(bool newChainState)
+        {
+			chainState = newChainState;
         }
 		
 		private void LastUsedCameraInput(bool newLastUsedCameraState)

@@ -16,6 +16,7 @@ TagManager:
   - DoorButton
   - Button
   - LevelName
+  - ChainCamera
   layers:
   - Default
   - TransparentFX
