@@ -10,6 +10,8 @@ public class DisclaimerComponent : MonoBehaviour
 {
     [SerializeField] private GameObject _disclaimerPanel;
     [SerializeField] private TMP_Text _disclaimerText;
+    [SerializeField] private TMP_Text _disclaimerOSText;
+
     [SerializeField] private GameObject mouseImage;
 
     private Image _img;
@@ -29,25 +31,46 @@ public class DisclaimerComponent : MonoBehaviour
 
     private IEnumerator ShowDisclaimer()
     {
-        Debug.Log("Showing disclaimer");
-        yield return new WaitForSeconds(1.0f);
-        Debug.Log("Showing disclaimer");
-        StartCoroutine(FadeToFullAlpha(1.75f, _disclaimerText));
-        yield return new WaitForSeconds(4.0f);
-        Debug.Log("Removing disclaimer");
-        StartCoroutine(FadeToZeroAlpha(1.75f, _disclaimerText));
-        yield return new WaitForSeconds(2.25f);
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(FadeToFullAlpha(1.5f, _disclaimerText));
+        StartCoroutine(FadeToFullAlphaIMG(1.5f, _img));
+        yield return new WaitForSeconds(3.0f);
+        StartCoroutine(FadeToZeroAlpha(1.5f, _disclaimerText));
+        StartCoroutine(FadeToZeroAlphaIMG(1.5f, _img));
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(FadeToFullAlpha(1.0f, _disclaimerOSText));
+        yield return new WaitForSeconds(5.0f);
+        StartCoroutine(FadeToZeroAlpha(1.0f, _disclaimerOSText));
+        yield return new WaitForSeconds(2f);
         // load next scene
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+    }
+    
+    private IEnumerator FadeToFullAlphaIMG(float t, Image i)
+    {
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
+        while (i.color.a < 1.0f)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
+            yield return null;
+        }
+    }
+    
+    private IEnumerator FadeToZeroAlphaIMG(float t, Image i)
+    {
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
+        while (i.color.a > 0.0f)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
+            yield return null;
+        }
     }
 
     private IEnumerator FadeToFullAlpha(float t, TMP_Text i)
     {
-        _img.color = new Color(_img.color.r, _img.color.g, _img.color.b, 0);
         i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
         while (i.color.a < 1.0f)
         {
-            _img.color = new Color(_img.color.r, _img.color.g, _img.color.b, _img.color.a + (Time.deltaTime / t));
             i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
             yield return null;
         }
@@ -55,11 +78,9 @@ public class DisclaimerComponent : MonoBehaviour
 
     private IEnumerator FadeToZeroAlpha(float t, TMP_Text i)
     {
-        _img.color = new Color(_img.color.r, _img.color.g, _img.color.b, 1);
         i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
         while (i.color.a > 0.0f)
         {
-            _img.color = new Color(_img.color.r, _img.color.g, _img.color.b, _img.color.a - (Time.deltaTime / t));
             i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
             yield return null;
         }
