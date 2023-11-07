@@ -23,7 +23,7 @@ public class ElectricObjects : MonoBehaviour
     private Transform _playerParent;
     private Quaternion _initialRotation;
     private Vector3 _centerPoint;
-
+    
 
     public bool IsMoving => isMoving;
     public bool IsRotating => isRotating;
@@ -32,6 +32,9 @@ public class ElectricObjects : MonoBehaviour
     public float SlideDuration => slideDuration;
     public float RotationSpeed => rotationSpeed;
 
+    private Vector3[] _positions = new Vector3[2];
+
+    private int _counter = 0;
 
     private void Awake()
     {
@@ -47,6 +50,8 @@ public class ElectricObjects : MonoBehaviour
         _playerObj = GameObject.FindWithTag("Player");
         _playerParent = _playerObj.transform.parent;
         _centerPoint = transform.position;
+        _positions[0] = forwardObject.transform.position;
+        _positions[1] = backwardObject.transform.position;
     }
 
     private void OnEnable()
@@ -132,8 +137,9 @@ public class ElectricObjects : MonoBehaviour
         
         while (true)
         {
-             yield return  _slideCoroutine1=StartCoroutine(MoveToPosition(obj, start, target));
-             yield return _slideCoroutine1=StartCoroutine(MoveToPosition(obj, target, start));
+             yield return  _slideCoroutine1=StartCoroutine(MoveToPosition(obj, start, _positions[_counter]));
+            _counter = (_counter + 1) % 2;
+             //yield return _slideCoroutine1=StartCoroutine(MoveToPosition(obj, target, _positions[_counter]));
         }
     }
 
@@ -142,10 +148,11 @@ public class ElectricObjects : MonoBehaviour
     {
         float t = 0;
         Vector3 startingPos = obj.transform.position;
+        float timeScaling = Vector3.Distance(startingPos, target) / Vector3.Distance(_positions[0], _positions[1]);
 
         while (t < 1)
         {
-            t += Time.deltaTime / slideDuration;
+            t += Time.deltaTime / (slideDuration*timeScaling);
             obj.transform.position = Vector3.Lerp(startingPos, target, t);
             yield return null;
         }
