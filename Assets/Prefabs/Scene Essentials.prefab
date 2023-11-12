@@ -997,6 +997,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8811f8d912ed0403da0e9e7b29331272, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2242769829047343784 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 631297427416680277, guid: c59e663febeb98f46ba47c930aa3ff23,
+    type: 3}
+  m_PrefabInstance: {fileID: 1719595420186746365}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &5608031113763397819 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6489265371754413382, guid: c59e663febeb98f46ba47c930aa3ff23,
@@ -1384,7 +1396,7 @@ PrefabInstance:
     - target: {fileID: 460674496507003792, guid: 11a2434a9353d2b4b9c9cecd6de96883,
         type: 3}
       propertyPath: m_Radius
-      value: 0.65
+      value: 0.637
       objectReference: {fileID: 0}
     - target: {fileID: 460674496507003802, guid: 11a2434a9353d2b4b9c9cecd6de96883,
         type: 3}
@@ -1456,6 +1468,11 @@ PrefabInstance:
       propertyPath: checkpoint
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 8210127145020742136, guid: 11a2434a9353d2b4b9c9cecd6de96883,
+        type: 3}
+      propertyPath: _lvlName
+      value: 
+      objectReference: {fileID: 2242769829047343784}
     - target: {fileID: 8210127145020742136, guid: 11a2434a9353d2b4b9c9cecd6de96883,
         type: 3}
       propertyPath: uiManager
