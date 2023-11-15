@@ -7615,7 +7615,7 @@ PrefabInstance:
     - target: {fileID: 1825149755774960989, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15.000183
+      value: -15.000168
       objectReference: {fileID: 0}
     - target: {fileID: 4309738244652288469, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}
@@ -12237,7 +12237,7 @@ PrefabInstance:
     - target: {fileID: 3565629667955505234, guid: 11a2434a9353d2b4b9c9cecd6de96883,
         type: 3}
       propertyPath: maxStealthMeter
-      value: 0.4
+      value: 0.28
       objectReference: {fileID: 0}
     - target: {fileID: 3565629667955505234, guid: 11a2434a9353d2b4b9c9cecd6de96883,
         type: 3}

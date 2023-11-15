@@ -67,6 +67,66 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227892, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9897871
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227892, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.1418232
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227892, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.01356378
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227892, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.004871666
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227892, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 16.313
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227892, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 1.521
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227892, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: -0.346
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227893, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_Size.y
+      value: 5.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227893, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_Size.z
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227893, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_Center.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227893, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_Center.y
+      value: 2.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 6361871518469227893, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
+        type: 3}
+      propertyPath: m_Center.z
+      value: 2.5
+      objectReference: {fileID: 0}
     - target: {fileID: 6875131654129298895, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
         type: 3}
       propertyPath: doesInvertGravity
@@ -165,7 +225,7 @@ PrefabInstance:
     - target: {fileID: 7959201152282057399, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
         type: 3}
       propertyPath: m_Name
-      value: PF_SecurityCamera
+      value: PF_GravityCamera
       objectReference: {fileID: 0}
     - target: {fileID: 7959201152525413596, guid: 3eca78cfdcfd24b2b992c6ea1fef8810,
         type: 3}

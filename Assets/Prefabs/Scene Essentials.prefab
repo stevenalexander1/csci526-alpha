@@ -803,6 +803,10 @@ PrefabInstance:
       propertyPath: playerCharacter
       value: 
       objectReference: {fileID: 2785075761928089578}
+    - target: {fileID: 1304257225, guid: c59e663febeb98f46ba47c930aa3ff23, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 496501801331804202, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
