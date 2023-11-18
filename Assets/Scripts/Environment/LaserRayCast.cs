@@ -19,10 +19,12 @@ public class LaserRayCast : MonoBehaviour
 
     [SerializeField] private bool isElectricCam = false;
     public bool IsElectricCam => isElectricCam;
+    private Vector3 _initialPosition;
 
 
     private void Awake()
     {
+        _initialPosition = transform.position;
         if (_mainCamera == null)
         {
             _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -121,10 +123,12 @@ public class LaserRayCast : MonoBehaviour
 
             if (securityCameraComponent != null && securityCameraComponent.IsElectric)
             {
+                transform.position = _initialPosition;
                 enableMovement = true;
             }
             else
             {
+                transform.position = _initialPosition;
                 enableMovement = false;
             }
 
