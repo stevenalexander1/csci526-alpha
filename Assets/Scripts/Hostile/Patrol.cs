@@ -126,9 +126,8 @@ public class Patrol : MonoBehaviour
               {
                 speed = 0;
 
-                transform.parent.position = _initialParentPosition;
-                transform.position = _initialPosition;
-
+               // transform.parent.position = _initialParentPosition;
+              //  transform.position = _initialPosition;
                 return;
               }
 
@@ -137,12 +136,12 @@ public class Patrol : MonoBehaviour
               {
               
                speed = 2;
-         
-              }
+
+            }
               else
               {
-               speed = 2;
-              }
+              // speed = 2;
+            }
 
           }
   
