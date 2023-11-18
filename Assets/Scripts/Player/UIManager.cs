@@ -20,9 +20,11 @@ public class UIManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI GameMessageText;
     [SerializeField] private TextMeshProUGUI instructions;
     [SerializeField] private GameObject cameraBar;
+    [SerializeField] private Image dmgIndicator;
 
     private GameManager _gameManager;
     private CameraManager _cameraManager;
+    private float _durationTimer;
     // Properties
     public Image Crosshair => crosshair;
     public Text GameOverText => gameOverText;
@@ -40,6 +42,7 @@ public class UIManager : MonoBehaviour
         gameOverPanel.SetActive(false);
         _gameManager = GameManager.Instance;
         inGamePanel.SetActive(false);
+        dmgIndicator.color = new Color(dmgIndicator.color.r, dmgIndicator.color.g, dmgIndicator.color.b, 0);
     }
 
     private void OnEnable()
@@ -85,7 +88,14 @@ public class UIManager : MonoBehaviour
 
     void Update()
     {
-         
+        if (dmgIndicator.color.a > 0)
+        {
+            _durationTimer += Time.deltaTime;
+            if (_durationTimer > 1)
+            {
+                dmgIndicator.color = new Color(dmgIndicator.color.r, dmgIndicator.color.g, dmgIndicator.color.b, dmgIndicator.color.a - (Time.deltaTime));
+            }
+        }
     }
     
     public void ToggleCrosshairVisibility()
@@ -174,6 +184,7 @@ public class UIManager : MonoBehaviour
     private void HandleStealthMeterChanged(float prev, float next)
     {
         stealthBar.SetStealth(Mathf.Clamp(next, 0, stealthBar.StealthSlider.maxValue));
+        StartCoroutine(DamageVisible(dmgIndicator));
     }
     
     private void HandleCashChanged(int prev, int next)
@@ -206,5 +217,12 @@ public class UIManager : MonoBehaviour
             i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
             yield return null;
         }
+    }
+
+    private IEnumerator DamageVisible(Image i)
+    {
+        _durationTimer = 0;
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 0.7f);
+        yield return null;
     }
 }
