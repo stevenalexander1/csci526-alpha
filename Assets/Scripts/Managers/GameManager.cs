@@ -222,7 +222,8 @@ public class GameManager : MonoBehaviour
         if (_isGameOver) return;
         PauseGameEvent?.Invoke();
         _isPaused = true;
-        _lname.text = SceneManager.GetActiveScene().name.ToString();
+        Scene currScene = SceneManager.GetActiveScene();
+        _lname.text = (currScene.buildIndex-1).ToString()+". "+currScene.name.ToString();
         Time.timeScale = 0;
         Cursor.lockState = CursorLockMode.Confined;
     }
