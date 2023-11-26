@@ -294,6 +294,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 292293706}
     m_Modifications:
+    - target: {fileID: 1809861520190080285, guid: 22d54f1ce095b384e80f507920e47055,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e75d51d555dec54b90544819dd5e13a, type: 2}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
@@ -6222,6 +6227,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 292293706}
     m_Modifications:
+    - target: {fileID: 1809861520190080285, guid: 22d54f1ce095b384e80f507920e47055,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e75d51d555dec54b90544819dd5e13a, type: 2}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
@@ -10569,6 +10579,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 292293706}
     m_Modifications:
+    - target: {fileID: 1809861520190080285, guid: 22d54f1ce095b384e80f507920e47055,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e75d51d555dec54b90544819dd5e13a, type: 2}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
@@ -12515,6 +12530,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 292293706}
     m_Modifications:
+    - target: {fileID: 1809861520190080285, guid: 22d54f1ce095b384e80f507920e47055,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e75d51d555dec54b90544819dd5e13a, type: 2}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
@@ -15948,6 +15968,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 292293706}
     m_Modifications:
+    - target: {fileID: 1809861520190080285, guid: 22d54f1ce095b384e80f507920e47055,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e75d51d555dec54b90544819dd5e13a, type: 2}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
@@ -16075,6 +16100,11 @@ PrefabInstance:
       propertyPath: m_Range
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 6527405420741710414, guid: 0ddd1b9ea63fdd1448f0dfa608388583,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: ab823999c376c8c419285feac785048c, type: 2}
     - target: {fileID: 7205643305772174581, guid: 0ddd1b9ea63fdd1448f0dfa608388583,
         type: 3}
       propertyPath: m_RootOrder
@@ -16139,6 +16169,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 292293706}
     m_Modifications:
+    - target: {fileID: 1809861520190080285, guid: 22d54f1ce095b384e80f507920e47055,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e75d51d555dec54b90544819dd5e13a, type: 2}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
@@ -18097,6 +18132,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 292293706}
     m_Modifications:
+    - target: {fileID: 1809861520190080285, guid: 22d54f1ce095b384e80f507920e47055,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e75d51d555dec54b90544819dd5e13a, type: 2}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
@@ -18716,6 +18756,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 292293706}
     m_Modifications:
+    - target: {fileID: 1809861520190080285, guid: 22d54f1ce095b384e80f507920e47055,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 1e75d51d555dec54b90544819dd5e13a, type: 2}
     - target: {fileID: 1809861520203877776, guid: 22d54f1ce095b384e80f507920e47055,
         type: 3}
       propertyPath: laserLength
