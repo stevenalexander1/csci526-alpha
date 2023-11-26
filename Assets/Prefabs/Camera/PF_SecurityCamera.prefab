@@ -410,6 +410,7 @@ MonoBehaviour:
   securityCamera: {fileID: 1960482624944073231}
   doesInvertGravity: 0
   isHolographic: 0
+  isElectric: 0
   rotateCamera: 0
   rotationDuration: 10
   waitDuration: 2
@@ -534,6 +535,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3908327567682345502, guid: 9d23ea7daa8644ec89ecea47b24661ea,
         type: 3}
+      propertyPath: m_CastShadows
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3908327567682345502, guid: 9d23ea7daa8644ec89ecea47b24661ea,
+        type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 7afa37a812c6d42c1ab3cad3e606d97a, type: 2}
@@ -541,6 +547,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 3908327567769266413, guid: 9d23ea7daa8644ec89ecea47b24661ea,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3908327568185831781, guid: 9d23ea7daa8644ec89ecea47b24661ea,
         type: 3}
@@ -656,6 +667,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Center.z
       value: 2.9316354
+      objectReference: {fileID: 0}
+    - target: {fileID: 3908327568861643976, guid: 9d23ea7daa8644ec89ecea47b24661ea,
+        type: 3}
+      propertyPath: m_CastShadows
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3908327568861643981, guid: 9d23ea7daa8644ec89ecea47b24661ea,
         type: 3}
