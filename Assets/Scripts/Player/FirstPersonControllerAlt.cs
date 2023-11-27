@@ -79,6 +79,8 @@ namespace StarterAssets
 		private GameObject _mainCamera;
 		private int cameraIndex=0;
 
+		private bool rflag = false;
+
 		
 		private const float _threshold = 0.0f;
 
@@ -103,7 +105,6 @@ namespace StarterAssets
 			}
 			_playerCharacter = GetComponent<PlayerCharacter>();
 			_gameManager = GetComponent<GameManager>();
-			
 		}
 
 		private void Start()
@@ -366,24 +367,31 @@ namespace StarterAssets
 		private void ChainCamera()
 		{
 			if (!_input.chainState) return;
-			CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
-			GameObject[] collectibles = GameObject.FindGameObjectsWithTag("ChainCamera");
-			if(collectibles.Length > 0)
+            if (rflag)
 			{
-				if (collectibles[cameraIndex] != null)
+				if(_gameManager._ctext != null)
+                {
+					_gameManager._ctext.text = "";
+                }
+				CameraManager cameraManager = _mainCamera.GetComponent<CameraManager>();
+				GameObject[] collectibles = GameObject.FindGameObjectsWithTag("ChainCamera");
+				if (collectibles.Length > 0)
 				{
-					SecurityCameraComponent securityCameraComponent = collectibles[cameraIndex].GetComponentInParent<SecurityCameraComponent>();
-					if (securityCameraComponent != null)
+					if (collectibles[cameraIndex] != null)
 					{
-						cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
-					}
-					if (cameraIndex == collectibles.Length - 1)
-					{
-						cameraIndex = 0;
-					}
-					else
-					{
-						cameraIndex += 1;
+						SecurityCameraComponent securityCameraComponent = collectibles[cameraIndex].GetComponentInParent<SecurityCameraComponent>();
+						if (securityCameraComponent != null)
+						{
+							cameraManager.ActivateCameraByObject(securityCameraComponent.SecurityCamera);
+						}
+						if (cameraIndex == collectibles.Length - 1)
+						{
+							cameraIndex = 0;
+						}
+						else
+						{
+							cameraIndex += 1;
+						}
 					}
 				}
 			}
@@ -414,6 +422,16 @@ namespace StarterAssets
 						//Analytics for Camera count
 						SendToGoogle.setCameraCount(1);
 						//Debug.Log("Camera Count : " + SendToGoogle.getCameraCount());
+						if (SceneManager.GetActiveScene().name == "CameraChainTutorial")
+						{
+							cameraIndex = 1;
+							rflag = true;
+						}
+						else
+						{
+							cameraIndex = 0;
+							rflag = false;
+						}
 					}
 				}
 			}

@@ -38,6 +38,9 @@ public class GameManager : MonoBehaviour
     [SerializeField] private LevelManager levelManager;
     [SerializeField] public TMP_Text _lvlName;
 
+
+    public TMP_Text _ctext;
+
     private TMP_Text _lname=>_lvlName;
     private GameObject _mainCamera;
     [Header("Level")] 
