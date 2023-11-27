@@ -17,6 +17,15 @@ public class LaserRayCast : MonoBehaviour
     private bool _isGameOver = false;
     private GameManager _gameManager;
 
+<<<<<<< Updated upstream
+=======
+    [SerializeField] private bool isElectricCam = false;
+    public bool IsElectricCam => isElectricCam;
+    private Vector3 _initialPosition;
+    float currentTime = 0f;
+
+
+>>>>>>> Stashed changes
     private void Awake()
     {
         if (_mainCamera == null)
@@ -64,25 +73,67 @@ public class LaserRayCast : MonoBehaviour
             // Move the cube and laser vertically
             if (laserDirection == Vector3.left || laserDirection == Vector3.right)
             {
-                float yOffset = Mathf.Sin(Time.time) * 0.5f * laserSpeedMultiplier;
+                float yOffset = Mathf.Sin(currentTime) * 0.5f * laserSpeedMultiplier;
                 transform.Translate(Vector3.up * yOffset);
-            }
-            else
-            {
-                transform.Translate(Vector3.zero);
             }
 
             // Move the cube and laser horizontally
             if (laserDirection == Vector3.up || laserDirection == Vector3.down)
             {
-                float xOffset = Mathf.Sin(Time.time) * 0.5f * laserSpeedMultiplier;
+                float xOffset = Mathf.Sin(currentTime) * 0.5f * laserSpeedMultiplier;
                 transform.Translate(Vector3.right * xOffset);
+            }
+
+            // Increment your custom time variable
+            currentTime += Time.deltaTime;
+        }
+
+    }
+<<<<<<< Updated upstream
+=======
+
+    private void OnEnable()
+    {
+        _gameManager = GameManager.Instance;
+        if (_gameManager != null)
+        {
+            _gameManager.CameraManager.CameraChangedEvent += HandleCameraChangedEvent;
+        }
+    }
+
+    private void OnDisable()
+    {
+        if (_gameManager != null)
+        {
+            _gameManager.CameraManager.CameraChangedEvent -= HandleCameraChangedEvent;
+        }
+    }
+
+    private void HandleCameraChangedEvent(GameObject cam)
+    {
+       if (cam == null) return;
+        if(isElectricCam)
+        {
+            if (cam == _gameManager.CameraManager.PlayerFollowCamera)
+            {
+                enableMovement = false;
+                return;
+            }
+            SecurityCameraComponent securityCameraComponent = cam.GetComponentInParent<SecurityCameraComponent>();
+
+            if (securityCameraComponent != null && securityCameraComponent.IsElectric)
+            {
+                transform.position = _initialPosition;
+                enableMovement = true;
             }
             else
             {
-                transform.Translate(Vector3.zero);
+                transform.position = _initialPosition;
+                enableMovement = false;
             }
+
         }
     }
+>>>>>>> Stashed changes
 }
 
