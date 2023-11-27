@@ -22,6 +22,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject cameraBar;
     [SerializeField] private Image dmgIndicator;
 
+    private String _orig;
     private GameManager _gameManager;
     private CameraManager _cameraManager;
     private float _durationTimer;
@@ -225,4 +226,61 @@ public class UIManager : MonoBehaviour
         i.color = new Color(i.color.r, i.color.g, i.color.b, 0.7f);
         yield return null;
     }
+
+    //For checkpoint Message
+    // -- 1st Method : Show on gameover Canvas.
+    public void showCheckPoint(String str)
+    {
+        _orig = gameOverText.text;
+        gameOverPanel.SetActive(true);
+        gameOverText.text = str;
+        //StartCoroutine(showCheckPointCoroutine());
+        StartCoroutine(FadeTextCheckpoint(0.5f, gameOverText));
+        
+    }
+
+
+    private IEnumerator FadeTextCheckpoint(float t, Text i)
+    {
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 0);
+        while (i.color.a < 1.0f)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a + (Time.deltaTime / t));
+            yield return null;
+        }
+    }
+
+    public void HideCheckPointText()
+    {
+       StartCoroutine(FadeTextZeroCheckpoint(0.5f, gameOverText));
+        gameOverPanel.SetActive(false);
+        gameOverText.text = _orig;
+    }
+
+    private IEnumerator FadeTextZeroCheckpoint(float t, Text i)
+    {
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
+        while (i.color.a > 0.0f)
+        {
+            i.color = new Color(i.color.r, i.color.g, i.color.b, i.color.a - (Time.deltaTime / t));
+            yield return null;
+        }
+        i.color = new Color(i.color.r, i.color.g, i.color.b, 1);
+    }
+
+    //---2nd Method, using instruction 
+
+    public void ShowCheckpointInstruction(string s)
+    {
+        instructions.text = s;
+        StartCoroutine(FadeTextToFullAlpha(0.5f, instructions));
+    }
+
+
+    public void HideCheckpointInstruction()
+    {
+        StartCoroutine(FadeTextToZeroAlpha(0.5f, instructions));
+        gameOverPanel.SetActive(false);
+    }
+
 }
