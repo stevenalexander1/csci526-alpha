@@ -2652,7 +2652,7 @@ GameObject:
   - component: {fileID: 391283316}
   - component: {fileID: 391283315}
   - component: {fileID: 391283314}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: Block
   m_TagString: Untagged
   m_Icon: {fileID: 0}
