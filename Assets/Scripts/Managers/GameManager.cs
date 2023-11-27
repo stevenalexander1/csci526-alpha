@@ -10,6 +10,7 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static Vector3 lastCheckpoint = Vector3.zero;
+    public static Quaternion checkpointRotation = Quaternion.identity;
     
     private static GameManager _instance;
     public static GameManager Instance => _instance;
@@ -66,6 +67,7 @@ public class GameManager : MonoBehaviour
         if(lastCheckpoint!=Vector3.zero)
         {
             GameObject.FindGameObjectWithTag("Player").transform.position = lastCheckpoint;
+            GameObject.FindGameObjectWithTag("Player").transform.rotation = checkpointRotation;
             Debug.Log("Latest checkpoint set");
         }
 
@@ -116,6 +118,7 @@ public class GameManager : MonoBehaviour
         lastCheckpoint = Vector3.zero;
         //CheckPoint.checkpointList = new HashSet<string>();
         CheckPoint.checkpointList.Clear();
+        checkpointRotation=Quaternion.identity;
 
         if (_currentLevelIndex >= levels.Count)
         {
@@ -172,6 +175,7 @@ public class GameManager : MonoBehaviour
         lastCheckpoint = Vector3.zero;
         //CheckPoint.checkpointList = new HashSet<string>();
         CheckPoint.checkpointList.Clear();
+        checkpointRotation = Quaternion.identity;
 
         _isGameOver = true;
         Debug.Log("Level Complete!");
@@ -256,6 +260,7 @@ public class GameManager : MonoBehaviour
         lastCheckpoint = Vector3.zero;
         //CheckPoint.checkpointList = new HashSet<string>();
         CheckPoint.checkpointList.Clear();
+        checkpointRotation = Quaternion.identity;
 
         _isGameOver = false;
         _isPaused = false;
@@ -278,6 +283,7 @@ public class GameManager : MonoBehaviour
         lastCheckpoint = Vector3.zero;
         //CheckPoint.checkpointList = new HashSet<string>();
         CheckPoint.checkpointList.Clear();
+        checkpointRotation = Quaternion.identity;
         RestartGame();
     }
 }
