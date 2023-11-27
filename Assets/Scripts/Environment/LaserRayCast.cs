@@ -20,6 +20,7 @@ public class LaserRayCast : MonoBehaviour
     [SerializeField] private bool isElectricCam = false;
     public bool IsElectricCam => isElectricCam;
     private Vector3 _initialPosition;
+    private float currentTime = 0f;
 
 
     private void Awake()
@@ -70,24 +71,19 @@ public class LaserRayCast : MonoBehaviour
             // Move the cube and laser vertically
             if (laserDirection == Vector3.left || laserDirection == Vector3.right)
             {
-                float yOffset = Mathf.Sin(Time.time) * 0.5f * laserSpeedMultiplier;
+                float yOffset = Mathf.Sin(currentTime) * 0.5f * laserSpeedMultiplier;
                 transform.Translate(Vector3.up * yOffset);
-            }
-            else
-            {
-                transform.Translate(Vector3.zero);
             }
 
             // Move the cube and laser horizontally
             if (laserDirection == Vector3.up || laserDirection == Vector3.down)
             {
-                float xOffset = Mathf.Sin(Time.time) * 0.5f * laserSpeedMultiplier;
+                float xOffset = Mathf.Sin(currentTime) * 0.5f * laserSpeedMultiplier;
                 transform.Translate(Vector3.right * xOffset);
             }
-            else
-            {
-                transform.Translate(Vector3.zero);
-            }
+
+            // Increment your custom time variable
+            currentTime += Time.deltaTime;
         }
     }
 

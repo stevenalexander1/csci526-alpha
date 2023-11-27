@@ -222,6 +222,17 @@
                 },
                 {
                     "name": "",
+                    "id": "c0b82199-fbc0-47c5-a64e-63390f26ef91",
+                    "path": "<Keyboard>/rightShift",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "KeyboardMouse",
+                    "action": "Sprint",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
                     "id": "4f7e8596-8c60-46df-99ff-900dcca237f4",
                     "path": "<Keyboard>/e",
                     "interactions": "",

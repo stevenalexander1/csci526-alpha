@@ -14674,7 +14674,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: cd93d8a71fbba344f8ff0538c06bbe4f, type: 2}
+      objectReference: {fileID: 2100000, guid: 6615f1708a4932646adcdc55932feefa, type: 2}
     - target: {fileID: 3313756214768472750, guid: 5072064770b9b734ba7ca53be7bb4bc5,
         type: 3}
       propertyPath: m_Mesh
@@ -16990,6 +16990,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5555217074850630257, guid: c59e663febeb98f46ba47c930aa3ff23,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 6462444594475015192, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}
