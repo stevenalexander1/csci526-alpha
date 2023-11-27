@@ -17,17 +17,15 @@ public class LaserRayCast : MonoBehaviour
     private bool _isGameOver = false;
     private GameManager _gameManager;
 
-<<<<<<< Updated upstream
-=======
     [SerializeField] private bool isElectricCam = false;
     public bool IsElectricCam => isElectricCam;
     private Vector3 _initialPosition;
     float currentTime = 0f;
 
 
->>>>>>> Stashed changes
     private void Awake()
     {
+        _initialPosition = transform.position;
         if (_mainCamera == null)
         {
             _mainCamera = GameObject.FindGameObjectWithTag("MainCamera");
@@ -89,8 +87,6 @@ public class LaserRayCast : MonoBehaviour
         }
 
     }
-<<<<<<< Updated upstream
-=======
 
     private void OnEnable()
     {
@@ -134,6 +130,5 @@ public class LaserRayCast : MonoBehaviour
 
         }
     }
->>>>>>> Stashed changes
 }
 
