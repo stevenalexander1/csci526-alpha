@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    public static Vector3 lastCheckpoint = Vector3.zero;
     
     private static GameManager _instance;
     public static GameManager Instance => _instance;
@@ -61,7 +62,13 @@ public class GameManager : MonoBehaviour
     public LevelManager LevelManager => levelManager;
 
     private void Awake()
-    {
+    {   //Checkpoint code:
+        if(lastCheckpoint!=Vector3.zero)
+        {
+            GameObject.FindGameObjectWithTag("Player").transform.position = lastCheckpoint;
+            Debug.Log("Latest checkpoint set");
+        }
+
     // Make sure there is only one instance of this object
         if (_instance == null)
         {
@@ -106,6 +113,10 @@ public class GameManager : MonoBehaviour
     
     public void LoadNextLevel()
     {
+        lastCheckpoint = Vector3.zero;
+        //CheckPoint.checkpointList = new HashSet<string>();
+        CheckPoint.checkpointList.Clear();
+
         if (_currentLevelIndex >= levels.Count)
         {
             Debug.Log("No more levels to load!");
@@ -136,7 +147,6 @@ public class GameManager : MonoBehaviour
     public void RestartGame()
     {
         //if (!isGameOver) return;
-
         _isGameOver = false;
         _isPaused = false;
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
@@ -159,6 +169,10 @@ public class GameManager : MonoBehaviour
     
     private void HandleLevelComplete()
     {
+        lastCheckpoint = Vector3.zero;
+        //CheckPoint.checkpointList = new HashSet<string>();
+        CheckPoint.checkpointList.Clear();
+
         _isGameOver = true;
         Debug.Log("Level Complete!");
         Cursor.lockState = CursorLockMode.Confined;
@@ -239,6 +253,10 @@ public class GameManager : MonoBehaviour
 
     public void QuitGame()
     {
+        lastCheckpoint = Vector3.zero;
+        //CheckPoint.checkpointList = new HashSet<string>();
+        CheckPoint.checkpointList.Clear();
+
         _isGameOver = false;
         _isPaused = false;
         SceneManager.LoadScene("BetaMainMenu"); 
@@ -257,6 +275,9 @@ public class GameManager : MonoBehaviour
 
     public void ButtonRestart()
     {
+        lastCheckpoint = Vector3.zero;
+        //CheckPoint.checkpointList = new HashSet<string>();
+        CheckPoint.checkpointList.Clear();
         RestartGame();
     }
 }
