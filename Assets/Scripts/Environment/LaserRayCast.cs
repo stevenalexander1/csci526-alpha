@@ -20,7 +20,7 @@ public class LaserRayCast : MonoBehaviour
     [SerializeField] private bool isElectricCam = false;
     public bool IsElectricCam => isElectricCam;
     private Vector3 _initialPosition;
-    private float currentTime = 0f;
+    float currentTime = 0f;
 
 
     private void Awake()
@@ -85,6 +85,7 @@ public class LaserRayCast : MonoBehaviour
             // Increment your custom time variable
             currentTime += Time.deltaTime;
         }
+
     }
 
     private void OnEnable()
@@ -102,7 +103,6 @@ public class LaserRayCast : MonoBehaviour
         {
             _gameManager.CameraManager.CameraChangedEvent -= HandleCameraChangedEvent;
         }
-
     }
 
     private void HandleCameraChangedEvent(GameObject cam)
@@ -129,12 +129,6 @@ public class LaserRayCast : MonoBehaviour
             }
 
         }
-        
-
-        
-
-
-
     }
 }
 
