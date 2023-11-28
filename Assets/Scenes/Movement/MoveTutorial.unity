@@ -16989,7 +16989,7 @@ PrefabInstance:
     - target: {fileID: 1825149755774960989, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -15.000244
+      value: -15.000183
       objectReference: {fileID: 0}
     - target: {fileID: 4309738244652288469, guid: c59e663febeb98f46ba47c930aa3ff23,
         type: 3}
@@ -19744,7 +19744,7 @@ LightingSettings:
   m_BakeResolution: 40
   m_Padding: 2
   m_LightmapCompression: 3
-  m_AO: 1
+  m_AO: 0
   m_AOMaxDistance: 1
   m_CompAOExponent: 1
   m_CompAOExponentDirect: 0
