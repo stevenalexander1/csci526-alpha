@@ -170,6 +170,7 @@ public class GameManager : MonoBehaviour
     {
         _isGameOver = true;
         Debug.Log("Game Over!");
+        uiManager.StealthBar.StealthSlider.value = 0;
         Cursor.lockState = CursorLockMode.Confined;
     }
     
