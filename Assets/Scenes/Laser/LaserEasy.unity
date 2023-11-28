@@ -12800,7 +12800,7 @@ PrefabInstance:
     - target: {fileID: 2785075761928089578, guid: c204e08ad7d24dd40bb4c25d19d00911,
         type: 3}
       propertyPath: maxStealthMeter
-      value: 0.2
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 3175740282192057384, guid: c204e08ad7d24dd40bb4c25d19d00911,
         type: 3}
