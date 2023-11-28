@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-8551124616711184438
+--- !u!114 &-6890440710621928574
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}
@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: PolygonPrototype_Global_Grid_04
+  m_Name: PolygonPrototype_Global_Grid_01 blue
   m_Shader: {fileID: -6465566751694194690, guid: bf00925b2fbda49499ccc0de47e0d8ca,
     type: 3}
   m_ValidKeywords: []
@@ -60,5 +60,5 @@ Material:
     - _QueueOffset: 0
     - __dirty: 0
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.10948907, b: 0, a: 0}
+    - _BaseColor: {r: 0.4262638, g: 0.75815064, b: 0.8773585, a: 0}
   m_BuildTextureStacks: []
